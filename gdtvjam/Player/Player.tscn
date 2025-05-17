@@ -192,7 +192,7 @@ animations = [{
 radius = 18.0
 height = 48.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_ddoul")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
@@ -208,3 +208,6 @@ shape = SubResource("CapsuleShape2D_ddoul")
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("current_player")]
 script = ExtResource("4_8g4oa")
 current_player = NodePath("..")
+
+[node name="Camera" type="Camera2D" parent="." groups=["player"]]
+unique_name_in_owner = true

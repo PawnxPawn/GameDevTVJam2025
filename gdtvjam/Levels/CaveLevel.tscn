@@ -1,8 +1,12 @@
-[gd_scene load_steps=6 format=4 uid="uid://bt77sccqm75v8"]
+[gd_scene load_steps=10 format=4 uid="uid://bt77sccqm75v8"]
 
+[ext_resource type="Script" uid="uid://docwu412k4f30" path="res://Levels/CaveLevel.gd" id="1_45etj"]
 [ext_resource type="PackedScene" uid="uid://1c4l1suixtb2" path="res://Player/Player.tscn" id="1_ynduk"]
 [ext_resource type="Texture2D" uid="uid://u80q0bm48l5c" path="res://Assets/Placeholder/TilesetFloor.png" id="2_ynduk"]
 [ext_resource type="PackedScene" uid="uid://cx7vvccxxamc3" path="res://Other Systems/Block/Block.tscn" id="3_st3xi"]
+[ext_resource type="PackedScene" uid="uid://bwpa8hby3yajg" path="res://Other Systems/PuzzleSwitch/PuzzleSwitch.tscn" id="5_ctjur"]
+[ext_resource type="Script" uid="uid://ccjb2vsselx5j" path="res://Levels/TempWin.gd" id="6_frwyb"]
+[ext_resource type="Resource" uid="uid://ty2mp3pjn8yo" path="res://Dialogue/WinDialogue.dialogue" id="7_frwyb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_st3xi"]
 texture = ExtResource("2_ynduk")
@@ -552,6 +556,8 @@ terrain_set_0/terrain_0/color = Color(0.672915, 0.131461, 0.352519, 1)
 sources/0 = SubResource("TileSetAtlasSource_st3xi")
 
 [node name="CaveLevel" type="Node"]
+script = ExtResource("1_45etj")
+switches_needed = 1
 
 [node name="Player" parent="." instance=ExtResource("1_ynduk")]
 slide_on_ceiling = false
@@ -566,3 +572,14 @@ tile_set = SubResource("TileSet_45etj")
 
 [node name="Block" parent="Blocks" instance=ExtResource("3_st3xi")]
 position = Vector2(-251, 129)
+
+[node name="Switches" type="Node" parent="."]
+
+[node name="PuzzleSwitch" parent="Switches" instance=ExtResource("5_ctjur")]
+z_index = -1
+position = Vector2(-243, -78)
+
+[node name="Temp" type="Node" parent="."]
+script = ExtResource("6_frwyb")
+win_dialogue = ExtResource("7_frwyb")
+dialogue_title = "Win"

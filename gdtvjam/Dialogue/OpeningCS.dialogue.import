@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cukqot7ggipci"
+path="res://.godot/imported/OpeningCS.dialogue-4b6a095ff2f7005fc8bec7cec53d9f72.tres"
+
+[deps]
+
+source_file="res://Dialogue/OpeningCS.dialogue"
+dest_files=["res://.godot/imported/OpeningCS.dialogue-4b6a095ff2f7005fc8bec7cec53d9f72.tres"]
+
+[params]
+
+defaults=true

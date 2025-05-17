@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cx7vvccxxamc3"]
+
+[ext_resource type="Texture2D" uid="uid://cukssrjckg1tb" path="res://Assets/Placeholder/TilesetDungeon.png" id="1_jlxuf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j3tc1"]
+size = Vector2(32, 30)
+
+[node name="Block" type="RigidBody2D" groups=["block"]]
+gravity_scale = 0.0
+lock_rotation = true
+linear_damp = 30.0
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_jlxuf")
+region_enabled = true
+region_rect = Rect2(127.928, 47.9629, 16.0731, 15.0716)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_j3tc1")

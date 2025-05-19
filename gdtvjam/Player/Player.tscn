@@ -1,9 +1,10 @@
-[gd_scene load_steps=27 format=3 uid="uid://1c4l1suixtb2"]
+[gd_scene load_steps=29 format=3 uid="uid://1c4l1suixtb2"]
 
 [ext_resource type="Script" uid="uid://deift58sa4doh" path="res://Player/Player.gd" id="1_ddoul"]
 [ext_resource type="Texture2D" uid="uid://drm5fgamdi36b" path="res://Assets/Placeholder/Idle.png" id="1_q3lat"]
 [ext_resource type="Texture2D" uid="uid://cjslo86fdsesr" path="res://Assets/Placeholder/Walk.png" id="2_tok1r"]
 [ext_resource type="Script" uid="uid://b5vc2kcyt7tu0" path="res://Player/StateMachine.gd" id="4_8g4oa"]
+[ext_resource type="Script" uid="uid://cdq44q7fpdo01" path="res://Player/InteractableDetector.gd" id="5_8g4oa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_srnxu"]
 atlas = ExtResource("1_q3lat")
@@ -192,6 +193,9 @@ animations = [{
 radius = 18.0
 height = 48.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ysni"]
+size = Vector2(87, 64)
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 motion_mode = 1
 script = ExtResource("1_ddoul")
@@ -212,3 +216,26 @@ current_player = NodePath("..")
 
 [node name="Camera" type="Camera2D" parent="." groups=["player"]]
 unique_name_in_owner = true
+
+[node name="InteractableDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("5_8g4oa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableDetector"]
+position = Vector2(3.5, 1)
+shape = SubResource("RectangleShape2D_6ysni")
+debug_color = Color(0.8699, 0.276416, 0.555506, 0.42)
+
+[node name="InteractLabel" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = -20.0
+offset_top = -50.0
+offset_right = 20.0
+offset_bottom = -27.0
+text = "test"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="area_entered" from="InteractableDetector" to="InteractableDetector" method="_on_area_entered"]
+[connection signal="body_exited" from="InteractableDetector" to="InteractableDetector" method="_on_body_exited"]

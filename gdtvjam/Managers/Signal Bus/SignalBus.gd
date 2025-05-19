@@ -1,4 +1,0 @@
-extends Node
-
-signal puzzle_switch_on
-signal puzzle_switch_off

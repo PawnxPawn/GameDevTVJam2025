@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=4 uid="uid://bt77sccqm75v8"]
+[gd_scene load_steps=10 format=4 uid="uid://bt77sccqm75v8"]
 
 [ext_resource type="Script" uid="uid://docwu412k4f30" path="res://Levels/CaveLevel.gd" id="1_45etj"]
 [ext_resource type="PackedScene" uid="uid://1c4l1suixtb2" path="res://Player/Player.tscn" id="1_ynduk"]
+[ext_resource type="PackedScene" uid="uid://ktn845vos8qe" path="res://Menus/PauseMenu.tscn" id="2_frwyb"]
 [ext_resource type="Texture2D" uid="uid://u80q0bm48l5c" path="res://Assets/Placeholder/TilesetFloor.png" id="2_ynduk"]
 [ext_resource type="PackedScene" uid="uid://cx7vvccxxamc3" path="res://Other Systems/Block/Block.tscn" id="3_st3xi"]
 [ext_resource type="Script" uid="uid://ccjb2vsselx5j" path="res://Levels/TempWin.gd" id="6_frwyb"]
@@ -576,3 +577,7 @@ position = Vector2(-251, 129)
 script = ExtResource("6_frwyb")
 win_dialogue = ExtResource("7_frwyb")
 dialogue_title = "Win"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("2_frwyb")]

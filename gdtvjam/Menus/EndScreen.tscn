@@ -1,0 +1,125 @@
+[gd_scene load_steps=11 format=3 uid="uid://d3a5nng4xkp3l"]
+
+[ext_resource type="Script" uid="uid://dojpr158axq4j" path="res://Menus/end_screen.gd" id="1_x0esb"]
+[ext_resource type="PackedScene" uid="uid://bvcy6tqectio2" path="res://Menus/Credits.tscn" id="5_jblwx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jblwx"]
+
+[sub_resource type="Animation" id="Animation_qdgdq"]
+resource_name = "CreditsFadeIn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Credits:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wg76y"]
+resource_name = "CreditsFadeOut"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Credits:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5667v"]
+resource_name = "EndScreenFadeIn"
+
+[sub_resource type="Animation" id="Animation_jblwx"]
+resource_name = "FullEndSceneFadeOut"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Credits:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_uk8ji"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Credits:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wg76y"]
+_data = {
+&"CreditsFadeIn": SubResource("Animation_qdgdq"),
+&"CreditsFadeOut": SubResource("Animation_wg76y"),
+&"EndScreenFadeIn": SubResource("Animation_5667v"),
+&"FullEndSceneFadeOut": SubResource("Animation_jblwx"),
+&"RESET": SubResource("Animation_uk8ji")
+}
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_5667v"]
+
+[node name="EndScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x0esb")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_jblwx")
+
+[node name="Credits" parent="." instance=ExtResource("5_jblwx")]
+modulate = Color(1, 1, 1, 0)
+z_index = 5
+layout_mode = 1
+
+[node name="CreditsPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_wg76y")
+}
+
+[node name="Background" type="TextureRect" parent="."]
+modulate = Color(0.0352941, 0.0392157, 0.0784314, 1)
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("CanvasTexture_5667v")
+
+[node name="DelayTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="DelayTimer" to="." method="_start_credits"]

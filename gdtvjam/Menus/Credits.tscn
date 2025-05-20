@@ -1,0 +1,130 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvcy6tqectio2"]
+
+[ext_resource type="Script" uid="uid://ddvac7tf3n47x" path="res://Menus/credits.gd" id="1_lw8m3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d7jex"]
+bg_color = Color(0, 0, 0, 0.435294)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qqjfd"]
+font_size = 36
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lw8m3")
+metadata/_edit_vertical_guides_ = [282.0, 870.0]
+
+[node name="CreditsPanel" type="Panel" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -294.0
+offset_top = -325.0
+offset_right = 294.0
+offset_bottom = 327.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_d7jex")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CreditsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="CreditsPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 38.295)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TextToPNG" type="Label" parent="CreditsPanel/VBoxContainer"]
+custom_minimum_size = Vector2(378, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Credits"
+label_settings = SubResource("LabelSettings_qqjfd")
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CreditsPanel/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 41
+
+[node name="Vhal" type="Label" parent="CreditsPanel/VBoxContainer"]
+layout_mode = 2
+text = "Vhal Ragnarok - Lead Developer"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Seperator" type="MarginContainer" parent="CreditsPanel/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 30
+
+[node name="Pawn" type="Label" parent="CreditsPanel/VBoxContainer"]
+layout_mode = 2
+text = "Patrick \"Pawn\" Heil - Developer"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Seperator2" type="MarginContainer" parent="CreditsPanel/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 30
+
+[node name="Doom" type="Label" parent="CreditsPanel/VBoxContainer"]
+layout_mode = 2
+text = "Doomboy911 - Artist"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Seperator3" type="MarginContainer" parent="CreditsPanel/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 30
+
+[node name="JohnLeon" type="Label" parent="CreditsPanel/VBoxContainer"]
+layout_mode = 2
+text = "John Leon - Musician"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Seperator4" type="MarginContainer" parent="CreditsPanel/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 30
+
+[node name="Doom3" type="Label" parent="CreditsPanel/VBoxContainer"]
+layout_mode = 2
+text = "Axtadar - Sound Effects"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Seperator5" type="MarginContainer" parent="CreditsPanel/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 30
+
+[node name="CenterContainer" type="CenterContainer" parent="CreditsPanel/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="GodotLicense" type="LinkButton" parent="CreditsPanel/VBoxContainer/CenterContainer"]
+custom_minimum_size = Vector2(0, 29.72)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.196502, 0.196502, 0.196502, 1)
+text = "Godot Engine License"
+
+[connection signal="pressed" from="CreditsPanel/VBoxContainer/CenterContainer/GodotLicense" to="." method="_on_godot_license_pressed"]

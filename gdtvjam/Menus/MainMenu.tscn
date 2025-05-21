@@ -1,0 +1,169 @@
+[gd_scene load_steps=10 format=3 uid="uid://bdmlspewkwo5s"]
+
+[ext_resource type="Script" uid="uid://c7rq22m8nrqky" path="res://Menus/main_menu.gd" id="1_3g7qx"]
+[ext_resource type="PackedScene" uid="uid://0lj3qejewwsp" path="res://Menus/SettingsMenu.tscn" id="2_r8dbq"]
+[ext_resource type="PackedScene" uid="uid://dt1u5pso7ncj2" path="res://Managers/SettingsLoader/SettingsLoader.tscn" id="3_7ihqj"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_n6o36"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5ncg0"]
+
+[sub_resource type="Animation" id="Animation_ju15h"]
+resource_name = "MainMenuFadeIn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainMenuControl:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_sulrv"]
+resource_name = "MainMenuFadeOut"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainMenuControl:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0bjyp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainMenuControl:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5kkds"]
+_data = {
+&"MainMenuFadeIn": SubResource("Animation_ju15h"),
+&"MainMenuFadeOut": SubResource("Animation_sulrv"),
+&"RESET": SubResource("Animation_0bjyp")
+}
+
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("settings_menu", "main_menu_control")]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3g7qx")
+settings_menu = NodePath("SettingsMenu")
+main_menu_control = NodePath("MainMenuControl")
+
+[node name="Background" type="TextureRect" parent="."]
+modulate = Color(0.0352941, 0.0392157, 0.0784314, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_n6o36")
+
+[node name="MainMenuControl" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="MainMenuControl"]
+layout_mode = 2
+offset_top = 141.93
+offset_right = 960.0
+offset_bottom = 191.93
+theme_override_font_sizes/font_size = 36
+text = "Hollow Morph"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="MainMenuControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_5ncg0")
+
+[node name="CenterContainer" type="CenterContainer" parent="MainMenuControl/PanelContainer"]
+layout_mode = 2
+
+[node name="MenuContainer" type="VBoxContainer" parent="MainMenuControl/PanelContainer/CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenuControl/PanelContainer/CenterContainer/MenuContainer"]
+custom_minimum_size = Vector2(0, 244.395)
+layout_mode = 2
+
+[node name="PlayGameButton" type="Button" parent="MainMenuControl/PanelContainer/CenterContainer/MenuContainer"]
+custom_minimum_size = Vector2(220, 55)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Play Game	"
+
+[node name="Seperator" type="MarginContainer" parent="MainMenuControl/PanelContainer/CenterContainer/MenuContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 30
+
+[node name="SettingsButton" type="Button" parent="MainMenuControl/PanelContainer/CenterContainer/MenuContainer"]
+custom_minimum_size = Vector2(220, 55)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Settings"
+
+[node name="Seperator2" type="MarginContainer" parent="MainMenuControl/PanelContainer/CenterContainer/MenuContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 30
+
+[node name="CreditsButton" type="Button" parent="MainMenuControl/PanelContainer/CenterContainer/MenuContainer"]
+custom_minimum_size = Vector2(220, 55)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Credits"
+
+[node name="SettingsMenu" parent="." instance=ExtResource("2_r8dbq")]
+visible = false
+layout_mode = 1
+
+[node name="MainMenuPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_5kkds")
+}
+
+[node name="SettingsLoader" parent="." instance=ExtResource("3_7ihqj")]
+
+[connection signal="mouse_entered" from="MainMenuControl/PanelContainer/CenterContainer/MenuContainer/PlayGameButton" to="." method="_on_play_game_button_mouse_entered"]
+[connection signal="pressed" from="MainMenuControl/PanelContainer/CenterContainer/MenuContainer/PlayGameButton" to="." method="_on_play_game_button_pressed"]
+[connection signal="mouse_entered" from="MainMenuControl/PanelContainer/CenterContainer/MenuContainer/SettingsButton" to="." method="_on_settings_button_mouse_entered"]
+[connection signal="pressed" from="MainMenuControl/PanelContainer/CenterContainer/MenuContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="mouse_entered" from="MainMenuControl/PanelContainer/CenterContainer/MenuContainer/CreditsButton" to="." method="_on_credits_button_mouse_entered"]
+[connection signal="pressed" from="MainMenuControl/PanelContainer/CenterContainer/MenuContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="return_control" from="SettingsMenu" to="." method="_on_settings_menu_return_control"]

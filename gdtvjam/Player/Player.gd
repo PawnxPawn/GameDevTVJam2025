@@ -18,7 +18,7 @@ func check_collision() -> void:
 			move_block(block, collision)
 
 func move_block(block: Object, collision: KinematicCollision2D) -> void:
-	if (Input.is_action_just_pressed("push_pull") && GameManager.current_player_size > block.size && !block_is_child):
+	if (Input.is_action_just_pressed("push_pull") && GameManager.current_player_size >= block.size && !block_is_child):
 		block_is_child = true
 		block.reparent(self)
 		block.set_deferred("freeze", true)

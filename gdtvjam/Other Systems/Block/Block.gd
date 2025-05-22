@@ -1,3 +1,3 @@
 extends RigidBody2D
 
-@export var size: int = 1
+var size_requirement: GameManager.character_size = GameManager.character_size.NORMAL

@@ -7,10 +7,15 @@ var object_close: bool = false
 
 var interaction_text: String
 
+func _ready() -> void:
+	interact_label.text = ""
+
 func _input(_event: InputEvent) -> void:
 	if (object_close && Input.is_action_just_pressed("push_pull")):
 		pulling = !pulling
 		_display_label(pulling, interaction_text)
+	else:
+		interact_label.text = ""
 
 
 func _display_label(is_pulling: bool, interaction_string: String) -> void:

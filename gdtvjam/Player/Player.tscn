@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://1c4l1suixtb2"]
+[gd_scene load_steps=45 format=3 uid="uid://1c4l1suixtb2"]
 
 [ext_resource type="Script" uid="uid://deift58sa4doh" path="res://Player/Player.gd" id="1_ddoul"]
 [ext_resource type="Texture2D" uid="uid://c8ll63csm0oh" path="res://Assets/Character/Character_walk-Sheet.png" id="2_ddoul"]
@@ -307,6 +307,8 @@ height = 64.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ysni"]
 size = Vector2(64, 65)
 
+[sub_resource type="GDScript" id="GDScript_ddoul"]
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 motion_mode = 1
 script = ExtResource("1_ddoul")
@@ -346,6 +348,9 @@ offset_right = 20.0
 offset_bottom = -27.0
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TileMapChecker" type="Node2D" parent="."]
+script = SubResource("GDScript_ddoul")
 
 [connection signal="area_entered" from="InteractableDetector" to="InteractableDetector" method="_on_area_entered"]
 [connection signal="body_exited" from="InteractableDetector" to="InteractableDetector" method="_on_body_exited"]

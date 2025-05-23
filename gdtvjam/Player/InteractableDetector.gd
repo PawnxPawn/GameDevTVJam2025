@@ -22,7 +22,7 @@ func _display_label(is_pulling: bool, interaction_string: String) -> void:
 	if (is_pulling):
 		interact_label.text = "Press E to stop"
 	else:
-		interact_label.text = "Press E to {0}".format(interaction_string)
+		interact_label.text = "Press E to {interact}".format({"interact": interaction_string})
 
 func _on_area_entered(area:Area2D) -> void:
 	if (area is Interactable):

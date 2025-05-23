@@ -252,7 +252,7 @@ sources/0 = SubResource("TileSetAtlasSource_xncj4")
 script = ExtResource("1_45etj")
 
 [node name="Player" parent="." node_paths=PackedStringArray("normal_tiles", "lilly_pad", "grow_tile") instance=ExtResource("1_ynduk")]
-position = Vector2(-20, 119)
+position = Vector2(68, 76)
 slide_on_ceiling = false
 push_strength = 500.0
 normal_tiles = NodePath("../NormalFloor")
@@ -269,7 +269,7 @@ tile_set = SubResource("TileSet_ycb45")
 [node name="Blocks" type="Node" parent="."]
 
 [node name="Block" parent="Blocks" node_paths=PackedStringArray("normal_tiles") instance=ExtResource("3_st3xi")]
-position = Vector2(-36, 160)
+position = Vector2(-166, 325)
 normal_tiles = NodePath("../../NormalFloor")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

@@ -11,6 +11,8 @@ class_name player
 @export var current_level: PackedScene
 var block_is_child: bool = false
 
+@onready var camera: Camera2D = %Camera
+
 func _physics_process(_delta: float) -> void:
 	check_collision()
 
@@ -50,6 +52,8 @@ func _process(_delta: float) -> void:
 	else:
 		check_big_tiles()
 		set_physics_process(false) #Unable to push the damn block
+	
+	adjust_player()
 
 func check_normal_tiles() -> void:
 	var cell := normal_tiles.local_to_map(position)
@@ -58,7 +62,8 @@ func check_normal_tiles() -> void:
 		var walkable: bool = data.get_custom_data("walkable")
 		var shrink_tile: bool = data.get_custom_data("shrink_tile")
 		if (!walkable):
-			get_tree().change_scene_to_packed(current_level)
+			#get_tree().change_scene_to_packed(current_level)
+			print("Should reset")
 			return
 		if (shrink_tile):
 			GameManager.current_player_size = GameManager.character_size.SMALL
@@ -66,4 +71,11 @@ func check_normal_tiles() -> void:
 func check_big_tiles() -> void:
 	pass
 
+func adjust_player() -> void:
+	if (GameManager.current_player_size == GameManager.character_size.SMALL):
+		camera.zoom = Vector2 (10, 10)
+		scale = Vector2(0.1, 0.1)
+	else:
+		camera.zoom = Vector2.ONE
+		scale = Vector2.ONE
 #endregion

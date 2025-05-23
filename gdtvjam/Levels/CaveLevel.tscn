@@ -1,20 +1,19 @@
 [gd_scene load_steps=6 format=3 uid="uid://bt77sccqm75v8"]
 
+[ext_resource type="Script" uid="uid://bepycm8nfwfit" path="res://Levels/CaveLevel.gd" id="1_3y8is"]
 [ext_resource type="PackedScene" uid="uid://1c4l1suixtb2" path="res://Player/Player.tscn" id="1_ynduk"]
-[ext_resource type="Resource" uid="uid://bimk76ra4fd50" path="res://Dialogue/Feedback.dialogue" id="2_3y8is"]
 [ext_resource type="TileSet" uid="uid://bj0uslx3ys56" path="res://Levels/MainTileset.tres" id="2_45etj"]
 [ext_resource type="PackedScene" uid="uid://ktn845vos8qe" path="res://Menus/PauseMenu.tscn" id="2_frwyb"]
 [ext_resource type="PackedScene" uid="uid://cx7vvccxxamc3" path="res://Other Systems/Block/Block.tscn" id="3_st3xi"]
 
 [node name="CaveLevel" type="Node"]
+script = ExtResource("1_3y8is")
 
 [node name="Player" parent="." node_paths=PackedStringArray("normal_tiles") instance=ExtResource("1_ynduk")]
-position = Vector2(68, 76)
+position = Vector2(0, -3)
 slide_on_ceiling = false
 push_strength = 500.0
 normal_tiles = NodePath("../NormalFloor")
-current_level = null
-feedback_dialogue = ExtResource("2_3y8is")
 
 [node name="NormalFloor" type="TileMapLayer" parent="."]
 unique_name_in_owner = true

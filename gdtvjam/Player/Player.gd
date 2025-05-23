@@ -4,7 +4,14 @@ class_name player
 @export var movement_speed: float = 100
 @export var push_strength: float = 300
 
+@export var normal_tiles: TileMapLayer
+@export var lilly_pad: TileMapLayer
+@export var grow_tile: TileMapLayer
+
+@export var current_level: PackedScene
 var block_is_child: bool = false
+
+@onready var camera: Camera2D = %Camera
 
 func _physics_process(_delta: float) -> void:
 	check_collision()
@@ -18,7 +25,7 @@ func check_collision() -> void:
 			move_block(block, collision)
 
 func move_block(block: Object, collision: KinematicCollision2D) -> void:
-	if (Input.is_action_just_pressed("push_pull") && GameManager.current_player_size > block.size && !block_is_child):
+	if (Input.is_action_just_pressed("push_pull") && !block_is_child):
 		block_is_child = true
 		block.reparent(self)
 		block.set_deferred("freeze", true)
@@ -35,3 +42,40 @@ func move_block(block: Object, collision: KinematicCollision2D) -> void:
 
 func push_pushable(pushable: RigidBody2D, collision: KinematicCollision2D):
 	pushable.apply_central_force(-collision.get_normal() * push_strength)
+
+#region Tile Map Checker
+
+func _process(_delta: float) -> void:
+	if (GameManager.current_player_size == GameManager.character_size.NORMAL):
+		check_normal_tiles()
+		set_physics_process(true) #Able to push the damn block
+	else:
+		check_big_tiles()
+		set_physics_process(false) #Unable to push the damn block
+	
+	adjust_player()
+
+func check_normal_tiles() -> void:
+	var cell := normal_tiles.local_to_map(position)
+	var data: TileData = normal_tiles.get_cell_tile_data(cell)
+	if data != null:
+		var walkable: bool = data.get_custom_data("walkable")
+		var shrink_tile: bool = data.get_custom_data("shrink_tile")
+		if (!walkable):
+			#get_tree().change_scene_to_packed(current_level)
+			print("Should reset")
+			return
+		if (shrink_tile):
+			GameManager.current_player_size = GameManager.character_size.SMALL
+
+func check_big_tiles() -> void:
+	pass
+
+func adjust_player() -> void:
+	if (GameManager.current_player_size == GameManager.character_size.SMALL):
+		camera.zoom = Vector2 (10, 10)
+		scale = Vector2(0.1, 0.1)
+	else:
+		camera.zoom = Vector2.ONE
+		scale = Vector2.ONE
+#endregion

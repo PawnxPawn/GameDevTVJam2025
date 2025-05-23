@@ -1,22 +1,13 @@
 extends Node
 
-@export var switches_needed: int
-var switches_pressed: int = 0
-
-signal puzzle_completed
+@onready var big_tiles: Node2D = %BigTiles
+@onready var normal_tiles: TileMapLayer = %NormalFloor
 
 
-func _ready() -> void:
-	# SignalBus.puzzle_switch_on.connect(_on_puzzle_switch_pressed)
-	# SignalBus.puzzle_switch_off.connect(_on_puzzle_switch_released)
-	pass
-	  
-
-
-func _on_puzzle_switch_pressed() -> void:
-	switches_pressed += 1
-	if (switches_needed == switches_pressed):
-		puzzle_completed.emit()
-
-func _on_puzzle_switch_released() -> void:
-	switches_pressed -= 1
+func _process(_delta: float) -> void:
+	if (GameManager.current_player_size == GameManager.character_size.SMALL):
+		big_tiles.visible = true
+		normal_tiles.visible = false
+	else:
+		big_tiles.visible = false
+		normal_tiles.visible = true

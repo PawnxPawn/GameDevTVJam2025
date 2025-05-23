@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" uid="uid://dudj086rs7g47" path="res://Levels/OpeningCutscene.gd" id="1_lk35a"]
 [ext_resource type="Resource" uid="uid://cukqot7ggipci" path="res://Dialogue/OpeningCS.dialogue" id="2_j5apc"]
-[ext_resource type="PackedScene" uid="uid://dlj6fe66dbyst" path="res://Levels/StartingLevel.tscn" id="3_rfj5q"]
+[ext_resource type="PackedScene" uid="uid://bt77sccqm75v8" path="res://Levels/CaveLevel.tscn" id="3_lk35a"]
 
 [node name="OpeningCutscene" type="Node"]
 script = ExtResource("1_lk35a")
 dialgoue_to_play = ExtResource("2_j5apc")
 dialogue_name = "OpeningCS"
-next_level = ExtResource("3_rfj5q")
+next_level = ExtResource("3_lk35a")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15

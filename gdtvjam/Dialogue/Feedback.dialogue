@@ -1,0 +1,13 @@
+~ TooBig
+Narrator: You are too big, and have fallen to your death.
+
+~ NotWalkable
+Narrator: You cannot walk on that tile, and have fallen to your death.
+
+~ Shrink
+Narrator: You are shrinking in size!
+
+~ Grow
+Narrator: You are growing in size!
+
+=> END

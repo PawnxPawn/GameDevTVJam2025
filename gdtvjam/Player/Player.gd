@@ -1,15 +1,20 @@
 extends CharacterBody2D
 class_name player
 
+#region variables
 @export var movement_speed: float = 100
 @export var push_strength: float = 300
 
 @export var normal_tiles: TileMapLayer
-
 @export var current_level: PackedScene
-var block_is_child: bool = false
+
+@export var feedback_dialogue: DialogueResource
+@export var animation_player: AnimationPlayer
 
 @onready var camera: Camera2D = %Camera
+
+var block_is_child: bool = false
+#endregion
 
 #region Move Block
 func _physics_process(_delta: float) -> void:
@@ -61,21 +66,25 @@ func check_normal_tiles() -> void:
 		var shrink_tile: bool = data.get_custom_data("shrink_tile")
 		var grow_tile: bool = data.get_custom_data("grow_tile")
 		var walkable_small: bool = data.get_custom_data("walkable_small")
-		var normal_size_passable: bool = data.get_custom_data("normal_size_passable")
 		
+		#Too Big
 		if (walkable_small && GameManager.current_player_size == GameManager.character_size.NORMAL):
+			DialogueManager.show_example_dialogue_balloon(feedback_dialogue, "TooBig")
 			reset_level()
 			return
+		#Not Walkable Period
 		if (!walkable):
-			reset_level()
-			return
-		if (!normal_size_passable && GameManager.current_player_size == GameManager.character_size.NORMAL):
+			DialogueManager.show_example_dialogue_balloon(feedback_dialogue, "NotWalkable")
 			reset_level()
 			return
 		if (shrink_tile && GameManager.current_player_size == GameManager.character_size.NORMAL):
+			DialogueManager.show_example_dialogue_balloon(feedback_dialogue, "Shrink")
+			animation_player.play("size_change")
 			GameManager.current_player_size = GameManager.character_size.SMALL
 			return
 		if (grow_tile && GameManager.current_player_size == GameManager.character_size.SMALL):
+			DialogueManager.show_example_dialogue_balloon(feedback_dialogue, "Grow")
+			animation_player.play("size_change")
 			GameManager.current_player_size = GameManager.character_size.NORMAL
 			return
 		

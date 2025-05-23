@@ -2,6 +2,8 @@ extends RigidBody2D
 
 @export var normal_tiles: TileMapLayer
 
+@onready var interactable : Interactable
+
 func _process(_delta: float) -> void:
 	var cell := normal_tiles.local_to_map(position)
 	var data: TileData = normal_tiles.get_cell_tile_data(cell)

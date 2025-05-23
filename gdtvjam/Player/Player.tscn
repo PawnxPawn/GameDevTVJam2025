@@ -1,6 +1,7 @@
-[gd_scene load_steps=45 format=3 uid="uid://1c4l1suixtb2"]
+[gd_scene load_steps=49 format=3 uid="uid://1c4l1suixtb2"]
 
 [ext_resource type="Script" uid="uid://deift58sa4doh" path="res://Player/Player.gd" id="1_ddoul"]
+[ext_resource type="Resource" uid="uid://bimk76ra4fd50" path="res://Dialogue/Feedback.dialogue" id="2_8g4oa"]
 [ext_resource type="Texture2D" uid="uid://c8ll63csm0oh" path="res://Assets/Character/Character_walk-Sheet.png" id="2_ddoul"]
 [ext_resource type="Script" uid="uid://b5vc2kcyt7tu0" path="res://Player/StateMachine.gd" id="4_8g4oa"]
 [ext_resource type="Script" uid="uid://cdq44q7fpdo01" path="res://Player/InteractableDetector.gd" id="5_8g4oa"]
@@ -309,9 +310,72 @@ size = Vector2(64, 65)
 
 [sub_resource type="GDScript" id="GDScript_ddoul"]
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[sub_resource type="Animation" id="Animation_ddoul"]
+resource_name = "size_change"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.301961, 0.301961, 0.301961, 0.105882), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8g4oa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6ysni"]
+_data = {
+&"RESET": SubResource("Animation_8g4oa"),
+&"size_change": SubResource("Animation_ddoul")
+}
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animation_player") groups=["player"]]
 motion_mode = 1
 script = ExtResource("1_ddoul")
+feedback_dialogue = ExtResource("2_8g4oa")
+animation_player = NodePath("AnimationPlayer")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
@@ -351,6 +415,21 @@ vertical_alignment = 1
 
 [node name="TileMapChecker" type="Node2D" parent="."]
 script = SubResource("GDScript_ddoul")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_6ysni")
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+modulate = Color(0, 0, 0, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="area_entered" from="InteractableDetector" to="InteractableDetector" method="_on_area_entered"]
 [connection signal="body_exited" from="InteractableDetector" to="InteractableDetector" method="_on_body_exited"]

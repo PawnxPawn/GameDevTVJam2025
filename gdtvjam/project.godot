@@ -88,7 +88,7 @@ Pause={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://Dialogue/OpeningCS.dialogue", "res://Dialogue/WinDialogue.dialogue")
+locale/translations_pot_files=PackedStringArray("res://Dialogue/OpeningCS.dialogue", "res://Dialogue/WinDialogue.dialogue", "res://Dialogue/Feedback.dialogue")
 
 [layer_names]
 

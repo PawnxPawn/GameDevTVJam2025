@@ -5,14 +5,13 @@ class_name player
 @export var push_strength: float = 300
 
 @export var normal_tiles: TileMapLayer
-@export var lilly_pad: TileMapLayer
-@export var grow_tile: TileMapLayer
 
 @export var current_level: PackedScene
 var block_is_child: bool = false
 
 @onready var camera: Camera2D = %Camera
 
+#region Move Block
 func _physics_process(_delta: float) -> void:
 	check_collision()
 
@@ -42,15 +41,14 @@ func move_block(block: Object, collision: KinematicCollision2D) -> void:
 
 func push_pushable(pushable: RigidBody2D, collision: KinematicCollision2D):
 	pushable.apply_central_force(-collision.get_normal() * push_strength)
-
+#endregion
 #region Tile Map Checker
 
 func _process(_delta: float) -> void:
+	check_normal_tiles()
 	if (GameManager.current_player_size == GameManager.character_size.NORMAL):
-		check_normal_tiles()
 		set_physics_process(true) #Able to push the damn block
 	else:
-		check_big_tiles()
 		set_physics_process(false) #Unable to push the damn block
 	
 	adjust_player()
@@ -61,15 +59,26 @@ func check_normal_tiles() -> void:
 	if data != null:
 		var walkable: bool = data.get_custom_data("walkable")
 		var shrink_tile: bool = data.get_custom_data("shrink_tile")
-		if (!walkable):
-			#get_tree().change_scene_to_packed(current_level)
-			print("Should reset")
+		var grow_tile: bool = data.get_custom_data("grow_tile")
+		var walkable_small: bool = data.get_custom_data("walkable_small")
+		var normal_size_passable: bool = data.get_custom_data("normal_size_passable")
+		
+		if (walkable_small && GameManager.current_player_size == GameManager.character_size.NORMAL):
+			reset_level()
 			return
-		if (shrink_tile):
+		if (!walkable):
+			reset_level()
+			return
+		if (!normal_size_passable && GameManager.current_player_size == GameManager.character_size.NORMAL):
+			reset_level()
+			return
+		if (shrink_tile && GameManager.current_player_size == GameManager.character_size.NORMAL):
 			GameManager.current_player_size = GameManager.character_size.SMALL
-
-func check_big_tiles() -> void:
-	pass
+			return
+		if (grow_tile && GameManager.current_player_size == GameManager.character_size.SMALL):
+			GameManager.current_player_size = GameManager.character_size.NORMAL
+			return
+		
 
 func adjust_player() -> void:
 	if (GameManager.current_player_size == GameManager.character_size.SMALL):
@@ -78,4 +87,8 @@ func adjust_player() -> void:
 	else:
 		camera.zoom = Vector2.ONE
 		scale = Vector2.ONE
+
+func reset_level() -> void:
+	#get_tree().change_scene_to_packed(current_level)
+	print("Should reset")
 #endregion

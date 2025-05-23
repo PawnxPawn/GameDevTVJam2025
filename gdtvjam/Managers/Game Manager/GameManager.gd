@@ -9,3 +9,6 @@ enum character_size
 var is_credits_called = false
 
 var current_player_size: character_size = character_size.NORMAL
+
+var player_size_when_entered: character_size
+var level_first_load: bool

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bimk76ra4fd50"
+path="res://.godot/imported/Feedback.dialogue-d10f6679eb279c1f80f2684c7e9e47b4.tres"
+
+[deps]
+
+source_file="res://Dialogue/Feedback.dialogue"
+dest_files=["res://.godot/imported/Feedback.dialogue-d10f6679eb279c1f80f2684c7e9e47b4.tres"]
+
+[params]
+
+defaults=true

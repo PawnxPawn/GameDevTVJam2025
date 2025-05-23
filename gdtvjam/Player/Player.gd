@@ -1,18 +1,22 @@
 extends CharacterBody2D
 class_name player
 
+#region variables
 @export var movement_speed: float = 100
 @export var push_strength: float = 300
 
 @export var normal_tiles: TileMapLayer
-@export var lilly_pad: TileMapLayer
-@export var grow_tile: TileMapLayer
-
 @export var current_level: PackedScene
-var block_is_child: bool = false
+
+@export var feedback_dialogue: DialogueResource
+@export var animation_player: AnimationPlayer
 
 @onready var camera: Camera2D = %Camera
 
+var block_is_child: bool = false
+#endregion
+
+#region Move Block
 func _physics_process(_delta: float) -> void:
 	check_collision()
 
@@ -42,15 +46,14 @@ func move_block(block: Object, collision: KinematicCollision2D) -> void:
 
 func push_pushable(pushable: RigidBody2D, collision: KinematicCollision2D):
 	pushable.apply_central_force(-collision.get_normal() * push_strength)
-
+#endregion
 #region Tile Map Checker
 
 func _process(_delta: float) -> void:
+	check_normal_tiles()
 	if (GameManager.current_player_size == GameManager.character_size.NORMAL):
-		check_normal_tiles()
 		set_physics_process(true) #Able to push the damn block
 	else:
-		check_big_tiles()
 		set_physics_process(false) #Unable to push the damn block
 	
 	adjust_player()
@@ -61,15 +64,30 @@ func check_normal_tiles() -> void:
 	if data != null:
 		var walkable: bool = data.get_custom_data("walkable")
 		var shrink_tile: bool = data.get_custom_data("shrink_tile")
-		if (!walkable):
-			#get_tree().change_scene_to_packed(current_level)
-			print("Should reset")
+		var grow_tile: bool = data.get_custom_data("grow_tile")
+		var walkable_small: bool = data.get_custom_data("walkable_small")
+		
+		#Too Big
+		if (walkable_small && GameManager.current_player_size == GameManager.character_size.NORMAL):
+			DialogueManager.show_example_dialogue_balloon(feedback_dialogue, "TooBig")
+			reset_level()
 			return
-		if (shrink_tile):
+		#Not Walkable Period
+		if (!walkable):
+			DialogueManager.show_example_dialogue_balloon(feedback_dialogue, "NotWalkable")
+			reset_level()
+			return
+		if (shrink_tile && GameManager.current_player_size == GameManager.character_size.NORMAL):
+			DialogueManager.show_example_dialogue_balloon(feedback_dialogue, "Shrink")
+			animation_player.play("size_change")
 			GameManager.current_player_size = GameManager.character_size.SMALL
-
-func check_big_tiles() -> void:
-	pass
+			return
+		if (grow_tile && GameManager.current_player_size == GameManager.character_size.SMALL):
+			DialogueManager.show_example_dialogue_balloon(feedback_dialogue, "Grow")
+			animation_player.play("size_change")
+			GameManager.current_player_size = GameManager.character_size.NORMAL
+			return
+		
 
 func adjust_player() -> void:
 	if (GameManager.current_player_size == GameManager.character_size.SMALL):
@@ -78,4 +96,8 @@ func adjust_player() -> void:
 	else:
 		camera.zoom = Vector2.ONE
 		scale = Vector2.ONE
+
+func reset_level() -> void:
+	#get_tree().change_scene_to_packed(current_level)
+	print("Should reset")
 #endregion

@@ -1,0 +1,84 @@
+[gd_scene load_steps=7 format=4 uid="uid://lv28ib8wcgyp"]
+
+[ext_resource type="TileSet" uid="uid://bj0uslx3ys56" path="res://Levels/MainTileset.tres" id="1_8orq5"]
+[ext_resource type="Script" uid="uid://bepycm8nfwfit" path="res://Levels/LevelHandler.gd" id="1_jghee"]
+[ext_resource type="PackedScene" uid="uid://cx7vvccxxamc3" path="res://Other Systems/Block/Block.tscn" id="2_k78pi"]
+[ext_resource type="PackedScene" uid="uid://1c4l1suixtb2" path="res://Player/Player.tscn" id="3_jghee"]
+[ext_resource type="PackedScene" uid="uid://ktn845vos8qe" path="res://Menus/PauseMenu.tscn" id="5_qityn"]
+[ext_resource type="PackedScene" uid="uid://bwpnxyldt2isf" path="res://Other Systems/Rock/Rock.tscn" id="6_4nwli"]
+
+[node name="Level6" type="Node"]
+script = ExtResource("1_jghee")
+
+[node name="Floor" type="TileMapLayer" parent="."]
+z_index = -2
+tile_map_data = PackedByteArray("AAAAAAAAAAAHAAIAAAAAAP//AAAHAAEAAAAAAP7/AAAHAAAAAAABAP//AAAIAAEAAAABAP7/AAAIAAAAAAD///7/AAAGAAAAAAD/////AAAGAAEAAAD//wAAAAAGAAIAAAD+/wAAAAAGAAIAAAD9/wAAAAAGAAIAAAD8/wAAAAAGAAIAAAD7/wAAAAABAAIAAAABAAAAAAAGAAIAAAACAAAAAAAGAAIAAAAEAAAAAAAGAAIAAAADAAAAAAAGAAIAAAAFAAAAAAAGAAIAAAAGAAAAAAAGAAIAAAAHAAAAAAANAAIAAAAIAAAAAAAOAAAAAAD6/wAAAAAAAAIAAAD+////AAAFAAEAAAD9////AAAFAAEAAAD8////AAAFAAEAAAD7////AAABAAEAAAD6////AAAAAAEAAAD7//7/AAABAAAAAAD6//7/AAAAAAAAAAD8//7/AAACAAAAAAD9//7/AAACAAAAAAD+//7/AAACAAAAAAACAP7/AAACAAAAAAADAP7/AAACAAAAAAAEAP7/AAACAAAAAAAFAP7/AAACAAAAAAAGAP7/AAACAAAAAAAHAP7/AAANAAAAAAAIAP7/AAAOAAAAAAAIAP//AAAOAAAAAAAHAP//AAANAAEAAAAGAP//AAAJAAEAAAAFAP//AAAJAAEAAAAEAP//AAAJAAEAAAADAP//AAAJAAEAAAACAP//AAAJAAEAAAD7/wEAAAABAAIAAAD7/wIAAAABAAIAAAD7/wMAAAABAAIAAAD7/wQAAAABAAIAAAD7/wUAAAABAAIAAAD7/wYAAAABAAIAAAD8/wYAAAAFAAgAAAD9/wYAAAAFAAgAAAD+/wYAAAAFAAgAAAD//wYAAAAFAAgAAAAAAAYAAAAFAAgAAAABAAYAAAAFAAMAAAADAAYAAAAFAAMAAAAEAAYAAAAFAAgAAAAFAAYAAAAFAAgAAAACAAYAAAAFAAMAAAAHAAYAAAANAAgAAAAGAAYAAAAFAAgAAAAHAAEAAAANAAgAAAAHAAIAAAANAAgAAAAHAAMAAAANAAgAAAAHAAQAAAANAAgAAAAHAAUAAAANAAgAAAAIAAEAAAAOAAYAAAAIAAIAAAAOAAYAAAAIAAMAAAAOAAYAAAAIAAQAAAAOAAYAAAAIAAUAAAAOAAYAAAAIAAYAAAAOAAYAAAD6/wEAAAAAAAUAAAD6/wIAAAAAAAUAAAD6/wMAAAAAAAUAAAD6/wQAAAAAAAUAAAD6/wUAAAAAAAUAAAD6/wYAAAAAAAUAAAAAAAEAAAAFAAMAAAAAAAIAAAAFAAMAAAAAAAMAAAAFAAMAAAAAAAQAAAAFAAMAAAAAAAUAAAAFAAMAAAD8/wUAAAAFAAMAAAD9/wUAAAAFAAMAAAD+/wUAAAAFAAMAAAD//wUAAAAFAAMAAAABAAUAAAAFAAMAAAADAAUAAAAFAAMAAAAEAAUAAAAFAAMAAAACAAUAAAAFAAMAAAAFAAUAAAAFAAMAAAAGAAUAAAAFAAMAAAD8/wQAAAAIAAQAAAD+/wQAAAAJAAQAAAD9/wQAAAAFAAIAAAD8/wMAAAAIAAMAAAD+/wMAAAAJAAMAAAD9/wMAAAAGAAMAAAD8/wEAAAAFAAQAAAD8/wIAAAAFAAQAAAD9/wIAAAAFAAQAAAD+/wIAAAAFAAQAAAD//wIAAAAFAAQAAAD//wEAAAAFAAQAAAD+/wEAAAAFAAQAAAD9/wEAAAAFAAQAAAD//wMAAAAFAAQAAAD//wQAAAAFAAQAAAAEAAMAAAAIAAMAAAAGAAMAAAAJAAMAAAAFAAMAAAACAAQAAAAEAAQAAAAIAAQAAAAFAAQAAAAEAAMAAAAGAAQAAAAJAAQAAAABAAEAAAAFAAMAAAABAAIAAAAFAAMAAAABAAMAAAAFAAMAAAABAAQAAAAFAAMAAAACAAQAAAAFAAMAAAADAAQAAAAFAAMAAAADAAMAAAAFAAMAAAADAAIAAAAFAAMAAAADAAEAAAAFAAMAAAACAAEAAAAFAAMAAAACAAIAAAAFAAMAAAACAAMAAAAFAAMAAAAEAAEAAAAFAAMAAAAFAAEAAAAFAAMAAAAGAAEAAAAFAAMAAAAGAAIAAAAFAAMAAAAFAAIAAAAFAAMAAAAEAAIAAAAFAAMAAAA=")
+tile_set = ExtResource("1_8orq5")
+
+[node name="Block" parent="." node_paths=PackedStringArray("normal_tiles") instance=ExtResource("2_k78pi")]
+position = Vector2(-161, 222)
+normal_tiles = NodePath("../Floor")
+
+[node name="Player" parent="." node_paths=PackedStringArray("normal_tiles") instance=ExtResource("3_jghee")]
+normal_tiles = NodePath("../Floor")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("5_qityn")]
+
+[node name="Rocks" type="Node" parent="."]
+
+[node name="Rock" parent="Rocks" instance=ExtResource("6_4nwli")]
+position = Vector2(-285, 33)
+
+[node name="Rock2" parent="Rocks" instance=ExtResource("6_4nwli")]
+position = Vector2(-286, 102)
+
+[node name="Rock3" parent="Rocks" instance=ExtResource("6_4nwli")]
+position = Vector2(-226, 102)
+
+[node name="Rock4" parent="Rocks" instance=ExtResource("6_4nwli")]
+position = Vector2(-283, 360)
+
+[node name="Rock5" parent="Rocks" instance=ExtResource("6_4nwli")]
+position = Vector2(-227, 352)
+
+[node name="Rock6" parent="Rocks" instance=ExtResource("6_4nwli")]
+position = Vector2(-223, 415)
+
+[node name="Rock7" parent="Rocks" instance=ExtResource("6_4nwli")]
+position = Vector2(417, 420)
+
+[node name="Rock8" parent="Rocks" instance=ExtResource("6_4nwli")]
+position = Vector2(420, 360)
+
+[node name="Rock9" parent="Rocks" instance=ExtResource("6_4nwli")]
+position = Vector2(476, 352)
+
+[node name="Rock10" parent="Rocks" instance=ExtResource("6_4nwli")]
+position = Vector2(476, 35)
+
+[node name="Rock11" parent="Rocks" instance=ExtResource("6_4nwli")]
+position = Vector2(412, 39)
+
+[node name="Rock12" parent="Rocks" instance=ExtResource("6_4nwli")]
+position = Vector2(421, 92)
+
+[node name="Rock13" parent="Rocks" instance=ExtResource("6_4nwli")]
+position = Vector2(478, 97)
+
+[node name="Rock14" parent="Rocks" instance=ExtResource("6_4nwli")]
+position = Vector2(163, 41)
+
+[node name="Rock15" parent="Rocks" instance=ExtResource("6_4nwli")]
+position = Vector2(231, 37)
+
+[node name="Rock16" parent="Rocks" instance=ExtResource("6_4nwli")]
+position = Vector2(296, 37)
+
+[node name="Rock17" parent="Rocks" instance=ExtResource("6_4nwli")]
+position = Vector2(-163, 32)
+
+[node name="Rock18" parent="Rocks" instance=ExtResource("6_4nwli")]
+position = Vector2(-96, 152)

@@ -1,0 +1,49 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "1910112351",
+    "Type": "Event",
+    "GUID": "{2A3FADE4-C5C1-4CDE-8AD0-7350CADD59D7}",
+    "Language": "SFX",
+    "Hash": "{40D1BE47-66EB-F600-1AB4-275B5F2851C5}",
+    "ObjectPath": "Play_Game_Button",
+    "ShortName": "Play_Game_Button",
+    "Path": "Event/Play_Game_Button.bnk",
+    "Media": [
+     {
+      "Id": "633125217",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Menu button.wav",
+      "Path": "Media/633125217.wem",
+      "CachePath": "99/{9972D2C6-F46D-F6DB-D512-31F7E9DD82F0}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "1910112351",
+      "Name": "Play_Game_Button",
+      "ObjectPath": "\\Events\\Default Work Unit\\Buttons\\Play_Game_Button",
+      "GUID": "{2A3FADE4-C5C1-4CDE-8AD0-7350CADD59D7}",
+      "Color": "2",
+      "DurationType": "OneShot",
+      "DurationMin": "1.1999948",
+      "DurationMax": "1.1999948",
+      "MediaRefs": [
+       {
+        "Id": "633125217"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{961A2D38-B7CD-F30C-2780-4DBC5E276EDE}"
+ }
+}

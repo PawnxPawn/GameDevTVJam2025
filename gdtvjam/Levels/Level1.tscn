@@ -7,8 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://cx7vvccxxamc3" path="res://Other Systems/Block/Block.tscn" id="5_nutv8"]
 [ext_resource type="PackedScene" uid="uid://bwpnxyldt2isf" path="res://Other Systems/Rock/Rock.tscn" id="6_05pb0"]
 
-[node name="Level1" type="Node"]
+[node name="Level1" type="Node" node_paths=PackedStringArray("north_start", "south_start", "current_player")]
 script = ExtResource("1_iotdp")
+north_start = NodePath("Markers/North")
+south_start = NodePath("Markers/South")
+current_player = NodePath("Player")
 
 [node name="Player" parent="." node_paths=PackedStringArray("normal_tiles") instance=ExtResource("2_nutv8")]
 position = Vector2(33, 446)
@@ -118,3 +121,11 @@ position = Vector2(-121, 137)
 
 [node name="Rock29" parent="Rocks" instance=ExtResource("6_05pb0")]
 position = Vector2(-184, 124)
+
+[node name="Markers" type="Node" parent="."]
+
+[node name="North" type="Marker2D" parent="Markers"]
+position = Vector2(30, 451)
+
+[node name="South" type="Marker2D" parent="Markers"]
+position = Vector2(-41, 97)

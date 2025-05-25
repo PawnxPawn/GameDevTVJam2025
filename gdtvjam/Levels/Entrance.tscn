@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://omucjap1o10s"]
+[gd_scene load_steps=10 format=4 uid="uid://omucjap1o10s"]
 
 [ext_resource type="Script" uid="uid://bepycm8nfwfit" path="res://Levels/LevelHandler.gd" id="1_15j4u"]
 [ext_resource type="PackedScene" uid="uid://1c4l1suixtb2" path="res://Player/Player.tscn" id="2_tidup"]
@@ -6,6 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://cx7vvccxxamc3" path="res://Other Systems/Block/Block.tscn" id="4_i1ndc"]
 [ext_resource type="PackedScene" uid="uid://ktn845vos8qe" path="res://Menus/PauseMenu.tscn" id="5_riyix"]
 [ext_resource type="PackedScene" uid="uid://bwpnxyldt2isf" path="res://Other Systems/Rock/Rock.tscn" id="6_i1ndc"]
+[ext_resource type="PackedScene" uid="uid://bx43n7oxgktd1" path="res://Other Systems/LevelSwitcher/LevelSwitcher.tscn" id="7_h2db4"]
+[ext_resource type="PackedScene" uid="uid://bt77sccqm75v8" path="res://Levels/Level1.tscn" id="8_ltixe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4vhml"]
+size = Vector2(83, 38)
 
 [node name="Entrance" type="Node"]
 script = ExtResource("1_15j4u")
@@ -68,3 +73,12 @@ position = Vector2(352, 404)
 
 [node name="Rock13" parent="Rocks" instance=ExtResource("6_i1ndc")]
 position = Vector2(416, 45)
+
+[node name="Entrances" type="Node" parent="."]
+
+[node name="LevelSwitcher" parent="Entrances" instance=ExtResource("7_h2db4")]
+next_level = ExtResource("8_ltixe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entrances/LevelSwitcher"]
+position = Vector2(29.5, -21)
+shape = SubResource("RectangleShape2D_4vhml")

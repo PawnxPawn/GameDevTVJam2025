@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://d2ixxkaw5u2e2"]
+
+[ext_resource type="Texture2D" uid="uid://boq6pp74ajrtj" path="res://Assets/Tiles/1-10-exit.png" id="1_jx0kn"]
+[ext_resource type="PackedScene" uid="uid://jav7rcmbsdd0" path="res://Other Systems/WinChest/WinChest.tscn" id="2_1u0m0"]
+[ext_resource type="PackedScene" uid="uid://1c4l1suixtb2" path="res://Player/Player.tscn" id="3_ysk0u"]
+[ext_resource type="PackedScene" uid="uid://ktn845vos8qe" path="res://Menus/PauseMenu.tscn" id="4_ysk0u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jx0kn"]
+size = Vector2(137.915, 1160.21)
+
+[node name="End" type="Node"]
+
+[node name="1-10-exit" type="Sprite2D" parent="."]
+position = Vector2(499, 297)
+texture = ExtResource("1_jx0kn")
+
+[node name="Wall" type="StaticBody2D" parent="1-10-exit"]
+position = Vector2(23, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="1-10-exit/Wall"]
+position = Vector2(454, -10.5)
+shape = SubResource("RectangleShape2D_jx0kn")
+
+[node name="Wall2" type="StaticBody2D" parent="1-10-exit"]
+position = Vector2(-961, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="1-10-exit/Wall2"]
+position = Vector2(454, -10.5)
+shape = SubResource("RectangleShape2D_jx0kn")
+
+[node name="Wall3" type="StaticBody2D" parent="1-10-exit"]
+position = Vector2(-980, 4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="1-10-exit/Wall3"]
+position = Vector2(990.687, -357.12)
+rotation = 1.56259
+shape = SubResource("RectangleShape2D_jx0kn")
+
+[node name="Wall4" type="StaticBody2D" parent="1-10-exit"]
+position = Vector2(-952, 706)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="1-10-exit/Wall4"]
+position = Vector2(990.687, -357.12)
+rotation = 1.56259
+shape = SubResource("RectangleShape2D_jx0kn")
+
+[node name="WinChest" parent="." instance=ExtResource("2_1u0m0")]
+position = Vector2(499, 214)
+
+[node name="Player" parent="." instance=ExtResource("3_ysk0u")]
+position = Vector2(174, 349)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("4_ysk0u")]

@@ -1,0 +1,70 @@
+[gd_scene load_steps=7 format=4 uid="uid://omucjap1o10s"]
+
+[ext_resource type="Script" uid="uid://bepycm8nfwfit" path="res://Levels/LevelHandler.gd" id="1_15j4u"]
+[ext_resource type="PackedScene" uid="uid://1c4l1suixtb2" path="res://Player/Player.tscn" id="2_tidup"]
+[ext_resource type="TileSet" uid="uid://bj0uslx3ys56" path="res://Levels/MainTileset.tres" id="3_riyix"]
+[ext_resource type="PackedScene" uid="uid://cx7vvccxxamc3" path="res://Other Systems/Block/Block.tscn" id="4_i1ndc"]
+[ext_resource type="PackedScene" uid="uid://ktn845vos8qe" path="res://Menus/PauseMenu.tscn" id="5_riyix"]
+[ext_resource type="PackedScene" uid="uid://bwpnxyldt2isf" path="res://Other Systems/Rock/Rock.tscn" id="6_i1ndc"]
+
+[node name="Entrance" type="Node"]
+script = ExtResource("1_15j4u")
+
+[node name="Player" parent="." node_paths=PackedStringArray("normal_tiles") instance=ExtResource("2_tidup")]
+position = Vector2(39, 339)
+normal_tiles = NodePath("../Floor")
+
+[node name="Floor" type="TileMapLayer" parent="."]
+z_index = -2
+tile_map_data = PackedByteArray("AAAAAAAAAAAHAAIAAAAAAP//AAAHAAEAAAAAAP7/AAAHAAAAAAD//wEAAAAIAAQAAAABAAEAAAAJAAQAAAAAAAEAAAAGAAIAAAD//wIAAAAIAAIAAAABAAIAAAAIAAIAAAAAAAIAAAAGAAIAAAABAAAAAAAJAAMAAAD//wAAAAAIAAMAAAACAAAAAAAEAAMAAAADAAAAAAAEAAMAAAAEAAAAAAAEAAMAAAAFAAAAAAAEAAMAAAAGAAAAAAAEAAMAAAD+/wAAAAAEAAMAAAD9/wAAAAAEAAMAAAD8/wAAAAAEAAMAAAD7/wAAAAAEAAMAAAD6/wAAAAAEAAMAAAAGAAEAAAAEAAMAAAAGAAIAAAAEAAMAAAAGAAMAAAAEAAMAAAAGAAQAAAAEAAMAAAAGAAUAAAAEAAMAAAAGAAYAAAAEAAMAAAD6/wMAAAAEAAMAAAD6/wQAAAAEAAMAAAD6/wUAAAAEAAMAAAD6/wYAAAAEAAMAAAD7/wMAAAAEAAMAAAD7/wQAAAAEAAMAAAD7/wUAAAAEAAMAAAD7/wYAAAAEAAMAAAD8/wMAAAAEAAMAAAD8/wQAAAAEAAMAAAD8/wUAAAAEAAMAAAD8/wYAAAAEAAMAAAD9/wMAAAAEAAMAAAD9/wQAAAAEAAMAAAD9/wUAAAAEAAMAAAD9/wYAAAAEAAMAAAD+/wMAAAAEAAMAAAD+/wQAAAAEAAMAAAD+/wUAAAAEAAMAAAD+/wYAAAAEAAMAAAD//wMAAAAEAAMAAAD//wQAAAAEAAMAAAD//wUAAAAEAAMAAAD//wYAAAAGAAgAAAAAAAMAAAAEAAMAAAAAAAQAAAAEAAMAAAAAAAUAAAAEAAMAAAAAAAYAAAAHAAgAAAABAAMAAAAEAAMAAAABAAQAAAAEAAMAAAABAAUAAAAEAAMAAAABAAYAAAAIAAgAAAACAAMAAAAEAAMAAAACAAQAAAAEAAMAAAACAAUAAAAEAAMAAAACAAYAAAAEAAMAAAADAAMAAAAEAAMAAAADAAQAAAAEAAMAAAADAAUAAAAEAAMAAAADAAYAAAAEAAMAAAAEAAMAAAAEAAMAAAAEAAQAAAAEAAMAAAAEAAUAAAAEAAMAAAAEAAYAAAAEAAMAAAAFAAMAAAAEAAMAAAAFAAQAAAAEAAMAAAAFAAUAAAAEAAMAAAAFAAYAAAAEAAMAAAD6/wEAAAAEAAMAAAD6/wIAAAAEAAMAAAD7/wEAAAAEAAMAAAD7/wIAAAAEAAMAAAD8/wEAAAAEAAMAAAD8/wIAAAAEAAMAAAD9/wEAAAAEAAMAAAD9/wIAAAAEAAMAAAD+/wEAAAAEAAMAAAD+/wIAAAAEAAMAAAACAAEAAAAEAAMAAAACAAIAAAAEAAMAAAADAAEAAAAEAAMAAAADAAIAAAAEAAMAAAAEAAEAAAAEAAMAAAAEAAIAAAAEAAMAAAAFAAEAAAAEAAMAAAAFAAIAAAAEAAMAAAD/////AAAGAAEAAAABAP//AAAIAAEAAAACAP//AAAJAAEAAAADAP//AAAJAAEAAAAEAP//AAAJAAEAAAAFAP//AAAJAAEAAAAGAP//AAANAAEAAAAHAP//AAAOAAEAAAAHAAAAAAAOAAEAAAAHAAEAAAAOAAEAAAAHAAIAAAAOAAEAAAAHAAMAAAAOAAEAAAAHAAQAAAAOAAEAAAAHAAUAAAAOAAEAAAAHAAYAAAAOAAEAAAD5////AAAOAAEAAAD5/wAAAAAOAAEAAAD5/wEAAAAOAAEAAAD5/wIAAAAOAAEAAAD5/wMAAAAOAAEAAAD5/wQAAAAOAAEAAAD5/wUAAAAOAAEAAAD5/wYAAAAOAAEAAAD+////AAAFAAEAAAD9////AAAFAAEAAAD8////AAAFAAEAAAD7////AAAFAAEAAAD6////AAABAAEAAAD///7/AAAGAAAAAAABAP7/AAAIAAAAAAACAP7/AAAJAAAAAAADAP7/AAAJAAAAAAAEAP7/AAAJAAAAAAAFAP7/AAAJAAAAAAAGAP7/AAANAAAAAAAHAP7/AAAOAAAAAAD+//7/AAACAAAAAAD9//7/AAACAAAAAAD8//7/AAACAAAAAAD7//7/AAACAAAAAAD6//7/AAABAAAAAAD5//7/AAAAAAAAAAA=")
+tile_set = ExtResource("3_riyix")
+
+[node name="Block" parent="." node_paths=PackedStringArray("normal_tiles") instance=ExtResource("4_i1ndc")]
+position = Vector2(32, 36)
+normal_tiles = NodePath("../Floor")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("5_riyix")]
+
+[node name="Rocks" type="Node" parent="."]
+
+[node name="Rock" parent="Rocks" instance=ExtResource("6_i1ndc")]
+position = Vector2(-102, 100)
+
+[node name="Rock2" parent="Rocks" instance=ExtResource("6_i1ndc")]
+position = Vector2(-162, 163)
+
+[node name="Rock3" parent="Rocks" instance=ExtResource("6_i1ndc")]
+position = Vector2(-232, 219)
+
+[node name="Rock4" parent="Rocks" instance=ExtResource("6_i1ndc")]
+position = Vector2(-292, 93)
+
+[node name="Rock5" parent="Rocks" instance=ExtResource("6_i1ndc")]
+position = Vector2(-217, 33)
+
+[node name="Rock6" parent="Rocks" instance=ExtResource("6_i1ndc")]
+position = Vector2(215, 30)
+
+[node name="Rock7" parent="Rocks" instance=ExtResource("6_i1ndc")]
+position = Vector2(297, 96)
+
+[node name="Rock8" parent="Rocks" instance=ExtResource("6_i1ndc")]
+position = Vector2(350, 162)
+
+[node name="Rock9" parent="Rocks" instance=ExtResource("6_i1ndc")]
+position = Vector2(284, 229)
+
+[node name="Rock10" parent="Rocks" instance=ExtResource("6_i1ndc")]
+position = Vector2(343, 289)
+
+[node name="Rock11" parent="Rocks" instance=ExtResource("6_i1ndc")]
+position = Vector2(270, 353)
+
+[node name="Rock12" parent="Rocks" instance=ExtResource("6_i1ndc")]
+position = Vector2(352, 404)
+
+[node name="Rock13" parent="Rocks" instance=ExtResource("6_i1ndc")]
+position = Vector2(416, 45)

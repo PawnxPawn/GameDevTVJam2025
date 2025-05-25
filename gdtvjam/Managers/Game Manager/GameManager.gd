@@ -6,9 +6,20 @@ enum character_size
     SMALL = 0
 }
 
+enum directions
+{
+    NORTH,
+    SOUTH,
+    EAST,
+    WEST
+}
+
 var is_credits_called = false
 
 var current_player_size: character_size = character_size.NORMAL
 
 var player_size_when_entered: character_size
-var level_first_load: bool
+var level_first_load: bool = true
+
+var player_initial_pos: Vector2
+var entered_direction: directions

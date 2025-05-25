@@ -1,0 +1,49 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Web",
+  "BasePlatform": "Web",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "4244898431",
+    "Type": "Event",
+    "GUID": "{E71FBE23-3DA1-4F18-B2F8-CB78B7F27BDF}",
+    "Language": "SFX",
+    "Hash": "{774EB71A-59A0-2D76-03F3-E94210758B2B}",
+    "ObjectPath": "Exit_Settings",
+    "ShortName": "Exit_Settings",
+    "Path": "Event/Exit_Settings.bnk",
+    "Media": [
+     {
+      "Id": "86246022",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Settings out button.wav",
+      "Path": "Media/86246022.wem",
+      "CachePath": "8E/{8E1174A7-A38B-9936-57C3-03A8237B3410}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "4244898431",
+      "Name": "Exit_Settings",
+      "ObjectPath": "\\Events\\Default Work Unit\\Buttons\\Exit_Settings",
+      "GUID": "{E71FBE23-3DA1-4F18-B2F8-CB78B7F27BDF}",
+      "Color": "2",
+      "DurationType": "OneShot",
+      "DurationMin": "0.6997448",
+      "DurationMax": "0.6997448",
+      "MediaRefs": [
+       {
+        "Id": "86246022"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{EF9DB380-BD88-D46F-1445-77D0F47258E6}"
+ }
+}

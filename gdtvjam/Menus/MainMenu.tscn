@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bdmlspewkwo5s"]
+[gd_scene load_steps=11 format=3 uid="uid://bdmlspewkwo5s"]
 
 [ext_resource type="Script" uid="uid://c7rq22m8nrqky" path="res://Menus/main_menu.gd" id="1_3g7qx"]
+[ext_resource type="PackedScene" uid="uid://dmtc38k107o73" path="res://Managers/SoundManager/SoundManager.tscn" id="2_n6o36"]
 [ext_resource type="PackedScene" uid="uid://0lj3qejewwsp" path="res://Menus/SettingsMenu.tscn" id="2_r8dbq"]
 [ext_resource type="PackedScene" uid="uid://dt1u5pso7ncj2" path="res://Managers/SettingsLoader/SettingsLoader.tscn" id="3_7ihqj"]
 
@@ -71,6 +72,8 @@ grow_vertical = 2
 script = ExtResource("1_3g7qx")
 settings_menu = NodePath("SettingsMenu")
 main_menu_control = NodePath("MainMenuControl")
+
+[node name="SoundManager" parent="." instance=ExtResource("2_n6o36")]
 
 [node name="Background" type="TextureRect" parent="."]
 modulate = Color(0.0352941, 0.0392157, 0.0784314, 1)
@@ -159,6 +162,8 @@ libraries = {
 }
 
 [node name="SettingsLoader" parent="." instance=ExtResource("3_7ihqj")]
+
+[node name="Wwise" type="Node2D" parent="."]
 
 [connection signal="mouse_entered" from="MainMenuControl/PanelContainer/CenterContainer/MenuContainer/PlayGameButton" to="." method="_on_play_game_button_mouse_entered"]
 [connection signal="pressed" from="MainMenuControl/PanelContainer/CenterContainer/MenuContainer/PlayGameButton" to="." method="_on_play_game_button_pressed"]

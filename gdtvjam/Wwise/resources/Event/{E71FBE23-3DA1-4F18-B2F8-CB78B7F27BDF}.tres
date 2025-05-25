@@ -1,0 +1,7 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://c44a77bwqnxt7"]
+
+[resource]
+name = "Exit_Settings"
+id = 4244898431
+guid = "{E71FBE23-3DA1-4F18-B2F8-CB78B7F27BDF}"
+dummy = true

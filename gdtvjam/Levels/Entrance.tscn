@@ -34,7 +34,6 @@ position = Vector2(30, 30)
 normal_tiles = NodePath("../Floor")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("5_riyix")]
 

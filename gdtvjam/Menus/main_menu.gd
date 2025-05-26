@@ -1,6 +1,7 @@
 extends Control
 
 @onready var level_0 = "uid://hthg2421qwkx"
+@onready var level_1 = "uid://omucjap1o10s"
 @onready var credits = "uid://d3a5nng4xkp3l" #EndScreen.tscn
 @onready var vbox_container: VBoxContainer = %MenuContainer
 @onready var main_menu_player: AnimationPlayer = %MainMenuPlayer
@@ -29,7 +30,13 @@ func _on_play_game_button_pressed() -> void:
 		await _animation_fade_out()
 		AudioManager.main_menu_music.stop()
 		play_is_pressed = false
-		get_tree().change_scene_to_file(level_0)
+		if not GameManager.initial_game_run:
+			get_tree().paused = false
+			AudioManager.level_music.play()
+			GameManager.block_locations["7A"] = Vector2(32, 28)
+			get_tree().change_scene_to_file(level_1)
+		else:
+			get_tree().change_scene_to_file(level_0)
 	
 
 func show_hide() -> void:

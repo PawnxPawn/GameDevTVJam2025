@@ -1,14 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://hthg2421qwkx"]
+[gd_scene load_steps=3 format=3 uid="uid://hthg2421qwkx"]
 
 [ext_resource type="Script" uid="uid://dudj086rs7g47" path="res://Levels/OpeningCutscene.gd" id="1_lk35a"]
 [ext_resource type="Resource" uid="uid://cukqot7ggipci" path="res://Dialogue/OpeningCS.dialogue" id="2_j5apc"]
-[ext_resource type="PackedScene" uid="uid://omucjap1o10s" path="res://Levels/Entrance.tscn" id="3_lk35a"]
 
 [node name="OpeningCutscene" type="Node"]
 script = ExtResource("1_lk35a")
 dialgoue_to_play = ExtResource("2_j5apc")
 dialogue_name = "OpeningCS"
-next_level = ExtResource("3_lk35a")
+next_level = &"uid://omucjap1o10s"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15

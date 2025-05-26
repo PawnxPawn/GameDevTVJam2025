@@ -27,3 +27,5 @@ var level_first_load: bool = true
 
 var player_initial_pos: Vector2
 var entered_direction: directions
+
+var initial_game_run: bool = true

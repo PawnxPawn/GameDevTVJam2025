@@ -9,4 +9,5 @@ func _ready() -> void:
     DialogueManager.show_example_dialogue_balloon(dialgoue_to_play, dialogue_name)
 
 func _on_dialogue_end(_resource: DialogueResource) -> void:
+    GameManager.entered_direction = GameManager.directions.SOUTH
     get_tree().change_scene_to_packed(next_level)

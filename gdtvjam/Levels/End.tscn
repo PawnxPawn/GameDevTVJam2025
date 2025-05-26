@@ -1,14 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2ixxkaw5u2e2"]
+[gd_scene load_steps=10 format=3 uid="uid://d2ixxkaw5u2e2"]
 
 [ext_resource type="Texture2D" uid="uid://boq6pp74ajrtj" path="res://Assets/Tiles/1-10-exit.png" id="1_jx0kn"]
+[ext_resource type="Script" uid="uid://bepycm8nfwfit" path="res://Levels/LevelHandler.gd" id="1_u3djv"]
 [ext_resource type="PackedScene" uid="uid://jav7rcmbsdd0" path="res://Other Systems/WinChest/WinChest.tscn" id="2_1u0m0"]
 [ext_resource type="PackedScene" uid="uid://1c4l1suixtb2" path="res://Player/Player.tscn" id="3_ysk0u"]
 [ext_resource type="PackedScene" uid="uid://ktn845vos8qe" path="res://Menus/PauseMenu.tscn" id="4_ysk0u"]
+[ext_resource type="PackedScene" uid="uid://bx43n7oxgktd1" path="res://Other Systems/LevelSwitcher/LevelSwitcher.tscn" id="5_g7e4c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jx0kn"]
 size = Vector2(137.915, 1160.21)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u3djv"]
+size = Vector2(38.5, 62)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g7e4c"]
+size = Vector2(77, 46)
+
 [node name="End" type="Node"]
+script = ExtResource("1_u3djv")
 
 [node name="1-10-exit" type="Sprite2D" parent="."]
 position = Vector2(499, 297)
@@ -54,3 +63,25 @@ position = Vector2(174, 349)
 visible = false
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("4_ysk0u")]
+
+[node name="LevelSwitcher4" parent="." instance=ExtResource("5_g7e4c")]
+position = Vector2(83, 610)
+next_level = &"uid://d2ixxkaw5u2e2"
+entrance_direction = 2
+size_check = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelSwitcher4"]
+position = Vector2(2, -260)
+shape = SubResource("RectangleShape2D_u3djv")
+
+[node name="West" type="Marker2D" parent="."]
+position = Vector2(177, 353)
+
+[node name="LevelSwitcher2" parent="." instance=ExtResource("5_g7e4c")]
+position = Vector2(467, 124)
+next_level = &"uid://d3a5nng4xkp3l"
+entrance_direction = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelSwitcher2"]
+position = Vector2(32, -32)
+shape = SubResource("RectangleShape2D_g7e4c")

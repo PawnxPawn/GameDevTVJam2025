@@ -9,6 +9,8 @@ var last_direction: Vector2
 
 var current_state: States
 
+var can_move: bool = true
+
 enum States 
 {
 	Idle,
@@ -17,7 +19,6 @@ enum States
 
 func _ready() -> void:
 	current_state = States.Idle
-
 
 func _process(_delta: float) -> void:
 	match current_state:
@@ -37,7 +38,7 @@ func _idle_state() -> void:
 		current_state = States.Walk
 
 func _walk_state() -> void:
-	if (!_is_moving()):
+	if (!_is_moving() || !can_move):
 		current_state = States.Idle
 		return
 	_move()

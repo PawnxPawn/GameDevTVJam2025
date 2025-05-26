@@ -19,11 +19,12 @@ func _ready() -> void:
     amulet_interactable.interact = _amulet_interact
 
 func _chest_interact() -> void:
+    DialogueManager.show_example_dialogue_balloon(win_dialouge, "Chest")
     chest_sprite.visible = false
     amulet_sprite.visible = true
     chest_interact.disabled = true
     amulet_interact.disabled = false
 
 func _amulet_interact() -> void:
-    DialogueManager.show_example_dialogue_balloon(win_dialouge, "") #TODO Make the damn dialogue
-    get_tree().call_deferred("change_scene_to_packed", win_scene) 
+    DialogueManager.show_example_dialogue_balloon(win_dialouge, "Amulet")
+    get_tree().change_scene_to_file("uid://d3a5nng4xkp3l")

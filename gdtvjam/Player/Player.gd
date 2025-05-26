@@ -6,7 +6,7 @@ class_name player
 @export var push_strength: float = 300
 
 @export var normal_tiles: TileMapLayer
-@export var current_level: PackedScene
+@export var current_level: StringName
 
 @export var feedback_dialogue: DialogueResource
 @export var animation_player: AnimationPlayer
@@ -50,7 +50,8 @@ func push_pushable(pushable: RigidBody2D, collision: KinematicCollision2D):
 #region Tile Map Checker
 
 func _process(_delta: float) -> void:
-	check_normal_tiles()
+	if normal_tiles:
+		check_normal_tiles()
 	if (GameManager.current_player_size == GameManager.character_size.NORMAL):
 		set_physics_process(true) #Able to push the damn block
 	else:
@@ -98,6 +99,6 @@ func adjust_player() -> void:
 		scale = Vector2.ONE
 
 func reset_level() -> void:
-	#get_tree().change_scene_to_packed(current_level)
+	get_tree().reload_current_scene()
 	print("Should reset")
 #endregion

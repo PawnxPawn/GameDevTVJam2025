@@ -1,13 +1,27 @@
-[gd_scene load_steps=6 format=4 uid="uid://bbcxplne5e8pd"]
+[gd_scene load_steps=10 format=4 uid="uid://bbcxplne5e8pd"]
 
 [ext_resource type="Script" uid="uid://bepycm8nfwfit" path="res://Levels/LevelHandler.gd" id="1_jon3f"]
 [ext_resource type="TileSet" uid="uid://bj0uslx3ys56" path="res://Levels/MainTileset.tres" id="1_rhq3p"]
 [ext_resource type="PackedScene" uid="uid://1c4l1suixtb2" path="res://Player/Player.tscn" id="2_xb24h"]
 [ext_resource type="PackedScene" uid="uid://ktn845vos8qe" path="res://Menus/PauseMenu.tscn" id="4_8eiv4"]
 [ext_resource type="PackedScene" uid="uid://bwpnxyldt2isf" path="res://Other Systems/Rock/Rock.tscn" id="5_yd8fq"]
+[ext_resource type="PackedScene" uid="uid://bx43n7oxgktd1" path="res://Other Systems/LevelSwitcher/LevelSwitcher.tscn" id="6_vybwq"]
 
-[node name="Level3" type="Node"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yd8fq"]
+size = Vector2(1029, 51)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4cgce"]
+size = Vector2(77, 46)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_twi1l"]
+size = Vector2(38.5, 62)
+
+[node name="Level3" type="Node" node_paths=PackedStringArray("south_start", "east_start", "west_start", "current_player")]
 script = ExtResource("1_jon3f")
+south_start = NodePath("South")
+east_start = NodePath("East")
+west_start = NodePath("West")
+current_player = NodePath("Player")
 
 [node name="Floor" type="TileMapLayer" parent="."]
 z_index = -2
@@ -54,3 +68,44 @@ position = Vector2(-159, 103)
 
 [node name="Rock10" parent="Node" instance=ExtResource("5_yd8fq")]
 position = Vector2(-229, 235)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(10, 474)
+shape = SubResource("RectangleShape2D_yd8fq")
+
+[node name="LevelSwitcher2" parent="." instance=ExtResource("6_vybwq")]
+position = Vector2(0, 484)
+next_level = &"uid://cgoyc1qfqdd72"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelSwitcher2"]
+position = Vector2(32, -32)
+shape = SubResource("RectangleShape2D_4cgce")
+
+[node name="LevelSwitcher3" parent="." instance=ExtResource("6_vybwq")]
+position = Vector2(441, 484)
+next_level = &"uid://ch3lrjchkvkpq"
+entrance_direction = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelSwitcher3"]
+position = Vector2(2, -260)
+shape = SubResource("RectangleShape2D_twi1l")
+
+[node name="LevelSwitcher4" parent="." instance=ExtResource("6_vybwq")]
+position = Vector2(-384, 484)
+next_level = &"uid://qacor0g6ov7w"
+entrance_direction = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelSwitcher4"]
+position = Vector2(2, -260)
+shape = SubResource("RectangleShape2D_twi1l")
+
+[node name="South" type="Marker2D" parent="."]
+position = Vector2(32, 383)
+
+[node name="East" type="Marker2D" parent="."]
+position = Vector2(382, 226)
+
+[node name="West" type="Marker2D" parent="."]
+position = Vector2(-335, 229)

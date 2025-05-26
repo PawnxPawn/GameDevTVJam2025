@@ -1,12 +1,18 @@
-[gd_scene load_steps=5 format=4 uid="uid://ch3lrjchkvkpq"]
+[gd_scene load_steps=7 format=4 uid="uid://ch3lrjchkvkpq"]
 
 [ext_resource type="TileSet" uid="uid://bj0uslx3ys56" path="res://Levels/MainTileset.tres" id="1_70wcc"]
 [ext_resource type="Script" uid="uid://bepycm8nfwfit" path="res://Levels/LevelHandler.gd" id="1_rkafn"]
 [ext_resource type="PackedScene" uid="uid://1c4l1suixtb2" path="res://Player/Player.tscn" id="2_g3oj6"]
 [ext_resource type="PackedScene" uid="uid://ktn845vos8qe" path="res://Menus/PauseMenu.tscn" id="4_2qv2g"]
+[ext_resource type="PackedScene" uid="uid://bx43n7oxgktd1" path="res://Other Systems/LevelSwitcher/LevelSwitcher.tscn" id="5_0sogr"]
 
-[node name="Level4" type="Node"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5brs8"]
+size = Vector2(38.5, 62)
+
+[node name="Level4" type="Node" node_paths=PackedStringArray("west_start", "current_player")]
 script = ExtResource("1_rkafn")
+west_start = NodePath("West")
+current_player = NodePath("Player")
 
 [node name="Floor" type="TileMapLayer" parent="."]
 z_index = -2
@@ -14,10 +20,22 @@ tile_map_data = PackedByteArray("AAAAAAAAAAALAAYAAAABAAAAAAALAAYAAAACAAAAAAALAAY
 tile_set = ExtResource("1_70wcc")
 
 [node name="Player" parent="." node_paths=PackedStringArray("normal_tiles") instance=ExtResource("2_g3oj6")]
-position = Vector2(-349, 218)
+position = Vector2(-349, 288)
 normal_tiles = NodePath("../Floor")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("4_2qv2g")]
+
+[node name="West" type="Marker2D" parent="."]
+position = Vector2(-348, 293)
+
+[node name="LevelSwitcher4" parent="." instance=ExtResource("5_0sogr")]
+position = Vector2(-384, 484)
+next_level = &"uid://bbcxplne5e8pd"
+entrance_direction = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelSwitcher4"]
+position = Vector2(2, -260)
+shape = SubResource("RectangleShape2D_5brs8")

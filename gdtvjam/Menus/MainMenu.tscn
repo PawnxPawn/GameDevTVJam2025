@@ -3,9 +3,8 @@
 [ext_resource type="Script" uid="uid://c7rq22m8nrqky" path="res://Menus/main_menu.gd" id="1_3g7qx"]
 [ext_resource type="PackedScene" uid="uid://dmtc38k107o73" path="res://Managers/SoundManager/SoundManager.tscn" id="2_n6o36"]
 [ext_resource type="PackedScene" uid="uid://0lj3qejewwsp" path="res://Menus/SettingsMenu.tscn" id="2_r8dbq"]
+[ext_resource type="Texture2D" uid="uid://dl8lnxng4p7eu" path="res://Assets/MainMenu/Title_screen.png" id="3_5ncg0"]
 [ext_resource type="PackedScene" uid="uid://dt1u5pso7ncj2" path="res://Managers/SettingsLoader/SettingsLoader.tscn" id="3_7ihqj"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_n6o36"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5ncg0"]
 
@@ -76,14 +75,13 @@ main_menu_control = NodePath("MainMenuControl")
 [node name="SoundManager" parent="." instance=ExtResource("2_n6o36")]
 
 [node name="Background" type="TextureRect" parent="."]
-modulate = Color(0.0352941, 0.0392157, 0.0784314, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("CanvasTexture_n6o36")
+texture = ExtResource("3_5ncg0")
 
 [node name="MainMenuControl" type="Control" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -93,16 +91,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Label" type="Label" parent="MainMenuControl"]
-layout_mode = 2
-offset_top = 141.93
-offset_right = 960.0
-offset_bottom = 191.93
-theme_override_font_sizes/font_size = 36
-text = "Hollow Morph"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="MainMenuControl"]
 layout_mode = 1

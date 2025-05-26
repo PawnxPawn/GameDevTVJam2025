@@ -105,6 +105,7 @@ unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_wg76y")
 }
+speed_scale = 0.25
 
 [node name="Background" type="TextureRect" parent="."]
 modulate = Color(0.0352941, 0.0392157, 0.0784314, 1)

@@ -4,21 +4,35 @@ extends Node
 @export var south_start: Marker2D
 @export var east_start: Marker2D
 @export var west_start: Marker2D
+@export var blocks: Array[RigidBody2D]
+
 
 @export var current_player: CharacterBody2D
 
 
 func _ready() -> void:
+	current_player.current_level = get_tree().current_scene.get_path()
+	if not blocks.is_empty():
+		for block in blocks:
+			if GameManager.block_locations.has(block.block_name):
+				block.global_position = GameManager.block_locations[block.block_name]
+	
 	if (GameManager.level_first_load):
 		GameManager.level_first_load = false
 		GameManager.player_size_when_entered = GameManager.current_player_size
 		if (north_start == null && south_start == null && west_start == null && east_start == null):
 			print ("Entrance!")
-			return #Must be entrance, this system doesn't apply to the Entrance.
+			GameManager.entered_direction = GameManager.directions.SOUTH
 		determine_position()
 	else:
 		GameManager.current_player_size = GameManager.player_size_when_entered
 		current_player.position = GameManager.player_initial_pos
+
+func _exit_tree() -> void:
+	if not blocks.is_empty():
+		for block in blocks:
+			if GameManager.block_locations.has(block.block_name):
+				GameManager.block_locations[block.block_name] = block.global_position
 
 func determine_position() -> void:
 	match GameManager.entered_direction:

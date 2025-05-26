@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://jav7rcmbsdd0"]
+[gd_scene load_steps=10 format=3 uid="uid://jav7rcmbsdd0"]
 
 [ext_resource type="Texture2D" uid="uid://cteia7ktewpao" path="res://Assets/Tiles/Objects.png" id="1_ab6s5"]
 [ext_resource type="Script" uid="uid://bkppkhouxuqpv" path="res://Other Systems/WinChest/WinChest.gd" id="1_pjjar"]
+[ext_resource type="Resource" uid="uid://c5ptl60pe4uyn" path="res://Dialogue/End.dialogue" id="2_5pq1u"]
 [ext_resource type="Script" uid="uid://cvgr2kqp82tia" path="res://Other Systems/Block/Interactable.gd" id="2_pjjar"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5pq1u"]
@@ -23,6 +24,7 @@ size = Vector2(52, 127)
 
 [node name="WinChest" type="StaticBody2D"]
 script = ExtResource("1_pjjar")
+win_dialouge = ExtResource("2_5pq1u")
 
 [node name="Chest" type="Sprite2D" parent="."]
 unique_name_in_owner = true

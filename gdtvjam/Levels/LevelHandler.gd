@@ -21,7 +21,6 @@ func _ready() -> void:
 		GameManager.level_first_load = false
 		GameManager.player_size_when_entered = GameManager.current_player_size
 		if (north_start == null && south_start == null && west_start == null && east_start == null):
-			print ("Entrance!")
 			GameManager.entered_direction = GameManager.directions.SOUTH
 		determine_position()
 	else:

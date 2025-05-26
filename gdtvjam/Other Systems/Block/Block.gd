@@ -12,4 +12,4 @@ func _process(_delta: float) -> void:
 		if (data != null):
 			var destroy_block: bool = data.get_custom_data("destroy_block")
 			if (destroy_block):
-				call_deferred("queue_free")
+				visible = false

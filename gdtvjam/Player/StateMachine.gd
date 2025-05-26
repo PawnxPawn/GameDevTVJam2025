@@ -39,8 +39,10 @@ func _idle_state() -> void:
 
 func _walk_state() -> void:
 	if (!_is_moving() || !can_move):
+		AudioManager.walk_sfx.stop()
 		current_state = States.Idle
 		return
+	AudioManager.walk_sfx.play()
 	_move()
 	_walk_animation()
 #endregion

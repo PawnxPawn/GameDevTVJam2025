@@ -11,7 +11,6 @@ extends Node
 
 
 func _ready() -> void:
-	current_player.current_level = get_tree().current_scene.get_path()
 	if not blocks.is_empty():
 		for block in blocks:
 			if GameManager.block_locations.has(block.block_name):

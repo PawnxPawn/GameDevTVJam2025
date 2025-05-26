@@ -121,4 +121,27 @@ layout_mode = 2
 theme_override_colors/font_hover_color = Color(0.196502, 0.196502, 0.196502, 1)
 text = "Godot Engine License"
 
+[node name="CenterContainer2" type="CenterContainer" parent="CreditsPanel/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Pallette" type="LinkButton" parent="CreditsPanel/VBoxContainer/CenterContainer2"]
+custom_minimum_size = Vector2(0, 29.72)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.196502, 0.196502, 0.196502, 1)
+text = "Waldgeist Palette by Acid Burrito"
+uri = "https://lospec.com/palette-list/waldgeist"
+
+[node name="CenterContainer3" type="CenterContainer" parent="CreditsPanel/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="GodotLicense" type="LinkButton" parent="CreditsPanel/VBoxContainer/CenterContainer3"]
+custom_minimum_size = Vector2(0, 29.72)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.196502, 0.196502, 0.196502, 1)
+text = "Dialogue Manager by Nathanhoad"
+uri = "https://github.com/nathanhoad/godot_dialogue_manager?tab=MIT-1-ov-file"
+
 [connection signal="pressed" from="CreditsPanel/VBoxContainer/CenterContainer/GodotLicense" to="." method="_on_godot_license_pressed"]
+[connection signal="pressed" from="CreditsPanel/VBoxContainer/CenterContainer3/GodotLicense" to="." method="_on_godot_license_pressed"]

@@ -45,6 +45,7 @@ shape = SubResource("RectangleShape2D_4eryf")
 debug_color = Color(0.814901, 0.337441, 0.594814, 0.42)
 
 [node name="Collider" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_1wp7x")
 

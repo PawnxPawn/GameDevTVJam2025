@@ -5,6 +5,7 @@ extends Node
 @export var next_level: PackedScene
 
 func _ready() -> void:
+    AudioManager.level_music.play()
     DialogueManager.dialogue_ended.connect(_on_dialogue_end)
     DialogueManager.show_example_dialogue_balloon(dialgoue_to_play, dialogue_name)
 

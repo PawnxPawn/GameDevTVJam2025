@@ -16,8 +16,10 @@ size = Vector2(38.5, 62)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g7e4c"]
 size = Vector2(77, 46)
 
-[node name="End" type="Node"]
+[node name="End" type="Node" node_paths=PackedStringArray("west_start", "current_player")]
 script = ExtResource("1_u3djv")
+west_start = NodePath("West")
+current_player = NodePath("Player")
 
 [node name="1-10-exit" type="Sprite2D" parent="."]
 position = Vector2(499, 297)

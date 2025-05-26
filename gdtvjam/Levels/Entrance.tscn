@@ -30,7 +30,7 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAHAAIAAAAAAP//AAAHAAEAAAAAAP7/AAAHAAA
 tile_set = ExtResource("3_riyix")
 
 [node name="Block" parent="." node_paths=PackedStringArray("normal_tiles") instance=ExtResource("4_i1ndc")]
-position = Vector2(32, 36)
+position = Vector2(30, 30)
 normal_tiles = NodePath("../Floor")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -84,7 +84,7 @@ next_level = &"uid://bt77sccqm75v8"
 entrance_direction = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelSwitcher"]
-position = Vector2(32, -32)
+position = Vector2(31, -50)
 shape = SubResource("RectangleShape2D_4vhml")
 
 [node name="North" type="Marker2D" parent="."]

@@ -6,7 +6,6 @@ class_name player
 @export var push_strength: float = 300
 
 @export var normal_tiles: TileMapLayer
-@export var current_level: StringName
 
 @export var feedback_dialogue: DialogueResource
 @export var animation_player: AnimationPlayer

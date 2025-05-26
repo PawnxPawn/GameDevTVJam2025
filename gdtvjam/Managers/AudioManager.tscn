@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://d16v0woy3yj72"]
+
+[ext_resource type="Script" uid="uid://boiq1daqo1iev" path="res://Managers/AudioManager.gd" id="1_xxcej"]
+[ext_resource type="AudioStream" uid="uid://cmjpreagulqk" path="res://Assets/Sounds/walking.wav" id="2_nkfkc"]
+[ext_resource type="AudioStream" uid="uid://bc07slb5uqyb4" path="res://Assets/Sounds/MainMenuCave_v0.mp3" id="3_b5pxe"]
+[ext_resource type="AudioStream" uid="uid://duuwlgvqnhtkl" path="res://Assets/Sounds/CaveMusic1_v0.2.mp3" id="4_iv5il"]
+
+[node name="AudioManager" type="Node"]
+script = ExtResource("1_xxcej")
+
+[node name="WalkSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_nkfkc")
+
+[node name="MainMenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_b5pxe")
+parameters/looping = true
+
+[node name="LevelMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_iv5il")
+parameters/looping = true

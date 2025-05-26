@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://dmtc38k107o73"]
+
+[ext_resource type="Script" uid="uid://ci6ovu8fdmorb" path="res://Managers/SoundManager/SoundManager.gd" id="1_1w7qm"]
+[ext_resource type="WwiseEvent" uid="uid://c75vbfokkp3ab" path="res://Wwise/resources/Event/{70CF6237-3BD6-41D1-AE37-5C1F41599FDA}.tres" id="2_c3dlt"]
+[ext_resource type="WwiseEvent" uid="uid://dn6ao7os5t51j" path="res://Wwise/resources/Event/{9AA6D278-3B9C-426F-8E56-61E842A5ED2E}.tres" id="3_c3dlt"]
+[ext_resource type="WwiseEvent" uid="uid://dpeeuo756862w" path="res://Wwise/resources/Event/{099E683A-1AC0-4BFD-938C-977AE6DD1921}.tres" id="3_jc17i"]
+[ext_resource type="WwiseEvent" uid="uid://c44a77bwqnxt7" path="res://Wwise/resources/Event/{E71FBE23-3DA1-4F18-B2F8-CB78B7F27BDF}.tres" id="4_gicsw"]
+[ext_resource type="WwiseEvent" uid="uid://wv5nnp2eosgw" path="res://Wwise/resources/Event/{5598E291-423C-4120-BCEE-CA600B9B76F9}.tres" id="4_sawlc"]
+[ext_resource type="WwiseEvent" uid="uid://coxevvjvrujvx" path="res://Wwise/resources/Event/{2A3FADE4-C5C1-4CDE-8AD0-7350CADD59D7}.tres" id="5_1fgup"]
+
+[node name="SoundManager" type="Node2D"]
+script = ExtResource("1_1w7qm")
+
+[node name="AkListener2D" type="AkListener2D" parent="."]
+
+[node name="Buttons" type="Node2D" parent="."]
+
+[node name="PlayGameButton" type="AkEvent2D" parent="Buttons"]
+event = ExtResource("5_1fgup")
+
+[node name="EnterSettings" type="AkEvent2D" parent="Buttons"]
+event = ExtResource("3_jc17i")
+
+[node name="ExitSettings" type="AkEvent2D" parent="Buttons"]
+event = ExtResource("4_gicsw")
+
+[node name="SoundFX" type="Node2D" parent="."]
+
+[node name="TestTone" type="AkEvent2D" parent="SoundFX"]
+event = ExtResource("2_c3dlt")
+
+[node name="FkMe" type="AkEvent2D" parent="SoundFX"]
+event = ExtResource("3_c3dlt")
+
+[node name="Music" type="Node2D" parent="."]
+
+[node name="MenuMusic" type="AkEvent2D" parent="Music"]
+event = ExtResource("3_c3dlt")
+
+[node name="EndMenuMusic" type="AkEvent2D" parent="Music"]
+event = ExtResource("4_sawlc")

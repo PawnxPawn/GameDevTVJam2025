@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://jav7rcmbsdd0"]
+
+[ext_resource type="Texture2D" uid="uid://cteia7ktewpao" path="res://Assets/Tiles/Objects.png" id="1_ab6s5"]
+[ext_resource type="Script" uid="uid://bkppkhouxuqpv" path="res://Other Systems/WinChest/WinChest.gd" id="1_pjjar"]
+[ext_resource type="Resource" uid="uid://c5ptl60pe4uyn" path="res://Dialogue/End.dialogue" id="2_5pq1u"]
+[ext_resource type="Script" uid="uid://cvgr2kqp82tia" path="res://Other Systems/Block/Interactable.gd" id="2_pjjar"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5pq1u"]
+atlas = ExtResource("1_ab6s5")
+region = Rect2(260, 4, 56, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4eryf"]
+size = Vector2(56, 92)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1wp7x"]
+size = Vector2(56, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ab6s5"]
+atlas = ExtResource("1_ab6s5")
+region = Rect2(7.65046, 3.74657, 52.5996, 52.4293)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ab6s5"]
+size = Vector2(52, 127)
+
+[node name="WinChest" type="StaticBody2D"]
+script = ExtResource("1_pjjar")
+win_dialouge = ExtResource("2_5pq1u")
+
+[node name="Chest" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = SubResource("AtlasTexture_5pq1u")
+
+[node name="ChestInteractable" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("2_pjjar")
+interaction_name = "open chest"
+metadata/_custom_type_script = "uid://cvgr2kqp82tia"
+
+[node name="ChestInteract" type="CollisionShape2D" parent="ChestInteractable"]
+unique_name_in_owner = true
+position = Vector2(0, 42)
+shape = SubResource("RectangleShape2D_4eryf")
+debug_color = Color(0.814901, 0.337441, 0.594814, 0.42)
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_1wp7x")
+
+[node name="Amulet" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+texture = SubResource("AtlasTexture_ab6s5")
+
+[node name="AmuletInteractable" type="Area2D" parent="Amulet"]
+unique_name_in_owner = true
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("2_pjjar")
+interaction_name = "pick up the amulet"
+metadata/_custom_type_script = "uid://cvgr2kqp82tia"
+
+[node name="AmuletInteract" type="CollisionShape2D" parent="Amulet/AmuletInteractable"]
+unique_name_in_owner = true
+position = Vector2(0, 37.5)
+shape = SubResource("RectangleShape2D_ab6s5")
+disabled = true
+debug_color = Color(0.912091, 0.187844, 0.568201, 0.42)

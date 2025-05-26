@@ -1,0 +1,7 @@
+[gd_resource type="WwiseEvent" format=3 uid="uid://c75vbfokkp3ab"]
+
+[resource]
+name = "Test_Tone"
+id = 1320823428
+guid = "{70CF6237-3BD6-41D1-AE37-5C1F41599FDA}"
+dummy = true

@@ -14,3 +14,5 @@ export_credentials.cfg
 .mono/
 data_*/
 mono_crash.*.json
+gdtvjam/.vscode
+gdtvjam/Levels/Entrance.tscn11997873124.tmp

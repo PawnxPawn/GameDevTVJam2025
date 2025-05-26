@@ -1,0 +1,161 @@
+[gd_scene load_steps=10 format=4 uid="uid://bt77sccqm75v8"]
+
+[ext_resource type="Script" uid="uid://bepycm8nfwfit" path="res://Levels/LevelHandler.gd" id="1_iotdp"]
+[ext_resource type="PackedScene" uid="uid://1c4l1suixtb2" path="res://Player/Player.tscn" id="2_nutv8"]
+[ext_resource type="TileSet" uid="uid://bj0uslx3ys56" path="res://Levels/MainTileset.tres" id="3_05pb0"]
+[ext_resource type="PackedScene" uid="uid://ktn845vos8qe" path="res://Menus/PauseMenu.tscn" id="4_dl8mf"]
+[ext_resource type="PackedScene" uid="uid://cx7vvccxxamc3" path="res://Other Systems/Block/Block.tscn" id="5_nutv8"]
+[ext_resource type="PackedScene" uid="uid://bwpnxyldt2isf" path="res://Other Systems/Rock/Rock.tscn" id="6_05pb0"]
+[ext_resource type="PackedScene" uid="uid://bx43n7oxgktd1" path="res://Other Systems/LevelSwitcher/LevelSwitcher.tscn" id="7_xcayt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7fl83"]
+size = Vector2(84, 44)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dl8mf"]
+size = Vector2(1029, 51)
+
+[node name="Level1" type="Node" node_paths=PackedStringArray("north_start", "south_start", "current_player")]
+script = ExtResource("1_iotdp")
+north_start = NodePath("North")
+south_start = NodePath("South")
+current_player = NodePath("Player")
+
+[node name="Player" parent="." node_paths=PackedStringArray("normal_tiles") instance=ExtResource("2_nutv8")]
+position = Vector2(33, 446)
+slide_on_ceiling = false
+push_strength = 500.0
+normal_tiles = NodePath("../NormalFloor")
+
+[node name="NormalFloor" type="TileMapLayer" parent="."]
+unique_name_in_owner = true
+z_index = -2
+tile_map_data = PackedByteArray("AAABAAAAAAAFAAEAAAD//wAAAAADAAEAAAAAAAAAAAAEAAEAAAAAAAEAAAACAAQAAAD//wEAAAAIAAMAAAABAAEAAAAJAAMAAAABAAIAAAAJAAQAAAAAAAIAAAAJAAIAAAD//wIAAAAIAAQAAAD+/wEAAAAGAAIAAAD9/wEAAAAGAAIAAAD8/wEAAAAGAAIAAAD7/wEAAAAGAAIAAAD6/wEAAAAGAAIAAAACAAEAAAAGAAIAAAADAAEAAAAGAAIAAAAEAAEAAAAGAAIAAAAFAAEAAAAGAAIAAAAGAAEAAAAGAAIAAAD+/wIAAAAFAAMAAAD+/wMAAAAFAAMAAAD+/wQAAAAFAAMAAAD+/wUAAAAFAAMAAAD+/wYAAAAFAAMAAAD+/wcAAAAFAAMAAAAAAAcAAAAHAAgAAAD//wcAAAAGAAgAAAABAAcAAAAIAAgAAAAGAAIAAAAJAAIAAAAGAAMAAAAJAAIAAAAGAAQAAAAJAAIAAAAGAAUAAAAJAAIAAAAGAAYAAAAJAAIAAAAGAAcAAAAJAAIAAAACAAcAAAAJAAIAAAADAAcAAAAJAAIAAAAEAAcAAAAJAAIAAAAFAAcAAAAJAAIAAAD6/wIAAAAJAAIAAAD6/wMAAAAJAAIAAAD6/wQAAAAJAAIAAAD6/wUAAAAJAAIAAAD6/wYAAAAJAAIAAAD6/wcAAAAJAAIAAAD7/wcAAAAJAAIAAAD8/wcAAAAJAAIAAAD9/wcAAAAJAAIAAAD7/wIAAAAEAAMAAAD7/wMAAAAEAAMAAAD7/wQAAAAEAAMAAAD7/wUAAAAEAAMAAAD7/wYAAAAEAAMAAAD8/wIAAAAEAAMAAAD8/wMAAAAEAAMAAAD8/wQAAAAEAAMAAAD8/wUAAAAEAAMAAAD8/wYAAAAEAAMAAAD9/wIAAAAEAAMAAAD9/wMAAAAEAAMAAAD9/wQAAAAEAAMAAAD9/wUAAAAEAAMAAAD9/wYAAAAEAAMAAAD//wMAAAAEAAMAAAD//wQAAAAEAAMAAAD//wUAAAAEAAMAAAD//wYAAAAEAAMAAAAAAAMAAAAEAAMAAAAAAAQAAAAEAAMAAAAAAAUAAAAEAAMAAAAAAAYAAAAEAAMAAAABAAMAAAAEAAMAAAABAAQAAAAEAAMAAAABAAUAAAAEAAMAAAABAAYAAAAEAAMAAAACAAMAAAAEAAMAAAACAAQAAAAEAAMAAAACAAUAAAAEAAMAAAACAAYAAAAEAAMAAAADAAMAAAAEAAMAAAADAAQAAAAEAAMAAAADAAUAAAAEAAMAAAADAAYAAAAEAAMAAAAEAAMAAAAEAAMAAAAEAAQAAAAEAAMAAAAEAAUAAAAEAAMAAAAEAAYAAAAEAAMAAAAFAAMAAAAEAAMAAAAFAAQAAAAEAAMAAAAFAAUAAAAEAAMAAAAFAAYAAAAEAAMAAAACAAIAAAAEAAMAAAADAAIAAAAEAAMAAAAEAAIAAAAEAAMAAAAFAAIAAAAEAAMAAAACAAAAAAAJAAEAAAADAAAAAAAJAAEAAAAEAAAAAAAJAAEAAAAFAAAAAAAJAAEAAAAGAAAAAAAJAAEAAAD6/wAAAAAJAAEAAAD7/wAAAAAJAAEAAAD8/wAAAAAJAAEAAAD9/wAAAAAJAAEAAAD+/wAAAAAJAAEAAAD6////AAAJAAAAAAD7////AAAJAAAAAAD8////AAAJAAAAAAD9////AAAJAAAAAAD+////AAAJAAAAAAD/////AAAJAAAAAAAAAP//AAAJAAAAAAABAP//AAAJAAAAAAACAP//AAAJAAAAAAADAP//AAAJAAAAAAAEAP//AAAJAAAAAAAFAP//AAAJAAAAAAAGAP//AAAJAAAAAAD6/wgAAAAAAAgAAAD7/wgAAAAAAAgAAAD8/wgAAAAAAAgAAAD9/wgAAAAAAAgAAAD+/wgAAAAAAAgAAAD//wgAAAAAAAgAAAAAAAgAAAAAAAgAAAABAAgAAAAAAAgAAAACAAgAAAAAAAgAAAADAAgAAAAAAAgAAAAEAAgAAAAAAAgAAAAFAAgAAAAAAAgAAAAGAAgAAAAAAAgAAAAHAAgAAAAAAAgAAAD5/wgAAAAAAAgAAAD5////AAAAAAgAAAD5/wAAAAAAAAgAAAD5//7/AAAAAAgAAAAHAP7/AAAAAAgAAAD7//7/AAAAAAgAAAD8//7/AAAAAAgAAAD9//7/AAAAAAgAAAD+//7/AAAAAAgAAAD///7/AAAAAAgAAAAAAP7/AAAAAAgAAAABAP7/AAAAAAgAAAACAP7/AAAAAAgAAAADAP7/AAAAAAgAAAAEAP7/AAAAAAgAAAAFAP7/AAAAAAgAAAAGAP7/AAAAAAgAAAD6//7/AAAAAAgAAAD5/wEAAAAAAAgAAAD5/wIAAAAAAAgAAAD5/wMAAAAAAAgAAAD5/wQAAAAAAAgAAAD5/wUAAAAAAAgAAAD5/wYAAAAAAAgAAAD5/wcAAAAAAAgAAAAHAP//AAAAAAgAAAAHAAAAAAAAAAgAAAAHAAEAAAAAAAgAAAAHAAIAAAAAAAgAAAAHAAMAAAAAAAgAAAAHAAQAAAAAAAgAAAAHAAUAAAAAAAgAAAAHAAYAAAAAAAgAAAAHAAcAAAAAAAgAAAA=")
+tile_set = ExtResource("3_05pb0")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("4_dl8mf")]
+
+[node name="Block" parent="." node_paths=PackedStringArray("normal_tiles") instance=ExtResource("5_nutv8")]
+position = Vector2(31, 95)
+normal_tiles = NodePath("../NormalFloor")
+
+[node name="Rocks" type="Node" parent="."]
+
+[node name="Rock" parent="Rocks" instance=ExtResource("6_05pb0")]
+position = Vector2(-345, 95)
+
+[node name="Rock2" parent="Rocks" instance=ExtResource("6_05pb0")]
+position = Vector2(-345, 164)
+
+[node name="Rock3" parent="Rocks" instance=ExtResource("6_05pb0")]
+position = Vector2(-284, 95)
+
+[node name="Rock4" parent="Rocks" instance=ExtResource("6_05pb0")]
+position = Vector2(-284, 164)
+
+[node name="Rock5" parent="Rocks" instance=ExtResource("6_05pb0")]
+position = Vector2(406, 95)
+
+[node name="Rock6" parent="Rocks" instance=ExtResource("6_05pb0")]
+position = Vector2(351, 159)
+
+[node name="Rock7" parent="Rocks" instance=ExtResource("6_05pb0")]
+position = Vector2(351, 95)
+
+[node name="Rock8" parent="Rocks" instance=ExtResource("6_05pb0")]
+position = Vector2(416, 159)
+
+[node name="Rock9" parent="Rocks" instance=ExtResource("6_05pb0")]
+position = Vector2(416, 478)
+
+[node name="Rock10" parent="Rocks" instance=ExtResource("6_05pb0")]
+position = Vector2(351, 478)
+
+[node name="Rock11" parent="Rocks" instance=ExtResource("6_05pb0")]
+position = Vector2(351, 419)
+
+[node name="Rock12" parent="Rocks" instance=ExtResource("6_05pb0")]
+position = Vector2(416, 419)
+
+[node name="Rock13" parent="Rocks" instance=ExtResource("6_05pb0")]
+position = Vector2(154, 297)
+
+[node name="Rock14" parent="Rocks" instance=ExtResource("6_05pb0")]
+position = Vector2(290, 297)
+
+[node name="Rock15" parent="Rocks" instance=ExtResource("6_05pb0")]
+position = Vector2(264, 182)
+
+[node name="Rock16" parent="Rocks" instance=ExtResource("6_05pb0")]
+position = Vector2(180, 142)
+
+[node name="Rock17" parent="Rocks" instance=ExtResource("6_05pb0")]
+position = Vector2(206, 247)
+
+[node name="Rock18" parent="Rocks" instance=ExtResource("6_05pb0")]
+position = Vector2(232, 396)
+
+[node name="Rock19" parent="Rocks" instance=ExtResource("6_05pb0")]
+position = Vector2(180, 419)
+
+[node name="Rock20" parent="Rocks" instance=ExtResource("6_05pb0")]
+position = Vector2(238, 478)
+
+[node name="Rock21" parent="Rocks" instance=ExtResource("6_05pb0")]
+position = Vector2(-95, 456)
+
+[node name="Rock22" parent="Rocks" instance=ExtResource("6_05pb0")]
+position = Vector2(-231, 479)
+
+[node name="Rock23" parent="Rocks" instance=ExtResource("6_05pb0")]
+position = Vector2(-310, 457)
+
+[node name="Rock24" parent="Rocks" instance=ExtResource("6_05pb0")]
+position = Vector2(-310, 396)
+
+[node name="Rock25" parent="Rocks" instance=ExtResource("6_05pb0")]
+position = Vector2(-258, 297)
+
+[node name="Rock26" parent="Rocks" instance=ExtResource("6_05pb0")]
+position = Vector2(-319, 270)
+
+[node name="Rock27" parent="Rocks" instance=ExtResource("6_05pb0")]
+position = Vector2(-232, 205)
+
+[node name="Rock28" parent="Rocks" instance=ExtResource("6_05pb0")]
+position = Vector2(-121, 137)
+
+[node name="Rock29" parent="Rocks" instance=ExtResource("6_05pb0")]
+position = Vector2(-184, 124)
+
+[node name="LevelSwitcher" parent="." instance=ExtResource("7_xcayt")]
+position = Vector2(-1, 0)
+next_level = &"uid://cgoyc1qfqdd72"
+entrance_direction = 1
+size_check = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelSwitcher"]
+position = Vector2(31, 34)
+shape = SubResource("RectangleShape2D_7fl83")
+
+[node name="LevelSwitcher2" parent="." instance=ExtResource("7_xcayt")]
+position = Vector2(2, 484)
+next_level = &"uid://omucjap1o10s"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelSwitcher2"]
+position = Vector2(31, 34)
+shape = SubResource("RectangleShape2D_7fl83")
+
+[node name="North" type="Marker2D" parent="."]
+position = Vector2(31, 169)
+
+[node name="South" type="Marker2D" parent="."]
+position = Vector2(31, 458)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(2, 63)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(10, 474)
+shape = SubResource("RectangleShape2D_dl8mf")

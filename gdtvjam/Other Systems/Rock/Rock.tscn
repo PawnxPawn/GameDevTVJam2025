@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwpnxyldt2isf"]
+
+[ext_resource type="Texture2D" uid="uid://cteia7ktewpao" path="res://Assets/Tiles/Objects.png" id="1_lxlta"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b8sng"]
+atlas = ExtResource("1_lxlta")
+region = Rect2(199.892, 11.6109, 52.6662, 45.0793)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dodj2"]
+size = Vector2(52, 44)
+
+[node name="Rock" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_b8sng")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dodj2")

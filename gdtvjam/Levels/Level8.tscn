@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=4 uid="uid://dm2uh22nu7joe"]
+
+[ext_resource type="Script" uid="uid://bepycm8nfwfit" path="res://Levels/LevelHandler.gd" id="1_jta5c"]
+[ext_resource type="TileSet" uid="uid://bj0uslx3ys56" path="res://Levels/MainTileset.tres" id="2_63j2j"]
+[ext_resource type="PackedScene" uid="uid://1c4l1suixtb2" path="res://Player/Player.tscn" id="3_pm251"]
+[ext_resource type="PackedScene" uid="uid://ktn845vos8qe" path="res://Menus/PauseMenu.tscn" id="4_63j2j"]
+[ext_resource type="PackedScene" uid="uid://bx43n7oxgktd1" path="res://Other Systems/LevelSwitcher/LevelSwitcher.tscn" id="5_pm251"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a6juv"]
+size = Vector2(77, 46)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pm251"]
+size = Vector2(38.5, 62)
+
+[node name="Level8" type="Node" node_paths=PackedStringArray("south_start", "east_start", "current_player")]
+script = ExtResource("1_jta5c")
+south_start = NodePath("South")
+east_start = NodePath("East")
+current_player = NodePath("Player")
+
+[node name="Floor" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAAAAAAHAAgAAAD//wAAAAAGAAgAAAABAAAAAAAIAAgAAAACAAAAAAAJAAgAAAADAAAAAAAJAAgAAAAEAAAAAAAJAAgAAAAFAAAAAAAJAAgAAAAGAAAAAAAJAAgAAAAHAAAAAAAJAAgAAAD+/wAAAAAJAAgAAAD9/wAAAAAJAAgAAAD8/wAAAAAJAAgAAAD7/wAAAAAJAAgAAAD7////AAALAAcAAAD7//7/AAALAAcAAAD7//3/AAALAAcAAAD7//z/AAALAAcAAAD7//v/AAADAAcAAAD8//v/AAAJAAYAAAD9//v/AAAJAAYAAAD+//v/AAAJAAYAAAD///v/AAAJAAYAAAAAAPv/AAAJAAYAAAABAPv/AAAJAAYAAAACAPv/AAAJAAYAAAADAPv/AAAJAAYAAAAEAPv/AAAJAAYAAAAFAPv/AAAJAAYAAAAGAPv/AAAJAAYAAAAHAPv/AAADAAcAAAAHAPz/AAANAAQAAAAHAP3/AAANAAUAAAAHAP7/AAANAAYAAAAHAP//AAAIAAUAAAD8//3/AAAIAAUAAAD9//3/AAAIAAUAAAD+//3/AAAMAAcAAAD///3/AAAEAAQAAAAAAP3/AAAKAAgAAAD+//7/AAAIAAUAAAAAAP7/AAADAAQAAAD///7/AAAMAAYAAAD///z/AAAHAAMAAAAAAP//AAALAAYAAAABAP7/AAADAAQAAAACAP7/AAADAAQAAAADAP3/AAADAAQAAAADAPz/AAAHAAMAAAABAP3/AAALAAgAAAACAP3/AAAMAAgAAAABAP//AAALAAYAAAACAP//AAALAAYAAAADAP7/AAAKAAYAAAADAP//AAAIAAUAAAAEAPz/AAAKAAcAAAAEAP3/AAAKAAcAAAAEAP7/AAAIAAUAAAAEAP//AAAIAAUAAAAGAPz/AAAIAAUAAAAGAP3/AAAIAAUAAAAGAP7/AAAIAAUAAAAGAP//AAAIAAUAAAAFAP//AAAIAAUAAAAFAP7/AAAIAAUAAAAFAP3/AAAIAAUAAAAFAPz/AAAIAAUAAAACAPz/AAAMAAcAAAABAPz/AAAIAAUAAAAAAPz/AAAKAAcAAAD+//z/AAAMAAcAAAD9//z/AAAIAAUAAAD8//z/AAAIAAUAAAD9//7/AAAIAAUAAAD8//7/AAAIAAUAAAD8////AAAIAAUAAAD9////AAAIAAUAAAD+////AAAIAAUAAAD/////AAAIAAUAAAD8//r/AAADAAEAAAD9//r/AAADAAEAAAD+//r/AAADAAEAAAD///r/AAADAAEAAAAAAPr/AAADAAEAAAABAPr/AAADAAEAAAACAPr/AAADAAEAAAADAPr/AAADAAEAAAAEAPr/AAADAAEAAAAFAPr/AAADAAEAAAAGAPr/AAADAAEAAAAHAPr/AAANAAEAAAAHAPn/AAANAAAAAAAGAPn/AAACAAAAAAAFAPn/AAACAAAAAAAEAPn/AAACAAAAAAADAPn/AAACAAAAAAACAPn/AAACAAAAAAABAPn/AAACAAAAAAAAAPn/AAACAAAAAAD///n/AAACAAAAAAD+//n/AAACAAAAAAD9//n/AAACAAAAAAD8//n/AAACAAAAAAD7//n/AAABAAAAAAD7//r/AAABAAEAAAD7//j/AAAAAAUAAAD6//j/AAAAAAUAAAD6//n/AAAAAAUAAAAHAPj/AAAAAAUAAAAIAPj/AAAAAAUAAAAIAPn/AAAAAAUAAAAIAAEAAAAAAAUAAAAIAAAAAAAAAAUAAAAHAAEAAAAAAAUAAAD7/wEAAAAAAAUAAAD6/wEAAAAAAAUAAAD6/wAAAAAAAAUAAAD6//r/AAAAAAUAAAD6//v/AAAAAAUAAAD6//z/AAAAAAUAAAD6//3/AAAAAAUAAAD6//7/AAAAAAUAAAD6////AAAAAAUAAAD8//j/AAAAAAUAAAD9//j/AAAAAAUAAAD+//j/AAAAAAUAAAD///j/AAAAAAUAAAAAAPj/AAAAAAUAAAABAPj/AAAAAAUAAAACAPj/AAAAAAUAAAADAPj/AAAAAAUAAAAEAPj/AAAAAAUAAAAFAPj/AAAAAAUAAAAGAPj/AAAAAAUAAAAIAPr/AAAAAAUAAAAIAPv/AAAAAAUAAAAIAPz/AAAAAAUAAAAIAP3/AAAAAAUAAAAIAP7/AAAAAAUAAAAIAP//AAAAAAUAAAAGAAEAAAAAAAUAAAAFAAEAAAAAAAUAAAAEAAEAAAAAAAUAAAADAAEAAAAAAAUAAAACAAEAAAAAAAUAAAABAAEAAAAAAAUAAAAAAAEAAAAAAAUAAAD//wEAAAAAAAUAAAD+/wEAAAAAAAUAAAD9/wEAAAAAAAUAAAD8/wEAAAAAAAUAAAA=")
+tile_set = ExtResource("2_63j2j")
+
+[node name="Player" parent="." node_paths=PackedStringArray("normal_tiles") instance=ExtResource("3_pm251")]
+position = Vector2(-71, 21)
+normal_tiles = NodePath("../Floor")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("4_63j2j")]
+
+[node name="LevelSwitcher2" parent="." instance=ExtResource("5_pm251")]
+position = Vector2(5, 100)
+next_level = &"uid://dm1pus30ikj8b"
+size_check = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelSwitcher2"]
+position = Vector2(32, -32)
+shape = SubResource("RectangleShape2D_a6juv")
+
+[node name="LevelSwitcher4" parent="." instance=ExtResource("5_pm251")]
+position = Vector2(504, 100)
+next_level = &"uid://j6gg3xw3rofo"
+entrance_direction = 3
+size_check = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelSwitcher4"]
+position = Vector2(2, -260)
+shape = SubResource("RectangleShape2D_pm251")
+
+[node name="South" type="Marker2D" parent="."]
+position = Vector2(-62, 31)
+
+[node name="East" type="Marker2D" parent="."]
+position = Vector2(470, -156)

@@ -1,0 +1,3 @@
+Event	ID	Name			Wwise Object Path	Notes
+	2294234459	Enter_Settings			\Default Work Unit\Buttons\Enter_Settings	
+

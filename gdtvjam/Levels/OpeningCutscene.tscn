@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://hthg2421qwkx"]
+
+[ext_resource type="Script" uid="uid://dudj086rs7g47" path="res://Levels/OpeningCutscene.gd" id="1_lk35a"]
+[ext_resource type="Resource" uid="uid://cukqot7ggipci" path="res://Dialogue/OpeningCS.dialogue" id="2_j5apc"]
+
+[node name="OpeningCutscene" type="Node"]
+script = ExtResource("1_lk35a")
+dialgoue_to_play = ExtResource("2_j5apc")
+dialogue_name = "OpeningCS"
+next_level = &"uid://omucjap1o10s"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

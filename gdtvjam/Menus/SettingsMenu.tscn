@@ -1,0 +1,120 @@
+[gd_scene load_steps=3 format=3 uid="uid://0lj3qejewwsp"]
+
+[ext_resource type="Script" uid="uid://drpaxx3da40cr" path="res://Menus/settings_menu.gd" id="1_8x3wo"]
+[ext_resource type="Script" uid="uid://doa6b45eovwep" path="res://Menus/master_volume.gd" id="1_safvx"]
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8x3wo")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="SettingsMenuContainer" type="VBoxContainer" parent="PanelContainer/CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SettingsLabel" type="Label" parent="PanelContainer/CenterContainer/SettingsMenuContainer"]
+layout_mode = 2
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Seperator" type="MarginContainer" parent="PanelContainer/CenterContainer/SettingsMenuContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 30
+
+[node name="MasterVolume" type="VBoxContainer" parent="PanelContainer/CenterContainer/SettingsMenuContainer" node_paths=PackedStringArray("volume_slider")]
+layout_mode = 2
+script = ExtResource("1_safvx")
+bus_name = &"Master"
+volume_slider = NodePath("MasterSlider")
+
+[node name="Label" type="Label" parent="PanelContainer/CenterContainer/SettingsMenuContainer/MasterVolume"]
+layout_mode = 2
+text = "Master Volume"
+
+[node name="MasterSlider" type="HSlider" parent="PanelContainer/CenterContainer/SettingsMenuContainer/MasterVolume"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.001
+
+[node name="Seperator2" type="MarginContainer" parent="PanelContainer/CenterContainer/SettingsMenuContainer/MasterVolume"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="MusicVolume" type="VBoxContainer" parent="PanelContainer/CenterContainer/SettingsMenuContainer" node_paths=PackedStringArray("volume_slider")]
+layout_mode = 2
+script = ExtResource("1_safvx")
+bus_name = &"Music"
+volume_slider = NodePath("MusicSlider")
+
+[node name="Label" type="Label" parent="PanelContainer/CenterContainer/SettingsMenuContainer/MusicVolume"]
+layout_mode = 2
+text = "Music Volume"
+
+[node name="MusicSlider" type="HSlider" parent="PanelContainer/CenterContainer/SettingsMenuContainer/MusicVolume"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.001
+
+[node name="Seperator3" type="MarginContainer" parent="PanelContainer/CenterContainer/SettingsMenuContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="SFXSlider" type="VBoxContainer" parent="PanelContainer/CenterContainer/SettingsMenuContainer" node_paths=PackedStringArray("volume_slider")]
+layout_mode = 2
+script = ExtResource("1_safvx")
+bus_name = &"SFX"
+volume_slider = NodePath("SFXSlider")
+
+[node name="Label" type="Label" parent="PanelContainer/CenterContainer/SettingsMenuContainer/SFXSlider"]
+layout_mode = 2
+text = "SFX Volume"
+
+[node name="SFXSlider" type="HSlider" parent="PanelContainer/CenterContainer/SettingsMenuContainer/SFXSlider"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.001
+
+[node name="Seperator4" type="MarginContainer" parent="PanelContainer/CenterContainer/SettingsMenuContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="ReturnButton" type="Button" parent="PanelContainer/CenterContainer/SettingsMenuContainer"]
+layout_mode = 2
+text = "Return"
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/CenterContainer/SettingsMenuContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 15
+
+[connection signal="mouse_entered" from="PanelContainer/CenterContainer/SettingsMenuContainer/MasterVolume/MasterSlider" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PanelContainer/CenterContainer/SettingsMenuContainer/MasterVolume/MasterSlider" to="." method="_on_mouse_exited"]
+[connection signal="value_changed" from="PanelContainer/CenterContainer/SettingsMenuContainer/MasterVolume/MasterSlider" to="PanelContainer/CenterContainer/SettingsMenuContainer/MasterVolume" method="_on_volume_slider_value_changed"]
+[connection signal="mouse_entered" from="PanelContainer/CenterContainer/SettingsMenuContainer/MusicVolume/MusicSlider" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PanelContainer/CenterContainer/SettingsMenuContainer/MusicVolume/MusicSlider" to="." method="_on_mouse_exited"]
+[connection signal="value_changed" from="PanelContainer/CenterContainer/SettingsMenuContainer/MusicVolume/MusicSlider" to="PanelContainer/CenterContainer/SettingsMenuContainer/MusicVolume" method="_on_volume_slider_value_changed"]
+[connection signal="mouse_entered" from="PanelContainer/CenterContainer/SettingsMenuContainer/SFXSlider/SFXSlider" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PanelContainer/CenterContainer/SettingsMenuContainer/SFXSlider/SFXSlider" to="." method="_on_mouse_exited"]
+[connection signal="value_changed" from="PanelContainer/CenterContainer/SettingsMenuContainer/SFXSlider/SFXSlider" to="PanelContainer/CenterContainer/SettingsMenuContainer/SFXSlider" method="_on_volume_slider_value_changed"]
+[connection signal="mouse_entered" from="PanelContainer/CenterContainer/SettingsMenuContainer/ReturnButton" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PanelContainer/CenterContainer/SettingsMenuContainer/ReturnButton" to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="PanelContainer/CenterContainer/SettingsMenuContainer/ReturnButton" to="." method="_on_return_button_pressed"]

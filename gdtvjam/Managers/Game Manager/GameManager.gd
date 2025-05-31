@@ -29,3 +29,15 @@ var player_initial_pos: Vector2
 var entered_direction: directions
 
 var initial_game_run: bool = true
+var can_move: bool = true
+var is_zoomed: bool = false
+
+func _ready() -> void:
+	DialogueManager.dialogue_started.connect(on_dialogue_started)
+	DialogueManager.dialogue_ended.connect(on_dialogue_ended)
+
+func on_dialogue_started(_resource: DialogueResource) -> void:
+	can_move = false
+
+func on_dialogue_ended(_resource: DialogueResource) -> void:
+	can_move = true

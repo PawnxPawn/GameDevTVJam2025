@@ -33,7 +33,15 @@ tile_set = ExtResource("3_riyix")
 position = Vector2(30, 30)
 normal_tiles = NodePath("../Floor")
 
+[node name="Label" type="Label" parent="Block"]
+offset_left = -34.0
+offset_top = -52.0
+offset_right = 41.0
+offset_bottom = -29.0
+text = "PUSH ME!"
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("5_riyix")]
 

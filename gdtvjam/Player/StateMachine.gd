@@ -9,8 +9,6 @@ var last_direction: Vector2
 
 var current_state: States
 
-var can_move: bool = true
-
 enum States 
 {
 	Idle,
@@ -19,6 +17,7 @@ enum States
 
 func _ready() -> void:
 	current_state = States.Idle
+	
 
 func _process(_delta: float) -> void:
 	match current_state:
@@ -27,6 +26,8 @@ func _process(_delta: float) -> void:
 		States.Walk:
 			_walk_state()
 
+
+
 #region States
 func _is_moving() -> bool:
 	current_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -34,11 +35,11 @@ func _is_moving() -> bool:
 
 func _idle_state() -> void:
 	_idle_animation()
-	if (_is_moving()):
+	if (_is_moving() && GameManager.can_move && !GameManager.is_zoomed):
 		current_state = States.Walk
 
 func _walk_state() -> void:
-	if (!_is_moving() || !can_move):
+	if (!_is_moving() || !GameManager.can_move || GameManager.is_zoomed):
 		AudioManager.walk_sfx.stop()
 		current_state = States.Idle
 		return

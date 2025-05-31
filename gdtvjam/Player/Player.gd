@@ -13,6 +13,8 @@ class_name player
 @onready var camera: Camera2D = %Camera
 
 var block_is_child: bool = false
+
+var is_zoomed_out: bool = false
 #endregion
 
 #region Move Block
@@ -76,12 +78,21 @@ func check_normal_tiles() -> void:
 			GameManager.current_player_size = GameManager.character_size.NORMAL
 			return
 		
+func _input(_event: InputEvent) -> void:
+	if (Input.is_action_pressed("zoom_out")):
+		is_zoomed_out = true
+		GameManager.is_zoomed = true
+	if (Input.is_action_just_released("zoom_out")):
+		is_zoomed_out = false
+		GameManager.is_zoomed = false
 
 func adjust_player() -> void:
-	if (GameManager.current_player_size == GameManager.character_size.SMALL):
+	if (GameManager.current_player_size == GameManager.character_size.SMALL && is_zoomed_out):
+		camera.zoom = Vector2(2, 2)
+	elif (GameManager.current_player_size == GameManager.character_size.SMALL):
 		camera.zoom = Vector2 (10, 10)
 		scale = Vector2(0.1, 0.1)
-	else:
+	elif (GameManager.current_player_size == GameManager.character_size.NORMAL):
 		camera.zoom = Vector2.ONE
 		scale = Vector2.ONE
 

@@ -1,5 +1,0 @@
-[gd_resource type="WwisePlatformInfo" format=3 uid="uid://dckni0hw7um1w"]
-
-[resource]
-platform_name = "Windows"
-platform_path = "../../DevJamWwise/GeneratedSoundBanks/Windows"

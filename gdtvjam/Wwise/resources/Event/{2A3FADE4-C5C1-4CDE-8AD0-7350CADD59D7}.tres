@@ -1,7 +1,0 @@
-[gd_resource type="WwiseEvent" format=3 uid="uid://coxevvjvrujvx"]
-
-[resource]
-name = "Play_Game_Button"
-id = 1910112351
-guid = "{2A3FADE4-C5C1-4CDE-8AD0-7350CADD59D7}"
-dummy = true

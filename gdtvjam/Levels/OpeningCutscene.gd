@@ -1,19 +1,37 @@
 extends Node
 
-@export var dialgoue_to_play: DialogueResource
-@export var dialogue_name: String
+@onready var label: Label = %IntoLabel
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
 @export var next_level: StringName
+
+var _dialogue: Array[String] = [
+	"\"...Come find me...\"",
+	"I don't remember this cave being here before.",
+]
 
 var scene: PackedScene
 
 func _ready() -> void:
-	AudioManager.level_music.play()
+	GameManager.initial_game_run = true
 	scene = load(next_level)
+	animation_player.play("Opening")
 
-	GameManager.initial_game_run = false
-	DialogueManager.dialogue_ended.connect(_on_dialogue_end)
-	DialogueManager.show_example_dialogue_balloon(dialgoue_to_play, dialogue_name)
 
-func _on_dialogue_end(_resource: DialogueResource) -> void:
-	GameManager.entered_direction = GameManager.directions.SOUTH
-	get_tree().change_scene_to_packed(scene)
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("interact") or event.is_action_pressed("pause"):
+		ChangeScenes()
+		
+
+func show_next_dialogue(index:int) -> void:
+	label.text = _dialogue[index]
+
+
+func remove_dialogue() -> void:
+	label.text = ""
+
+
+func ChangeScenes() -> void:
+	if scene:
+		var new_scene = scene.instantiate()
+		get_tree().change_scene_to(new_scene)

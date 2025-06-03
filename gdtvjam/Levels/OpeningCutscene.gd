@@ -13,8 +13,8 @@ var _dialogue: Array[String] = [
 var scene: PackedScene
 
 func _ready() -> void:
+	GameManager.entered_direction = GameManager.directions.SOUTH
 	GameManager.initial_game_run = true
-	scene = load(next_level)
 	animation_player.play("Opening")
 
 
@@ -32,6 +32,4 @@ func remove_dialogue() -> void:
 
 
 func ChangeScenes() -> void:
-	if scene:
-		var new_scene = scene.instantiate()
-		get_tree().change_scene_to(new_scene)
+	get_tree().change_scene_to_file(next_level)

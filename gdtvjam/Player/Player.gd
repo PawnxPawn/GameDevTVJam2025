@@ -2,10 +2,11 @@ extends CharacterBody2D
 class_name player
 
 #region variables
-@export var movement_speed: float = 100
-@export var push_strength: float = 300
+@export var movement_speed: float = 175
+@export var push_strength: float = 400
 
 @export var normal_tiles: TileMapLayer
+@export var shrunk_tiles: TileMapLayer
 
 @export var feedback_dialogue: DialogueResource
 @export var animation_player: AnimationPlayer
@@ -15,7 +16,12 @@ class_name player
 var block_is_child: bool = false
 
 var is_zoomed_out: bool = false
+
+var default_movement_speed: float
 #endregion
+
+func _ready() -> void:
+	default_movement_speed = movement_speed
 
 #region Move Block
 func _physics_process(_delta: float) -> void:
@@ -39,7 +45,7 @@ func push_pushable(pushable: RigidBody2D, collision: KinematicCollision2D):
 #region Tile Map Checker
 
 func _process(_delta: float) -> void:
-	if normal_tiles:
+	if normal_tiles or shrunk_tiles:
 		check_normal_tiles()
 	if (GameManager.current_player_size == GameManager.character_size.NORMAL):
 		set_physics_process(true) #Able to push the damn block
@@ -49,34 +55,42 @@ func _process(_delta: float) -> void:
 	adjust_player()
 
 func check_normal_tiles() -> void:
-	var cell := normal_tiles.local_to_map(position)
-	var data: TileData = normal_tiles.get_cell_tile_data(cell)
-	if data != null:
-		var walkable: bool = data.get_custom_data("walkable")
-		var shrink_tile: bool = data.get_custom_data("shrink_tile")
-		var grow_tile: bool = data.get_custom_data("grow_tile")
-		var walkable_small: bool = data.get_custom_data("walkable_small")
-		
-		#Too Big
-		if (walkable_small && GameManager.current_player_size == GameManager.character_size.NORMAL):
-			DialogueManager.show_example_dialogue_balloon(feedback_dialogue, "TooBig")
-			reset_level()
-			return
-		#Not Walkable Period
-		if (!walkable):
-			DialogueManager.show_example_dialogue_balloon(feedback_dialogue, "NotWalkable")
-			reset_level()
-			return
-		if (shrink_tile && GameManager.current_player_size == GameManager.character_size.NORMAL):
-			DialogueManager.show_example_dialogue_balloon(feedback_dialogue, "Shrink")
-			animation_player.play("size_change")
-			GameManager.current_player_size = GameManager.character_size.SMALL
-			return
-		if (grow_tile && GameManager.current_player_size == GameManager.character_size.SMALL):
-			DialogueManager.show_example_dialogue_balloon(feedback_dialogue, "Grow")
-			animation_player.play("size_change")
-			GameManager.current_player_size = GameManager.character_size.NORMAL
-			return
+	var normal_cell := normal_tiles.local_to_map(position)
+	var normal_data: TileData = normal_tiles.get_cell_tile_data(normal_cell)
+	var shrunk_cell := shrunk_tiles.local_to_map(position)
+	var shrunk_data: TileData = shrunk_tiles.get_cell_tile_data(shrunk_cell)
+	
+	var walkable: bool = normal_data.get_custom_data("walkable") if normal_data != null else false
+	var shrink_tile: bool = normal_data.get_custom_data("shrink_tile") if normal_data != null else false
+	var grow_tile: bool = normal_data.get_custom_data("grow_tile") if normal_data != null else false
+	var walkable_small: bool = shrunk_data.get_custom_data("walkable_small") if shrunk_data != null else false
+	
+	#Too Big
+	if ((walkable_small && GameManager.current_player_size == GameManager.character_size.NORMAL)):
+		#DialogueManager.show_example_dialogue_balloon(feedback_dialogue, "TooBig")
+		reset_level()
+		return
+	#Not Walkable Period
+	if(walkable_small && GameManager.current_player_size == GameManager.character_size.SMALL): 
+		return
+	if (!walkable):
+		#DialogueManager.show_example_dialogue_balloon(feedback_dialogue, "NotWalkable")
+		reset_level()
+		return
+	if (shrink_tile && GameManager.current_player_size == GameManager.character_size.NORMAL):
+		#DialogueManager.show_example_dialogue_balloon(feedback_dialogue, "Shrink")
+		animation_player.play("size_change")
+		set_collision_mask_value(4, true) #Enables the small collision mask
+		movement_speed = 100;
+		GameManager.current_player_size = GameManager.character_size.SMALL
+		return
+	if (grow_tile && GameManager.current_player_size == GameManager.character_size.SMALL):
+		#DialogueManager.show_example_dialogue_balloon(feedback_dialogue, "Grow")
+		animation_player.play("size_change")
+		set_collision_mask_value(4, false)
+		movement_speed = default_movement_speed;
+		GameManager.current_player_size = GameManager.character_size.NORMAL
+		return
 		
 func _input(_event: InputEvent) -> void:
 	if (Input.is_action_pressed("zoom_out")):
@@ -90,7 +104,7 @@ func adjust_player() -> void:
 	if (GameManager.current_player_size == GameManager.character_size.SMALL && is_zoomed_out):
 		camera.zoom = Vector2(2, 2)
 	elif (GameManager.current_player_size == GameManager.character_size.SMALL):
-		camera.zoom = Vector2 (10, 10)
+		camera.zoom = Vector2 (6, 6)
 		scale = Vector2(0.1, 0.1)
 	elif (GameManager.current_player_size == GameManager.character_size.NORMAL):
 		camera.zoom = Vector2.ONE
@@ -98,5 +112,4 @@ func adjust_player() -> void:
 
 func reset_level() -> void:
 	get_tree().reload_current_scene()
-	print("Should reset")
 #endregion

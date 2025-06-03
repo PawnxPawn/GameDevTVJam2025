@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bbixkoioyiwww" path="res://Other Systems/LevelSwitcher/LevelSwitcher.gd" id="1_mw8i3"]
 
 [node name="LevelSwitcher" type="Area2D"]
+collision_mask = 2
 script = ExtResource("1_mw8i3")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -11,7 +11,7 @@ func _ready() -> void:
 
 
 func _unhandled_input(_event: InputEvent) -> void:
-	if (Input.is_action_just_pressed("Pause")):
+	if (Input.is_action_just_pressed("pause")):
 		if (get_tree().paused && settings_menu.visible):
 			show_hide()
 		else:

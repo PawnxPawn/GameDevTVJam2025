@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://bus6el37rgycc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xcayt"]
+size = Vector2(45, 651.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5g41i"]
+size = Vector2(45, 910.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p5226"]
+size = Vector2(39.5, 429.375)
+
+[node name="SmallAreaNoWalk" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-406.5, 252.25)
+shape = SubResource("RectangleShape2D_xcayt")
+debug_color = Color(1, 0.38609, 0.9505, 0.419608)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(471, 252)
+shape = SubResource("RectangleShape2D_xcayt")
+debug_color = Color(1, 0.38609, 0.9505, 0.419608)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(29.625, 535)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_5g41i")
+debug_color = Color(1, 0.38609, 0.9505, 0.419608)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+position = Vector2(-210.688, 47.25)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_p5226")
+debug_color = Color(1, 0.38609, 0.9505, 0.419608)
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="."]
+position = Vector2(273, 47.25)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_p5226")
+debug_color = Color(1, 0.38609, 0.9505, 0.419608)

@@ -1,0 +1,28 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://dstci6j17xlv3"]
+
+[ext_resource type="Texture2D" uid="uid://8f2yms5nep2w" path="res://Assets/Tiles/Shrunk_Walkables_Assets.png" id="2_qg6f7"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4lefh"]
+texture = ExtResource("2_qg6f7")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/custom_data_4 = true
+1:0/0 = 0
+1:0/0/custom_data_4 = true
+2:0/0 = 0
+2:0/0/custom_data_4 = true
+
+[resource]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+custom_data_layer_0/name = "walkable"
+custom_data_layer_0/type = 1
+custom_data_layer_1/name = "shrink_tile"
+custom_data_layer_1/type = 1
+custom_data_layer_2/name = "destroy_block"
+custom_data_layer_2/type = 1
+custom_data_layer_3/name = "grow_tile"
+custom_data_layer_3/type = 1
+custom_data_layer_4/name = "walkable_small"
+custom_data_layer_4/type = 1
+sources/1 = SubResource("TileSetAtlasSource_4lefh")

@@ -6,6 +6,7 @@ extends Node
 
 var current_direction: Vector2
 var last_direction: Vector2
+var push_direction: Vector2 = Vector2.ZERO
 
 var current_state: States
 
@@ -35,6 +36,7 @@ func _is_moving() -> bool:
 
 func _idle_state() -> void:
 	_idle_animation()
+	push_direction = Vector2.ZERO
 	if (_is_moving() && GameManager.can_move && !GameManager.is_zoomed):
 		current_state = States.Walk
 
@@ -66,12 +68,16 @@ func _idle_animation() -> void:
 func _walk_animation() -> void:
 	match current_direction:
 		Vector2.UP:
+			push_direction = Vector2.UP
 			sprite.play("walk_up")
 		Vector2.DOWN:
+			push_direction = Vector2.DOWN
 			sprite.play("walk_down")
 		Vector2.LEFT:
+			push_direction = Vector2.LEFT
 			sprite.play("walk_left")
 		Vector2.RIGHT:
+			push_direction = Vector2.RIGHT
 			sprite.play("walk_right")
 	last_direction = current_direction
 

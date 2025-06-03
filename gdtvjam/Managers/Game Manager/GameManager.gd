@@ -14,6 +14,14 @@ enum directions
 	WEST
 }
 
+const default_block_locations: Dictionary = {
+	&"EA": Vector2(30,30),
+	&"6A": Vector2(352,222),
+	&"7A": Vector2(32,28),
+	&"9A": Vector2(165,-161),
+	&"9B": Vector2(94,-161)
+}
+
 var block_locations: Dictionary = {
 	&"EA": Vector2(30,30),
 	&"6A": Vector2(352,222),
@@ -22,13 +30,6 @@ var block_locations: Dictionary = {
 	&"9B": Vector2(94,-161)
 }
 
-var default_block_locations: Dictionary = {
-	&"EA": Vector2(30,30),
-	&"6A": Vector2(352,222),
-	&"7A": Vector2(32,28),
-	&"9A": Vector2(165,-161),
-	&"9B": Vector2(94,-161)
-}
 
 var is_credits_called = false
 

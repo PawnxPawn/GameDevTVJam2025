@@ -7,12 +7,14 @@ extends Node
 
 var _dialogue: Array[String] = [
 	"\"...Come find me...\"",
-	"I don't remember this cave being here before.",
+	"The cave whispers to you through the wind.",
+	"As you enter the cave everything turns black and you awaken somewhere new."
 ]
 
 var scene: PackedScene
 
 func _ready() -> void:
+	AudioManager.level_music.play()
 	GameManager.entered_direction = GameManager.directions.SOUTH
 	GameManager.initial_game_run = true
 	animation_player.play("Opening")

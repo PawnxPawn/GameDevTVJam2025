@@ -7,8 +7,8 @@ extends Node
 
 var _dialogue: Array[String] = [
 	"\"...Come find me...\"",
-	"The cave whispers to you through the wind.",
-	"As you enter the cave everything turns black and you awaken somewhere new."
+	"The cave whispers to you through the wind, beckoning you in.",
+	"As you enter the cave, a wave of nostalgia washes over you."
 ]
 
 var scene: PackedScene

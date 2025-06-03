@@ -24,7 +24,14 @@ func _ready() -> void:
 		determine_position()
 	else:
 		GameManager.current_player_size = GameManager.player_size_when_entered
-		current_player.position = GameManager.player_initial_pos
+
+	if GameManager.current_player_size == GameManager.character_size.SMALL:
+		current_player.set_collision_mask_value(4, true)
+	else:
+		current_player.set_collision_mask_value(4, false)
+
+
+	current_player.position = GameManager.player_initial_pos
 
 func _exit_tree() -> void:
 	if not blocks.is_empty():

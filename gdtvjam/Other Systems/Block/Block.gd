@@ -5,7 +5,10 @@ extends RigidBody2D
 
 @onready var interactable : Interactable
 
-func _process(_delta: float) -> void:
+func _ready() -> void:
+	sleeping = true
+
+func _physics_process(_delta: float) -> void:
 	if normal_tiles:
 		var cell := normal_tiles.local_to_map(position)
 		var data: TileData = normal_tiles.get_cell_tile_data(cell)
@@ -13,3 +16,7 @@ func _process(_delta: float) -> void:
 			var destroy_block: bool = data.get_custom_data("destroy_block")
 			if (destroy_block):
 				visible = false
+				$CollisionShape2D.disabled = true
+		if linear_velocity.is_equal_approx(Vector2.ZERO):
+			sleeping = true
+

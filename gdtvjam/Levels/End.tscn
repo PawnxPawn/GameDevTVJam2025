@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://d2ixxkaw5u2e2"]
+[gd_scene load_steps=11 format=3 uid="uid://d2ixxkaw5u2e2"]
 
 [ext_resource type="Texture2D" uid="uid://boq6pp74ajrtj" path="res://Assets/Tiles/1-10-exit.png" id="1_jx0kn"]
 [ext_resource type="Script" uid="uid://bepycm8nfwfit" path="res://Levels/LevelHandler.gd" id="1_u3djv"]
@@ -8,6 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://bx43n7oxgktd1" path="res://Other Systems/LevelSwitcher/LevelSwitcher.tscn" id="5_g7e4c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jx0kn"]
+size = Vector2(137.915, 1160.21)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4taaj"]
 size = Vector2(137.915, 1160.21)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u3djv"]
@@ -36,23 +39,23 @@ shape = SubResource("RectangleShape2D_jx0kn")
 position = Vector2(-961, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="1-10-exit/Wall2"]
-position = Vector2(454, -10.5)
+position = Vector2(482, -10.5)
 shape = SubResource("RectangleShape2D_jx0kn")
 
 [node name="Wall3" type="StaticBody2D" parent="1-10-exit"]
 position = Vector2(-980, 4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="1-10-exit/Wall3"]
-position = Vector2(990.687, -357.12)
-rotation = 1.56259
-shape = SubResource("RectangleShape2D_jx0kn")
+position = Vector2(990.687, -242.12)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_4taaj")
 
 [node name="Wall4" type="StaticBody2D" parent="1-10-exit"]
 position = Vector2(-952, 706)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="1-10-exit/Wall4"]
 position = Vector2(990.687, -357.12)
-rotation = 1.56259
+rotation = 1.5708
 shape = SubResource("RectangleShape2D_jx0kn")
 
 [node name="WinChest" parent="." instance=ExtResource("2_1u0m0")]

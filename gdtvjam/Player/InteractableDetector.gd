@@ -16,10 +16,10 @@ func _process(_delta: float) -> void:
 		interact_label.text = "Press E to {interact}".format({"interact": not_block_interactable.interaction_name})
 
 func _input(_event: InputEvent) -> void:
-	if (object_close && Input.is_action_just_pressed("push_pull") && not_block_interactable == null):
+	if (object_close && Input.is_action_just_pressed("interact") && not_block_interactable == null):
 		pulling = !pulling
 		_display_label(pulling, interaction_text)
-	elif (object_close && Input.is_action_just_pressed("push_pull") && not_block_interactable != null):
+	elif (object_close && Input.is_action_just_pressed("interact") && not_block_interactable != null):
 		not_block_interactable.interact.call()
 		pass
 	else:

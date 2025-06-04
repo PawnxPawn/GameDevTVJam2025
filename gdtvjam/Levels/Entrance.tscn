@@ -106,6 +106,9 @@ shape = SubResource("RectangleShape2D_611wx")
 
 [node name="PuzzleWall" parent="." instance=ExtResource("8_h2db4")]
 
+[node name="CollisionShape2D3" parent="PuzzleWall" index="2"]
+position = Vector2(31, -9)
+
 [node name="CollisionShape2D4" parent="PuzzleWall" index="3"]
 position = Vector2(31, 69)
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cteia7ktewpao"
-path="res://.godot/imported/Objects.png-baf149a3e5a12f6073df080077c26e1c.ctex"
+uid="uid://8f2yms5nep2w"
+path="res://.godot/imported/Shrunk_Walkables_Assets.png-f8e36b72ae6853f04d38bd7426cb1742.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tiles/Objects.png"
-dest_files=["res://.godot/imported/Objects.png-baf149a3e5a12f6073df080077c26e1c.ctex"]
+source_file="res://Assets/Enviornment/Shrunk_Walkables_Assets.png"
+dest_files=["res://.godot/imported/Shrunk_Walkables_Assets.png-f8e36b72ae6853f04d38bd7426cb1742.ctex"]
 
 [params]
 

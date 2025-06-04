@@ -1,13 +1,21 @@
-[gd_scene load_steps=12 format=4 uid="uid://dm2uh22nu7joe"]
+[gd_scene load_steps=16 format=4 uid="uid://dm2uh22nu7joe"]
 
 [ext_resource type="Script" uid="uid://bepycm8nfwfit" path="res://Levels/LevelHandler.gd" id="1_jta5c"]
 [ext_resource type="TileSet" uid="uid://bj0uslx3ys56" path="res://Levels/MainTileset.tres" id="2_63j2j"]
 [ext_resource type="TileSet" uid="uid://dstci6j17xlv3" path="res://Levels/SmallTileset.tres" id="3_a6juv"]
 [ext_resource type="PackedScene" uid="uid://1c4l1suixtb2" path="res://Player/Player.tscn" id="3_pm251"]
 [ext_resource type="PackedScene" uid="uid://ktn845vos8qe" path="res://Menus/PauseMenu.tscn" id="4_63j2j"]
+[ext_resource type="PackedScene" uid="uid://btp6nimbftqcj" path="res://Other Systems/KillZone/KillZone.tscn" id="4_s35pp"]
 [ext_resource type="PackedScene" uid="uid://bx43n7oxgktd1" path="res://Other Systems/LevelSwitcher/LevelSwitcher.tscn" id="5_pm251"]
 [ext_resource type="PackedScene" uid="uid://d2ggq60bil7kj" path="res://Other Systems/Walls/BottomLevelCollision.tscn" id="7_ageof"]
 [ext_resource type="PackedScene" uid="uid://bus6el37rgycc" path="res://Other Systems/Walls/SmallAreaNoWalk.tscn" id="8_emr7g"]
+[ext_resource type="PackedScene" uid="uid://b6u6kp7npwojk" path="res://Assets/Enviornment/WaterFountain/WaterFountain.tscn" id="9_l7ouy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s35pp"]
+size = Vector2(703.587, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mu778"]
+size = Vector2(703.587, 25.5455)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a6juv"]
 size = Vector2(77, 46)
@@ -29,8 +37,21 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAHAAgAAAD//wAAAAAGAAgAAAABAAAAAAAIAAg
 tile_set = ExtResource("2_63j2j")
 
 [node name="ShrunkFloor" type="TileMapLayer" parent="."]
+position = Vector2(1, 0)
 tile_map_data = PackedByteArray("AAD7////AQACAAAAAAD7//7/AQACAAAAAAD7//3/AQACAAAAAAD7//v/AQAAAAAAAAD7//z/AQACAAAAAAD8//v/AQAAAAAAAAD9//v/AQAAAAAAAAD+//v/AQAAAAAAAAD///v/AQAAAAAAAAAAAPv/AQAAAAAAAAABAPv/AQAAAAAAAAACAPv/AQAAAAAAAAADAPv/AQAAAAAAAAAEAPv/AQAAAAAAAAAFAPv/AQAAAAAAAAAGAPv/AQAAAAAAAAAHAPv/AQAAAAAAAAA=")
 tile_set = ExtResource("3_a6juv")
+
+[node name="KillZone" parent="ShrunkFloor" instance=ExtResource("4_s35pp")]
+position = Vector2(-1, 0)
+death_type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShrunkFloor/KillZone"]
+position = Vector2(97, -308.5)
+shape = SubResource("RectangleShape2D_s35pp")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ShrunkFloor/KillZone"]
+position = Vector2(97.2066, -269.227)
+shape = SubResource("RectangleShape2D_mu778")
 
 [node name="Player" parent="." node_paths=PackedStringArray("normal_tiles", "shrunk_tiles") instance=ExtResource("3_pm251")]
 position = Vector2(-71, 21)
@@ -84,5 +105,21 @@ position = Vector2(-210.688, 46.25)
 [node name="CollisionShape2D5" parent="SmallAreaNoWalk" index="4"]
 position = Vector2(242.344, 47)
 shape = SubResource("RectangleShape2D_emr7g")
+
+[node name="WaterFountain" parent="." instance=ExtResource("9_l7ouy")]
+position = Vector2(-192, -456)
+
+[node name="WaterFountain2" parent="." instance=ExtResource("9_l7ouy")]
+position = Vector2(-39, -456)
+
+[node name="WaterFountain3" parent="." instance=ExtResource("9_l7ouy")]
+position = Vector2(92, -456)
+
+[node name="WaterFountain5" parent="." instance=ExtResource("9_l7ouy")]
+position = Vector2(361, -456)
+
+[node name="WaterFountain6" parent="." instance=ExtResource("9_l7ouy")]
+position = Vector2(229, -456)
+scale = Vector2(4, 3.96418)
 
 [editable path="SmallAreaNoWalk"]

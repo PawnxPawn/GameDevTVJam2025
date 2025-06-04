@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://qacor0g6ov7w"]
+[gd_scene load_steps=16 format=4 uid="uid://qacor0g6ov7w"]
 
 [ext_resource type="TileSet" uid="uid://bj0uslx3ys56" path="res://Levels/MainTileset.tres" id="1_kb5ut"]
 [ext_resource type="Script" uid="uid://bepycm8nfwfit" path="res://Levels/LevelHandler.gd" id="1_uwj6k"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bx43n7oxgktd1" path="res://Other Systems/LevelSwitcher/LevelSwitcher.tscn" id="6_ioxke"]
 [ext_resource type="PackedScene" uid="uid://d2ggq60bil7kj" path="res://Other Systems/Walls/BottomLevelCollision.tscn" id="8_w1sat"]
 [ext_resource type="PackedScene" uid="uid://bus6el37rgycc" path="res://Other Systems/Walls/SmallAreaNoWalk.tscn" id="9_nijbd"]
+[ext_resource type="PackedScene" uid="uid://btp6nimbftqcj" path="res://Other Systems/KillZone/KillZone.tscn" id="10_nijbd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f6i8f"]
 size = Vector2(77, 46)
@@ -18,6 +19,12 @@ size = Vector2(38.5, 62)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w1sat"]
 size = Vector2(39.5, 443.688)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nijbd"]
+size = Vector2(128, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cg4ff"]
+size = Vector2(128, 23)
 
 [node name="Level5" type="Node" node_paths=PackedStringArray("north_start", "south_start", "east_start", "current_player")]
 script = ExtResource("1_uwj6k")
@@ -129,5 +136,16 @@ position = Vector2(-289, -18)
 [node name="CollisionShape2D5" parent="SmallAreaNoWalk" index="4"]
 position = Vector2(229.156, -18)
 shape = SubResource("RectangleShape2D_w1sat")
+
+[node name="KillZone" parent="." instance=ExtResource("10_nijbd")]
+death_type = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
+position = Vector2(320, 333)
+shape = SubResource("RectangleShape2D_nijbd")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="KillZone"]
+position = Vector2(320, 369.5)
+shape = SubResource("RectangleShape2D_cg4ff")
 
 [editable path="SmallAreaNoWalk"]

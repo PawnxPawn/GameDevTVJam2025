@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://d2ixxkaw5u2e2"]
 
-[ext_resource type="Texture2D" uid="uid://boq6pp74ajrtj" path="res://Assets/Tiles/1-10-exit.png" id="1_jx0kn"]
+[ext_resource type="Texture2D" uid="uid://boq6pp74ajrtj" path="res://Assets/Enviornment/1-10-exit.png" id="1_jx0kn"]
 [ext_resource type="Script" uid="uid://bepycm8nfwfit" path="res://Levels/LevelHandler.gd" id="1_u3djv"]
 [ext_resource type="PackedScene" uid="uid://jav7rcmbsdd0" path="res://Other Systems/WinChest/WinChest.tscn" id="2_1u0m0"]
 [ext_resource type="PackedScene" uid="uid://1c4l1suixtb2" path="res://Player/Player.tscn" id="3_ysk0u"]

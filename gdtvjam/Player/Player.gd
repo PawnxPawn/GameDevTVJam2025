@@ -110,6 +110,8 @@ func adjust_player() -> void:
 		camera.zoom = Vector2.ONE
 		scale = Vector2.ONE
 
-func reset_level() -> void:
-	get_tree().reload_current_scene()
+func reset_level(death_type:GameManager.death_type = GameManager.death_type.NONE) -> void:
+	if (death_type != GameManager.death_type.NONE):
+		pass
+	get_tree().call_deferred("reload_current_scene")
 #endregion

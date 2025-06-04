@@ -6,6 +6,16 @@ enum character_size
 	SMALL = 0
 }
 
+enum death_type
+{
+	NONE,
+	WATER,
+	PIT,
+	TRIPWIRE,
+	OUTOFBOUNDS,
+}
+
+
 enum directions
 {
 	NORTH,

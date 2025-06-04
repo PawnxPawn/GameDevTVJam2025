@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8f2yms5nep2w"
-path="res://.godot/imported/Shrunk_Walkables_Assets.png-f7b9426df030a14bb0d55ce976225c45.ctex"
+uid="uid://codxpjhfd6tro"
+path="res://.godot/imported/Object_fountain.png-e8871eed6eb0c0babe7bef95b36afde8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tiles/Shrunk_Walkables_Assets.png"
-dest_files=["res://.godot/imported/Shrunk_Walkables_Assets.png-f7b9426df030a14bb0d55ce976225c45.ctex"]
+source_file="res://Assets/Enviornment/WaterFountain/Object_fountain.png"
+dest_files=["res://.godot/imported/Object_fountain.png-e8871eed6eb0c0babe7bef95b36afde8.ctex"]
 
 [params]
 

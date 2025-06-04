@@ -1,10 +1,10 @@
 [gd_resource type="TileSet" load_steps=5 format=3 uid="uid://bj0uslx3ys56"]
 
-[ext_resource type="Texture2D" uid="uid://c6tesc4svcahy" path="res://Assets/Tiles/New_tile set.png" id="1_sfdwa"]
-[ext_resource type="Texture2D" uid="uid://ch6untyqoqyc7" path="res://Assets/Tiles/Level (1).png" id="2_fx4wl"]
+[ext_resource type="Texture2D" uid="uid://c6tesc4svcahy" path="res://Assets/Enviornment/New_tile set.png" id="1_fx4wl"]
+[ext_resource type="Texture2D" uid="uid://ch6untyqoqyc7" path="res://Assets/Enviornment/Updated_tiles.png" id="2_fx4wl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xncj4"]
-texture = ExtResource("1_sfdwa")
+texture = ExtResource("1_fx4wl")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)

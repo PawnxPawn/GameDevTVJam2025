@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://ch3lrjchkvkpq"]
+[gd_scene load_steps=13 format=4 uid="uid://ch3lrjchkvkpq"]
 
 [ext_resource type="TileSet" uid="uid://bj0uslx3ys56" path="res://Levels/MainTileset.tres" id="1_70wcc"]
 [ext_resource type="Script" uid="uid://bepycm8nfwfit" path="res://Levels/LevelHandler.gd" id="1_rkafn"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bx43n7oxgktd1" path="res://Other Systems/LevelSwitcher/LevelSwitcher.tscn" id="5_0sogr"]
 [ext_resource type="PackedScene" uid="uid://bus6el37rgycc" path="res://Other Systems/Walls/SmallAreaNoWalk.tscn" id="6_5brs8"]
 [ext_resource type="PackedScene" uid="uid://d2ggq60bil7kj" path="res://Other Systems/Walls/BottomLevelCollision.tscn" id="8_vgbee"]
+[ext_resource type="PackedScene" uid="uid://b6u6kp7npwojk" path="res://Assets/Enviornment/WaterFountain/WaterFountain.tscn" id="9_lfbxl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5brs8"]
 size = Vector2(38.5, 62)
@@ -69,5 +70,14 @@ position = Vector2(-190.5, 47.2501)
 shape = SubResource("RectangleShape2D_vgbee")
 
 [node name="StaticBody2D" parent="." instance=ExtResource("8_vgbee")]
+
+[node name="WaterFountain" parent="." instance=ExtResource("9_lfbxl")]
+position = Vector2(-251, -70)
+
+[node name="WaterFountain2" parent="." instance=ExtResource("9_lfbxl")]
+position = Vector2(-46.527, -69.7299)
+
+[node name="WaterFountain3" parent="." instance=ExtResource("9_lfbxl")]
+position = Vector2(161, -70)
 
 [editable path="SmallAreaNoWalk"]

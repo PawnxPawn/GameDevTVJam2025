@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://ktn845vos8qe"]
+[gd_scene load_steps=6 format=3 uid="uid://ktn845vos8qe"]
 
 [ext_resource type="Script" uid="uid://c60177svo8by6" path="res://Menus/pause_menu.gd" id="1_qnjt8"]
 [ext_resource type="PackedScene" uid="uid://bdmlspewkwo5s" path="res://Menus/MainMenu.tscn" id="2_hnfxo"]
 [ext_resource type="PackedScene" uid="uid://0lj3qejewwsp" path="res://Menus/SettingsMenu.tscn" id="2_o0cs5"]
+[ext_resource type="FontFile" uid="uid://c6ur18f7svqw1" path="res://Assets/Fonts/Kubasta/Kubasta.ttf" id="3_wpn1c"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_t2718"]
+font = ExtResource("3_wpn1c")
+font_size = 32
 
 [node name="PauseMenu" type="Control" node_paths=PackedStringArray("settings_menu", "pause_menu_control")]
 process_mode = 3
@@ -52,6 +57,7 @@ layout_mode = 2
 process_mode = 3
 layout_mode = 2
 text = "PAUSED"
+label_settings = SubResource("LabelSettings_t2718")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -62,6 +68,7 @@ theme_override_constants/margin_top = 50
 [node name="ResumeButton" type="Button" parent="PauseMenuControl/PanelContainer/CenterContainer/PauseMenuContainer"]
 process_mode = 3
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_wpn1c")
 text = "Resume
 "
 
@@ -72,6 +79,7 @@ theme_override_constants/margin_top = 20
 [node name="SettingsButton" type="Button" parent="PauseMenuControl/PanelContainer/CenterContainer/PauseMenuContainer"]
 process_mode = 3
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_wpn1c")
 text = "Settings
 "
 
@@ -82,6 +90,7 @@ theme_override_constants/margin_top = 20
 [node name="MainMenuButton" type="Button" parent="PauseMenuControl/PanelContainer/CenterContainer/PauseMenuContainer"]
 process_mode = 3
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_wpn1c")
 text = "Main Menu
 "
 

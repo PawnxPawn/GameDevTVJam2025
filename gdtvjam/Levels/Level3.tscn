@@ -34,7 +34,6 @@ tile_map_data = PackedByteArray("AAAAAAAAAAADAAIAAAABAAAAAAADAAIAAAACAAAAAAADAAI
 tile_set = ExtResource("1_rhq3p")
 
 [node name="ShunkFloor" type="TileMapLayer" parent="."]
-z_index = -2
 tile_map_data = PackedByteArray("AAD7/wAAAQABAAAAAAD7/wEAAQABAAAAAAD7/wIAAQABAAAAAAD7/wMAAQABAAAAAAD7/wQAAQABAAAAAAD7/wUAAQABAAAAAAD7/wYAAQABAAAAAAA=")
 tile_set = ExtResource("2_4cgce")
 

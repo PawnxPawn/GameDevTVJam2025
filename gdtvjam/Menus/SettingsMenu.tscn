@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://0lj3qejewwsp"]
+[gd_scene load_steps=5 format=3 uid="uid://0lj3qejewwsp"]
 
 [ext_resource type="Script" uid="uid://drpaxx3da40cr" path="res://Menus/settings_menu.gd" id="1_8x3wo"]
 [ext_resource type="Script" uid="uid://doa6b45eovwep" path="res://Menus/master_volume.gd" id="1_safvx"]
+[ext_resource type="FontFile" uid="uid://c6ur18f7svqw1" path="res://Assets/Fonts/Kubasta/Kubasta.ttf" id="2_6r630"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_re3ym"]
+font = ExtResource("2_6r630")
+font_size = 32
 
 [node name="SettingsMenu" type="Control"]
 layout_mode = 3
@@ -31,6 +36,7 @@ layout_mode = 2
 [node name="SettingsLabel" type="Label" parent="PanelContainer/CenterContainer/SettingsMenuContainer"]
 layout_mode = 2
 text = "Settings"
+label_settings = SubResource("LabelSettings_re3ym")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -46,6 +52,7 @@ volume_slider = NodePath("MasterSlider")
 
 [node name="Label" type="Label" parent="PanelContainer/CenterContainer/SettingsMenuContainer/MasterVolume"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6r630")
 text = "Master Volume"
 
 [node name="MasterSlider" type="HSlider" parent="PanelContainer/CenterContainer/SettingsMenuContainer/MasterVolume"]
@@ -66,6 +73,7 @@ volume_slider = NodePath("MusicSlider")
 
 [node name="Label" type="Label" parent="PanelContainer/CenterContainer/SettingsMenuContainer/MusicVolume"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6r630")
 text = "Music Volume"
 
 [node name="MusicSlider" type="HSlider" parent="PanelContainer/CenterContainer/SettingsMenuContainer/MusicVolume"]
@@ -86,6 +94,7 @@ volume_slider = NodePath("SFXSlider")
 
 [node name="Label" type="Label" parent="PanelContainer/CenterContainer/SettingsMenuContainer/SFXSlider"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6r630")
 text = "SFX Volume"
 
 [node name="SFXSlider" type="HSlider" parent="PanelContainer/CenterContainer/SettingsMenuContainer/SFXSlider"]
@@ -100,6 +109,7 @@ theme_override_constants/margin_top = 10
 
 [node name="ReturnButton" type="Button" parent="PanelContainer/CenterContainer/SettingsMenuContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6r630")
 text = "Return"
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/CenterContainer/SettingsMenuContainer"]

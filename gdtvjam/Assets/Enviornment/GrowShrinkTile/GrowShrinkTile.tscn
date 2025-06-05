@@ -1,0 +1,107 @@
+[gd_scene load_steps=16 format=3 uid="uid://d1ie3lxp5dw4r"]
+
+[ext_resource type="Texture2D" uid="uid://fafp75ib8l6a" path="res://Assets/Enviornment/GrowShrinkTile/Jewel_Shine-Sheet.png" id="1_2r6e4"]
+[ext_resource type="Script" uid="uid://cxq3c1saqbmrj" path="res://Assets/Enviornment/GrowShrinkTile/GrowShrinkTile.gd" id="2_gk428"]
+[ext_resource type="Texture2D" uid="uid://cwlj83dy2dut0" path="res://Assets/Enviornment/GrowShrinkTile/shrink-jewel-shine-Sheet.png" id="2_x82c5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gk428"]
+atlas = ExtResource("1_2r6e4")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x82c5"]
+atlas = ExtResource("1_2r6e4")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i30xb"]
+atlas = ExtResource("1_2r6e4")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6wmy"]
+atlas = ExtResource("1_2r6e4")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jo5mi"]
+atlas = ExtResource("1_2r6e4")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dg2hp"]
+atlas = ExtResource("1_2r6e4")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahgq6"]
+atlas = ExtResource("2_x82c5")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dr5r0"]
+atlas = ExtResource("2_x82c5")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xffo1"]
+atlas = ExtResource("2_x82c5")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ealhp"]
+atlas = ExtResource("2_x82c5")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n4e8b"]
+atlas = ExtResource("2_x82c5")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ahgq6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gk428")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x82c5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i30xb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6wmy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jo5mi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dg2hp")
+}],
+"loop": false,
+"name": &"grow_shine",
+"speed": 14.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ahgq6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dr5r0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xffo1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ealhp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n4e8b")
+}],
+"loop": false,
+"name": &"shrink_shine",
+"speed": 14.0
+}]
+
+[node name="GrowShrinkTile" type="AnimatedSprite2D"]
+z_index = -1
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_ahgq6")
+animation = &"shrink_shine"
+script = ExtResource("2_gk428")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

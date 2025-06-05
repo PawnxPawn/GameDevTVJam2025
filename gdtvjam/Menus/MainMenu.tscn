@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://bdmlspewkwo5s"]
+[gd_scene load_steps=11 format=3 uid="uid://bdmlspewkwo5s"]
 
 [ext_resource type="Script" uid="uid://c7rq22m8nrqky" path="res://Menus/main_menu.gd" id="1_3g7qx"]
 [ext_resource type="PackedScene" uid="uid://0lj3qejewwsp" path="res://Menus/SettingsMenu.tscn" id="2_r8dbq"]
+[ext_resource type="FontFile" uid="uid://c6ur18f7svqw1" path="res://Assets/Fonts/Kubasta/Kubasta.ttf" id="3_0xbyl"]
 [ext_resource type="Texture2D" uid="uid://dl8lnxng4p7eu" path="res://Assets/MainMenu/Title_screen.png" id="3_5ncg0"]
 [ext_resource type="PackedScene" uid="uid://dt1u5pso7ncj2" path="res://Managers/SettingsLoader/SettingsLoader.tscn" id="3_7ihqj"]
 
@@ -112,6 +113,7 @@ layout_mode = 2
 [node name="PlayGameButton" type="Button" parent="MainMenuControl/PanelContainer/CenterContainer/MenuContainer"]
 custom_minimum_size = Vector2(220, 55)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_0xbyl")
 theme_override_font_sizes/font_size = 24
 text = "Play Game	"
 
@@ -123,6 +125,7 @@ theme_override_constants/margin_top = 30
 [node name="SettingsButton" type="Button" parent="MainMenuControl/PanelContainer/CenterContainer/MenuContainer"]
 custom_minimum_size = Vector2(220, 55)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_0xbyl")
 theme_override_font_sizes/font_size = 24
 text = "Settings"
 
@@ -133,6 +136,7 @@ theme_override_constants/margin_top = 30
 [node name="CreditsButton" type="Button" parent="MainMenuControl/PanelContainer/CenterContainer/MenuContainer"]
 custom_minimum_size = Vector2(220, 55)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_0xbyl")
 theme_override_font_sizes/font_size = 24
 text = "Credits"
 

@@ -17,6 +17,9 @@ enum States
 }
 
 func _ready() -> void:
+	if _is_moving():
+		current_state = States.Walk
+		return
 	current_state = States.Idle
 	
 
@@ -41,45 +44,40 @@ func _idle_state() -> void:
 		current_state = States.Walk
 
 func _walk_state() -> void:
+	_walk_animation()
 	if (!_is_moving() || !GameManager.can_move || GameManager.is_zoomed):
 		AudioManager.walk_sfx.stop()
 		current_state = States.Idle
 		return
-	AudioManager.walk_sfx.play()
 	_move()
-	_walk_animation()
 #endregion
 
 #region Animations
 
 func _idle_animation() -> void:
-	match last_direction:
-		Vector2.UP:
-			sprite.play("idle_up")
-		Vector2.DOWN:
-			sprite.play("idle_down")
-		Vector2.LEFT:
-			sprite.play("idle_left")
-		Vector2.RIGHT:
-			sprite.play("idle_right")
-		_:
-			sprite.play("idle_down")
+	if last_direction.y < 0:
+		sprite.play("idle_up")
+	elif last_direction.y > 0:
+		sprite.play("idle_down")
+	elif last_direction.x < 0:
+		sprite.play("idle_left")
+	elif last_direction.x > 0:
+		sprite.play("idle_right")
+	else:
+		sprite.play("idle_down")
 
 func _walk_animation() -> void:
-	match current_direction:
-		Vector2.UP:
-			push_direction = Vector2.UP
-			sprite.play("walk_up")
-		Vector2.DOWN:
-			push_direction = Vector2.DOWN
-			sprite.play("walk_down")
-		Vector2.LEFT:
-			push_direction = Vector2.LEFT
-			sprite.play("walk_left")
-		Vector2.RIGHT:
-			push_direction = Vector2.RIGHT
-			sprite.play("walk_right")
+
 	last_direction = current_direction
+
+	if current_direction.y < 0:
+		sprite.play("walk_up")
+	elif current_direction.y > 0:
+		sprite.play("walk_down")
+	elif current_direction.x < 0:
+		sprite.play("walk_left")
+	elif current_direction.x > 0:
+		sprite.play("walk_right")
 
 #endregion
 

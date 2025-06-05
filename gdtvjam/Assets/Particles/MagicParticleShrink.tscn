@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://6buuevidiejp"]
+
+[ext_resource type="Texture2D" uid="uid://ckckw2wam8w0y" path="res://Assets/Particles/ParticleTextures/magic_pixel.png" id="1_ryov7"]
+
+[sub_resource type="Gradient" id="Gradient_ryov7"]
+offsets = PackedFloat32Array(0, 0.6875, 1)
+colors = PackedColorArray(0.141176, 0.321569, 0.45098, 1, 0.47451, 0.541176, 0.572549, 1, 0.6972, 0.79478, 0.84, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_iki3j"]
+gradient = SubResource("Gradient_ryov7")
+
+[sub_resource type="CurveTexture" id="CurveTexture_iki3j"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ryov7"]
+lifetime_randomness = 0.25
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(32, 32, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, 1, 0)
+spread = 40.0
+initial_velocity_min = 1.0
+initial_velocity_max = 60.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.2
+scale_max = 0.8
+color_ramp = SubResource("GradientTexture1D_iki3j")
+emission_curve = SubResource("CurveTexture_iki3j")
+
+[node name="MagicParticleGrow" type="GPUParticles2D"]
+scale = Vector2(0.42055, 0.650582)
+amount = 16
+amount_ratio = 0.4955
+texture = ExtResource("1_ryov7")
+lifetime = 2.0
+speed_scale = 0.5
+explosiveness = 0.66
+randomness = 0.58
+process_material = SubResource("ParticleProcessMaterial_ryov7")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://cgoyc1qfqdd72"]
+[gd_scene load_steps=12 format=4 uid="uid://cgoyc1qfqdd72"]
 
 [ext_resource type="Script" uid="uid://bepycm8nfwfit" path="res://Levels/LevelHandler.gd" id="1_v115i"]
 [ext_resource type="PackedScene" uid="uid://1c4l1suixtb2" path="res://Player/Player.tscn" id="2_jglcl"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://bx43n7oxgktd1" path="res://Other Systems/LevelSwitcher/LevelSwitcher.tscn" id="5_v115i"]
 [ext_resource type="PackedScene" uid="uid://bus6el37rgycc" path="res://Other Systems/Walls/SmallAreaNoWalk.tscn" id="6_jglcl"]
 [ext_resource type="PackedScene" uid="uid://d2ggq60bil7kj" path="res://Other Systems/Walls/BottomLevelCollision.tscn" id="6_w0h0a"]
+[ext_resource type="PackedScene" uid="uid://bugodavq2um4h" path="res://Assets/Particles/MagicParticleGrow.tscn" id="9_vd23k"]
+[ext_resource type="PackedScene" uid="uid://d1ie3lxp5dw4r" path="res://Assets/Enviornment/GrowShrinkTile/GrowShrinkTile.tscn" id="10_x7rwe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jglcl"]
 size = Vector2(77, 46)
@@ -76,5 +78,12 @@ position = Vector2(-210.688, 49.25)
 
 [node name="CollisionShape2D5" parent="SmallAreaNoWalk" index="4"]
 position = Vector2(273, 50.25)
+
+[node name="GrowShrinkTile" parent="." instance=ExtResource("10_x7rwe")]
+position = Vector2(32, 32)
+
+[node name="MagicParticleGrow" parent="GrowShrinkTile" instance=ExtResource("9_vd23k")]
+position = Vector2(0.25, -0.25)
+scale = Vector2(0.105137, 0.162646)
 
 [editable path="SmallAreaNoWalk"]

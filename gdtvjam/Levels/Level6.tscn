@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://lv28ib8wcgyp"]
+[gd_scene load_steps=17 format=4 uid="uid://lv28ib8wcgyp"]
 
 [ext_resource type="TileSet" uid="uid://bj0uslx3ys56" path="res://Levels/MainTileset.tres" id="1_8orq5"]
 [ext_resource type="Script" uid="uid://bepycm8nfwfit" path="res://Levels/LevelHandler.gd" id="1_jghee"]
@@ -10,6 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://bus6el37rgycc" path="res://Other Systems/Walls/SmallAreaNoWalk.tscn" id="8_d8brc"]
 [ext_resource type="PackedScene" uid="uid://1tfvm0fuwm5l" path="res://Other Systems/Walls/PuzzleWall.tscn" id="9_uj6fh"]
 [ext_resource type="PackedScene" uid="uid://d2ggq60bil7kj" path="res://Other Systems/Walls/BottomLevelCollision.tscn" id="10_nkn5i"]
+[ext_resource type="PackedScene" uid="uid://d1ie3lxp5dw4r" path="res://Assets/Enviornment/GrowShrinkTile/GrowShrinkTile.tscn" id="11_vmtie"]
+[ext_resource type="PackedScene" uid="uid://6buuevidiejp" path="res://Assets/Particles/MagicParticleShrink.tscn" id="12_sraex"]
+[ext_resource type="PackedScene" uid="uid://bugodavq2um4h" path="res://Assets/Particles/MagicParticleGrow.tscn" id="13_sraex"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d8brc"]
 size = Vector2(77, 46)
@@ -147,6 +150,22 @@ position = Vector2(-275.688, 47.25)
 [node name="CollisionShape2D5" parent="SmallAreaNoWalk2" index="4"]
 position = Vector2(230.656, 47)
 shape = SubResource("RectangleShape2D_nkn5i")
+
+[node name="GrowShrinkTile" parent="." instance=ExtResource("11_vmtie")]
+position = Vector2(352, 224)
+animation_name = "shrink_shine"
+
+[node name="MagicParticleGrow" parent="GrowShrinkTile" instance=ExtResource("12_sraex")]
+position = Vector2(0.499992, -12)
+scale = Vector2(0.105137, 0.162646)
+
+[node name="GrowShrinkTile2" parent="." instance=ExtResource("11_vmtie")]
+position = Vector2(-160.21, 223.93)
+animation = &"grow_shine"
+
+[node name="MagicParticleGrow" parent="GrowShrinkTile2" instance=ExtResource("13_sraex")]
+position = Vector2(0.25, -0.25)
+scale = Vector2(0.105137, 0.162646)
 
 [editable path="SmallAreaNoWalk"]
 [editable path="PuzzleWall"]

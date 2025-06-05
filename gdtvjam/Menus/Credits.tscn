@@ -1,12 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://bvcy6tqectio2"]
+[gd_scene load_steps=6 format=3 uid="uid://bvcy6tqectio2"]
 
 [ext_resource type="Script" uid="uid://ddvac7tf3n47x" path="res://Menus/credits.gd" id="1_lw8m3"]
+[ext_resource type="FontFile" uid="uid://c6ur18f7svqw1" path="res://Assets/Fonts/Kubasta/Kubasta.ttf" id="2_il7mn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d7jex"]
 bg_color = Color(0, 0, 0, 0.435294)
 
 [sub_resource type="LabelSettings" id="LabelSettings_qqjfd"]
+font = ExtResource("2_il7mn")
 font_size = 36
+
+[sub_resource type="LabelSettings" id="LabelSettings_lw8m3"]
+font = ExtResource("2_il7mn")
 
 [node name="Credits" type="Control"]
 layout_mode = 3
@@ -65,6 +70,7 @@ theme_override_constants/margin_top = 41
 [node name="Vhal" type="Label" parent="CreditsPanel/VBoxContainer"]
 layout_mode = 2
 text = "Vhal Ragnarok - Lead Developer"
+label_settings = SubResource("LabelSettings_lw8m3")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -76,6 +82,7 @@ theme_override_constants/margin_top = 30
 [node name="Pawn" type="Label" parent="CreditsPanel/VBoxContainer"]
 layout_mode = 2
 text = "Patrick \"Pawn\" Heil - Developer"
+label_settings = SubResource("LabelSettings_lw8m3")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -87,6 +94,7 @@ theme_override_constants/margin_top = 30
 [node name="Doom" type="Label" parent="CreditsPanel/VBoxContainer"]
 layout_mode = 2
 text = "Doomboy911 - Artist"
+label_settings = SubResource("LabelSettings_lw8m3")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -98,6 +106,7 @@ theme_override_constants/margin_top = 30
 [node name="JohnLeon" type="Label" parent="CreditsPanel/VBoxContainer"]
 layout_mode = 2
 text = "John Leon - Musician"
+label_settings = SubResource("LabelSettings_lw8m3")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -119,6 +128,7 @@ mouse_filter = 2
 custom_minimum_size = Vector2(0, 29.72)
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(0.196502, 0.196502, 0.196502, 1)
+theme_override_fonts/font = ExtResource("2_il7mn")
 text = "Godot Engine License"
 
 [node name="CenterContainer2" type="CenterContainer" parent="CreditsPanel/VBoxContainer"]
@@ -129,6 +139,7 @@ mouse_filter = 2
 custom_minimum_size = Vector2(0, 29.72)
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(0.196502, 0.196502, 0.196502, 1)
+theme_override_fonts/font = ExtResource("2_il7mn")
 text = "Waldgeist Palette by Acid Burrito"
 uri = "https://lospec.com/palette-list/waldgeist"
 
@@ -140,6 +151,7 @@ mouse_filter = 2
 custom_minimum_size = Vector2(0, 29.72)
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(0.196502, 0.196502, 0.196502, 1)
+theme_override_fonts/font = ExtResource("2_il7mn")
 text = "Dialogue Manager by Nathanhoad"
 uri = "https://github.com/nathanhoad/godot_dialogue_manager?tab=MIT-1-ov-file"
 

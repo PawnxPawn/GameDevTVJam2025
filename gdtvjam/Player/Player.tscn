@@ -1,10 +1,11 @@
-[gd_scene load_steps=49 format=3 uid="uid://1c4l1suixtb2"]
+[gd_scene load_steps=51 format=3 uid="uid://1c4l1suixtb2"]
 
 [ext_resource type="Script" uid="uid://deift58sa4doh" path="res://Player/Player.gd" id="1_ddoul"]
 [ext_resource type="Resource" uid="uid://bimk76ra4fd50" path="res://Dialogue/Feedback.dialogue" id="2_8g4oa"]
 [ext_resource type="Texture2D" uid="uid://c8ll63csm0oh" path="res://Assets/Character/Character_walk-Sheet.png" id="2_ddoul"]
 [ext_resource type="Script" uid="uid://b5vc2kcyt7tu0" path="res://Player/StateMachine.gd" id="4_8g4oa"]
 [ext_resource type="Script" uid="uid://cdq44q7fpdo01" path="res://Player/InteractableDetector.gd" id="5_8g4oa"]
+[ext_resource type="FontFile" uid="uid://c6ur18f7svqw1" path="res://Assets/Fonts/Kubasta/Kubasta.ttf" id="6_6ysni"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8g4oa"]
 atlas = ExtResource("2_ddoul")
@@ -308,6 +309,9 @@ height = 64.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ysni"]
 size = Vector2(64, 65)
 
+[sub_resource type="LabelSettings" id="LabelSettings_vlldt"]
+font = ExtResource("6_6ysni")
+
 [sub_resource type="GDScript" id="GDScript_ddoul"]
 
 [sub_resource type="Animation" id="Animation_8g4oa"]
@@ -411,6 +415,7 @@ offset_left = -20.0
 offset_top = -50.0
 offset_right = 20.0
 offset_bottom = -27.0
+label_settings = SubResource("LabelSettings_vlldt")
 horizontal_alignment = 1
 vertical_alignment = 1
 

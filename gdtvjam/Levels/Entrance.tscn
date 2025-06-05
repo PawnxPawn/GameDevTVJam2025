@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://omucjap1o10s"]
+[gd_scene load_steps=14 format=4 uid="uid://omucjap1o10s"]
 
 [ext_resource type="Script" uid="uid://bepycm8nfwfit" path="res://Levels/LevelHandler.gd" id="1_15j4u"]
 [ext_resource type="PackedScene" uid="uid://1c4l1suixtb2" path="res://Player/Player.tscn" id="2_tidup"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://bx43n7oxgktd1" path="res://Other Systems/LevelSwitcher/LevelSwitcher.tscn" id="7_h2db4"]
 [ext_resource type="PackedScene" uid="uid://1tfvm0fuwm5l" path="res://Other Systems/Walls/PuzzleWall.tscn" id="8_h2db4"]
 [ext_resource type="PackedScene" uid="uid://bus6el37rgycc" path="res://Other Systems/Walls/SmallAreaNoWalk.tscn" id="9_ltixe"]
+[ext_resource type="Texture2D" uid="uid://ckckw2wam8w0y" path="res://Assets/Particles/ParticleTextures/magic_pixel.png" id="10_4vhml"]
+[ext_resource type="PackedScene" uid="uid://cpfxue7j4xo0m" path="res://Assets/Particles/DustParticle.tscn" id="11_goa1b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4vhml"]
 size = Vector2(77, 46)
@@ -113,7 +115,6 @@ position = Vector2(31, -9)
 position = Vector2(31, 69)
 
 [node name="SmallAreaNoWalk" parent="." instance=ExtResource("9_ltixe")]
-visible = false
 position = Vector2(7, -67)
 
 [node name="CollisionShape2D" parent="SmallAreaNoWalk" index="0"]
@@ -127,6 +128,37 @@ position = Vector2(-210.688, 51.25)
 
 [node name="CollisionShape2D5" parent="SmallAreaNoWalk" index="4"]
 position = Vector2(273, 51.25)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(169, 233)
+scale = Vector2(12.32, 12.32)
+color = Color(0.368627, 0.494118, 0.545098, 1)
+shadow_enabled = true
+texture = ExtResource("10_4vhml")
+
+[node name="PointLight2D4" type="PointLight2D" parent="."]
+position = Vector2(30, 441)
+scale = Vector2(12.32, 12.32)
+color = Color(0.368627, 0.494118, 0.545098, 1)
+shadow_enabled = true
+texture = ExtResource("10_4vhml")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(-240, 104)
+scale = Vector2(12.32, 12.32)
+color = Color(0.368627, 0.494118, 0.545098, 1)
+shadow_enabled = true
+texture = ExtResource("10_4vhml")
+
+[node name="PointLight2D3" type="PointLight2D" parent="."]
+position = Vector2(330, 70)
+scale = Vector2(3.6, 3.6)
+color = Color(0.368627, 0.494118, 0.545098, 1)
+shadow_enabled = true
+texture = ExtResource("10_4vhml")
+
+[node name="GPUParticles2D" parent="." instance=ExtResource("11_goa1b")]
+position = Vector2(-243, 96)
 
 [editable path="PuzzleWall"]
 [editable path="SmallAreaNoWalk"]

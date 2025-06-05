@@ -1,5 +1,6 @@
-~ TooBig
-Narrator: You are too big, and have fallen to your death.
+~ LevelReset
+???: It looks like if I step in the wrong place...
+???: I'm reset to where I last was.
 => END
 
 ~ NotWalkable
@@ -7,9 +8,9 @@ Narrator: You cannot walk on that tile, and have fallen to your death.
 => END
 
 ~ Shrink
-Narrator: You have shrunk!
+???: I have shrunk! Now what?!\n(Press Z to Zoom Out)
 => END
 
 ~ Grow
-Narrator: You have grown!
+???: Now I have grown! This is really cool! 
 => END

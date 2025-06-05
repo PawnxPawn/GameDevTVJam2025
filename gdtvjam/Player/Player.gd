@@ -22,6 +22,10 @@ var default_movement_speed: float
 
 func _ready() -> void:
 	default_movement_speed = movement_speed
+	if GameManager.room_reset and GameManager.first_room_reset:
+		GameManager.first_room_reset = false
+		DialogueManager.show_example_dialogue_balloon(feedback_dialogue, "LevelReset")
+	
 
 #region Move Block
 func _physics_process(_delta: float) -> void:
@@ -67,7 +71,6 @@ func check_normal_tiles() -> void:
 	
 	#Too Big
 	if ((walkable_small && GameManager.current_player_size == GameManager.character_size.NORMAL)):
-		#DialogueManager.show_example_dialogue_balloon(feedback_dialogue, "TooBig")
 		reset_level()
 		return
 	#Not Walkable Period
@@ -78,14 +81,18 @@ func check_normal_tiles() -> void:
 		reset_level()
 		return
 	if (shrink_tile && GameManager.current_player_size == GameManager.character_size.NORMAL):
-		#DialogueManager.show_example_dialogue_balloon(feedback_dialogue, "Shrink")
+		if GameManager.first_shrink:
+			GameManager.first_shrink = false
+			DialogueManager.show_example_dialogue_balloon(feedback_dialogue, "Shrink")
 		animation_player.play("size_change")
 		set_collision_mask_value(4, true) #Enables the small collision mask
 		movement_speed = 100;
 		GameManager.current_player_size = GameManager.character_size.SMALL
 		return
 	if (grow_tile && GameManager.current_player_size == GameManager.character_size.SMALL):
-		#DialogueManager.show_example_dialogue_balloon(feedback_dialogue, "Grow")
+		if GameManager.first_grow:
+			GameManager.first_grow = false
+			DialogueManager.show_example_dialogue_balloon(feedback_dialogue, "Grow")
 		animation_player.play("size_change")
 		set_collision_mask_value(4, false)
 		movement_speed = default_movement_speed;
@@ -113,5 +120,6 @@ func adjust_player() -> void:
 func reset_level(death_type:GameManager.death_type = GameManager.death_type.NONE) -> void:
 	if (death_type != GameManager.death_type.NONE):
 		pass
+	GameManager.room_reset = true
 	get_tree().call_deferred("reload_current_scene")
 #endregion

@@ -13,17 +13,18 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if (not_block_interactable != null):
-		interact_label.text = "Press E to {interact}".format({"interact": not_block_interactable.interaction_name})
+		interact_label.text = "Press E"
 
 func _input(_event: InputEvent) -> void:
-	if (object_close && Input.is_action_just_pressed("interact") && not_block_interactable == null):
-		pulling = !pulling
-		_display_label(pulling, interaction_text)
-	elif (object_close && Input.is_action_just_pressed("interact") && not_block_interactable != null):
-		not_block_interactable.interact.call()
-		pass
-	else:
-		interact_label.text = ""
+	if GameManager.can_move:
+		if (object_close && Input.is_action_just_pressed("interact") && not_block_interactable == null):
+			pulling = !pulling
+			_display_label(pulling, interaction_text)
+		elif (object_close && Input.is_action_just_pressed("interact") && not_block_interactable != null):
+			not_block_interactable.interact.call()
+			pass
+		else:
+			interact_label.text = ""
 
 
 func _display_label(is_pulling: bool, interaction_string: String) -> void:

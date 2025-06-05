@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://j6gg3xw3rofo"]
+[gd_scene load_steps=25 format=4 uid="uid://j6gg3xw3rofo"]
 
 [ext_resource type="Script" uid="uid://bepycm8nfwfit" path="res://Levels/LevelHandler.gd" id="1_4btgc"]
 [ext_resource type="TileSet" uid="uid://bj0uslx3ys56" path="res://Levels/MainTileset.tres" id="2_3bas4"]
@@ -15,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://d1ie3lxp5dw4r" path="res://Assets/Enviornment/GrowShrinkTile/GrowShrinkTile.tscn" id="13_twgay"]
 [ext_resource type="PackedScene" uid="uid://6buuevidiejp" path="res://Assets/Particles/MagicParticleShrink.tscn" id="14_ect60"]
 [ext_resource type="PackedScene" uid="uid://bugodavq2um4h" path="res://Assets/Particles/MagicParticleGrow.tscn" id="15_ect60"]
+[ext_resource type="PackedScene" uid="uid://cpfxue7j4xo0m" path="res://Assets/Particles/DustParticle.tscn" id="16_10slw"]
+[ext_resource type="Texture2D" uid="uid://ckckw2wam8w0y" path="res://Assets/Particles/ParticleTextures/magic_pixel.png" id="17_h1tbk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_twgay"]
 size = Vector2(26, 319.822)
@@ -181,6 +183,45 @@ animation = &"grow_shine"
 [node name="MagicParticleGrow" parent="GrowShrinkTile3" instance=ExtResource("15_ect60")]
 position = Vector2(0.25, -0.25)
 scale = Vector2(0.105137, 0.162646)
+
+[node name="GPUParticles2D" parent="." instance=ExtResource("16_10slw")]
+position = Vector2(74, -165)
+amount = 200
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(-258, -162)
+scale = Vector2(12.32, 12.32)
+color = Color(0.368627, 0.494118, 0.545098, 1)
+shadow_enabled = true
+texture = ExtResource("17_h1tbk")
+
+[node name="PointLight2D3" type="PointLight2D" parent="."]
+position = Vector2(-157, -325)
+scale = Vector2(12.32, 12.32)
+color = Color(0.368627, 0.494118, 0.545098, 1)
+shadow_enabled = true
+texture = ExtResource("17_h1tbk")
+
+[node name="PointLight2D4" type="PointLight2D" parent="."]
+position = Vector2(101, -94)
+scale = Vector2(12.32, 12.32)
+color = Color(0.368627, 0.494118, 0.545098, 1)
+shadow_enabled = true
+texture = ExtResource("17_h1tbk")
+
+[node name="PointLight2D5" type="PointLight2D" parent="."]
+position = Vector2(432, -225)
+scale = Vector2(12.32, 12.32)
+color = Color(0.368627, 0.494118, 0.545098, 1)
+shadow_enabled = true
+texture = ExtResource("17_h1tbk")
+
+[node name="PointLight2D6" type="PointLight2D" parent="."]
+position = Vector2(353, -11)
+scale = Vector2(12.32, 12.32)
+color = Color(0.368627, 0.494118, 0.545098, 1)
+shadow_enabled = true
+texture = ExtResource("17_h1tbk")
 
 [editable path="SmallAreaNoWalk"]
 [editable path="PuzzleWall"]

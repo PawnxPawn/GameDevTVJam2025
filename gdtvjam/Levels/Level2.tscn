@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://cgoyc1qfqdd72"]
+[gd_scene load_steps=14 format=4 uid="uid://cgoyc1qfqdd72"]
 
 [ext_resource type="Script" uid="uid://bepycm8nfwfit" path="res://Levels/LevelHandler.gd" id="1_v115i"]
 [ext_resource type="PackedScene" uid="uid://1c4l1suixtb2" path="res://Player/Player.tscn" id="2_jglcl"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://d2ggq60bil7kj" path="res://Other Systems/Walls/BottomLevelCollision.tscn" id="6_w0h0a"]
 [ext_resource type="PackedScene" uid="uid://bugodavq2um4h" path="res://Assets/Particles/MagicParticleGrow.tscn" id="9_vd23k"]
 [ext_resource type="PackedScene" uid="uid://d1ie3lxp5dw4r" path="res://Assets/Enviornment/GrowShrinkTile/GrowShrinkTile.tscn" id="10_x7rwe"]
+[ext_resource type="PackedScene" uid="uid://cpfxue7j4xo0m" path="res://Assets/Particles/DustParticle.tscn" id="11_lf2mf"]
+[ext_resource type="Texture2D" uid="uid://ckckw2wam8w0y" path="res://Assets/Particles/ParticleTextures/magic_pixel.png" id="12_80cou"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jglcl"]
 size = Vector2(77, 46)
@@ -85,5 +87,23 @@ position = Vector2(32, 32)
 [node name="MagicParticleGrow" parent="GrowShrinkTile" instance=ExtResource("9_vd23k")]
 position = Vector2(0.25, -0.25)
 scale = Vector2(0.105137, 0.162646)
+
+[node name="GPUParticles2D" parent="." instance=ExtResource("11_lf2mf")]
+position = Vector2(31, 184)
+amount = 200
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(31, 33)
+scale = Vector2(12.32, 12.32)
+color = Color(0.368627, 0.494118, 0.545098, 1)
+shadow_enabled = true
+texture = ExtResource("12_80cou")
+
+[node name="PointLight2D3" type="PointLight2D" parent="."]
+position = Vector2(39, 344)
+scale = Vector2(12.32, 12.32)
+color = Color(0.368627, 0.494118, 0.545098, 1)
+shadow_enabled = true
+texture = ExtResource("12_80cou")
 
 [editable path="SmallAreaNoWalk"]

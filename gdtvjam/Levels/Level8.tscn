@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://dm2uh22nu7joe"]
+[gd_scene load_steps=18 format=4 uid="uid://dm2uh22nu7joe"]
 
 [ext_resource type="Script" uid="uid://bepycm8nfwfit" path="res://Levels/LevelHandler.gd" id="1_jta5c"]
 [ext_resource type="TileSet" uid="uid://bj0uslx3ys56" path="res://Levels/MainTileset.tres" id="2_63j2j"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://d2ggq60bil7kj" path="res://Other Systems/Walls/BottomLevelCollision.tscn" id="7_ageof"]
 [ext_resource type="PackedScene" uid="uid://bus6el37rgycc" path="res://Other Systems/Walls/SmallAreaNoWalk.tscn" id="8_emr7g"]
 [ext_resource type="PackedScene" uid="uid://b6u6kp7npwojk" path="res://Assets/Enviornment/WaterFountain/WaterFountain.tscn" id="9_l7ouy"]
+[ext_resource type="PackedScene" uid="uid://cpfxue7j4xo0m" path="res://Assets/Particles/DustParticle.tscn" id="11_mu778"]
+[ext_resource type="Texture2D" uid="uid://ckckw2wam8w0y" path="res://Assets/Particles/ParticleTextures/magic_pixel.png" id="12_uuuni"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s35pp"]
 size = Vector2(703.587, 23)
@@ -121,5 +123,30 @@ position = Vector2(361, -456)
 [node name="WaterFountain6" parent="." instance=ExtResource("9_l7ouy")]
 position = Vector2(229, -456)
 scale = Vector2(4, 3.96418)
+
+[node name="GPUParticles2D" parent="." instance=ExtResource("11_mu778")]
+position = Vector2(91, -215)
+amount = 200
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(-154, -281)
+scale = Vector2(12.32, 12.32)
+color = Color(0.368627, 0.494118, 0.545098, 1)
+shadow_enabled = true
+texture = ExtResource("12_uuuni")
+
+[node name="PointLight2D3" type="PointLight2D" parent="."]
+position = Vector2(437, -161)
+scale = Vector2(12.32, 12.32)
+color = Color(0.368627, 0.494118, 0.545098, 1)
+shadow_enabled = true
+texture = ExtResource("12_uuuni")
+
+[node name="PointLight2D4" type="PointLight2D" parent="."]
+position = Vector2(-271, -5)
+scale = Vector2(12.32, 12.32)
+color = Color(0.368627, 0.494118, 0.545098, 1)
+shadow_enabled = true
+texture = ExtResource("12_uuuni")
 
 [editable path="SmallAreaNoWalk"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://bt77sccqm75v8"]
+[gd_scene load_steps=16 format=4 uid="uid://bt77sccqm75v8"]
 
 [ext_resource type="Script" uid="uid://bepycm8nfwfit" path="res://Levels/LevelHandler.gd" id="1_iotdp"]
 [ext_resource type="PackedScene" uid="uid://1c4l1suixtb2" path="res://Player/Player.tscn" id="2_nutv8"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://1tfvm0fuwm5l" path="res://Other Systems/Walls/PuzzleWall.tscn" id="9_5g41i"]
 [ext_resource type="PackedScene" uid="uid://d1ie3lxp5dw4r" path="res://Assets/Enviornment/GrowShrinkTile/GrowShrinkTile.tscn" id="10_p5226"]
 [ext_resource type="PackedScene" uid="uid://6buuevidiejp" path="res://Assets/Particles/MagicParticleShrink.tscn" id="11_tuji2"]
+[ext_resource type="PackedScene" uid="uid://cpfxue7j4xo0m" path="res://Assets/Particles/DustParticle.tscn" id="12_tuji2"]
+[ext_resource type="Texture2D" uid="uid://ckckw2wam8w0y" path="res://Assets/Particles/ParticleTextures/magic_pixel.png" id="13_f5cpa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7fl83"]
 size = Vector2(84, 44)
@@ -188,6 +190,24 @@ animation_name = "shrink_shine"
 [node name="MagicParticleGrow" parent="GrowShrinkTile" instance=ExtResource("11_tuji2")]
 position = Vector2(0.499992, -12)
 scale = Vector2(0.105137, 0.162646)
+
+[node name="GPUParticles2D" parent="." instance=ExtResource("12_tuji2")]
+position = Vector2(31, 184)
+amount = 200
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(-268, 222)
+scale = Vector2(12.32, 12.32)
+color = Color(0.368627, 0.494118, 0.545098, 1)
+shadow_enabled = true
+texture = ExtResource("13_f5cpa")
+
+[node name="PointLight2D3" type="PointLight2D" parent="."]
+position = Vector2(274, 328)
+scale = Vector2(12.32, 12.32)
+color = Color(0.368627, 0.494118, 0.545098, 1)
+shadow_enabled = true
+texture = ExtResource("13_f5cpa")
 
 [editable path="SmallAreaNoWalk"]
 [editable path="PuzzleWall"]

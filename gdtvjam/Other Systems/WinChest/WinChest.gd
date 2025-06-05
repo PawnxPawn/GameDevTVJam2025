@@ -27,4 +27,5 @@ func _chest_interact() -> void:
 
 func _amulet_interact() -> void:
     DialogueManager.show_example_dialogue_balloon(win_dialouge, "Amulet")
-    get_tree().change_scene_to_file("uid://d3a5nng4xkp3l")
+    GameManager.has_won = true
+    

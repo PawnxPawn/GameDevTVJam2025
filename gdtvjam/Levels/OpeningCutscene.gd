@@ -17,6 +17,16 @@ func _ready() -> void:
 	AudioManager.level_music.play()
 	GameManager.entered_direction = GameManager.directions.SOUTH
 	GameManager.initial_game_run = true
+	GameManager.has_initial_entrance_scene_ran = false 
+	GameManager.room_reset = false
+	GameManager.first_room_reset = true
+	GameManager.first_shrink = true
+	GameManager.first_grow = true
+	GameManager.has_won = false
+
+
+	for block in GameManager.block_locations:
+		GameManager.block_locations[block] = GameManager.DEFAULT_BLOCK_LOCATIONS[block]
 	animation_player.play("Opening")
 
 

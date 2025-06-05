@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d2ixxkaw5u2e2"]
+[gd_scene load_steps=13 format=3 uid="uid://d2ixxkaw5u2e2"]
 
 [ext_resource type="Texture2D" uid="uid://boq6pp74ajrtj" path="res://Assets/Enviornment/1-10-exit.png" id="1_jx0kn"]
 [ext_resource type="Script" uid="uid://bepycm8nfwfit" path="res://Levels/LevelHandler.gd" id="1_u3djv"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://1c4l1suixtb2" path="res://Player/Player.tscn" id="3_ysk0u"]
 [ext_resource type="PackedScene" uid="uid://ktn845vos8qe" path="res://Menus/PauseMenu.tscn" id="4_ysk0u"]
 [ext_resource type="PackedScene" uid="uid://bx43n7oxgktd1" path="res://Other Systems/LevelSwitcher/LevelSwitcher.tscn" id="5_g7e4c"]
+[ext_resource type="PackedScene" uid="uid://cpfxue7j4xo0m" path="res://Assets/Particles/DustParticle.tscn" id="7_4taaj"]
+[ext_resource type="Texture2D" uid="uid://ckckw2wam8w0y" path="res://Assets/Particles/ParticleTextures/magic_pixel.png" id="8_iyiyh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jx0kn"]
 size = Vector2(137.915, 1160.21)
@@ -89,3 +91,20 @@ entrance_direction = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelSwitcher2"]
 position = Vector2(32, -32)
 shape = SubResource("RectangleShape2D_g7e4c")
+
+[node name="GPUParticles2D" parent="." instance=ExtResource("7_4taaj")]
+position = Vector2(482, 304)
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(499, 219)
+scale = Vector2(12.32, 12.32)
+color = Color(0.368627, 0.494118, 0.545098, 1)
+shadow_enabled = true
+texture = ExtResource("8_iyiyh")
+
+[node name="PointLight2D3" type="PointLight2D" parent="."]
+position = Vector2(499, 219)
+scale = Vector2(12.32, 12.32)
+color = Color(0.368627, 0.494118, 0.545098, 1)
+shadow_enabled = true
+texture = ExtResource("8_iyiyh")

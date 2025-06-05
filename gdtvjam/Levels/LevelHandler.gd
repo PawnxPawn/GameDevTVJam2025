@@ -5,12 +5,13 @@ extends Node
 @export var east_start: Marker2D
 @export var west_start: Marker2D
 @export var blocks: Array[RigidBody2D]
-
+@export var game_start_dialogue: DialogueResource
 
 @export var current_player: CharacterBody2D
 
 
 func _ready() -> void:
+	GameManager.can_move = true
 	if not blocks.is_empty():
 		for block in blocks:
 			if GameManager.block_locations.has(block.block_name):
@@ -29,6 +30,11 @@ func _ready() -> void:
 		current_player.set_collision_mask_value(4, true)
 	else:
 		current_player.set_collision_mask_value(4, false)
+
+	if not GameManager.has_initial_entrance_scene_ran && self.name == "Entrance":
+		GameManager.has_initial_entrance_scene_ran = true
+		DialogueManager.show_example_dialogue_balloon(game_start_dialogue)
+
 
 
 	current_player.position = GameManager.player_initial_pos

@@ -24,7 +24,7 @@ enum directions
 	WEST
 }
 
-const default_block_locations: Dictionary = {
+const DEFAULT_BLOCK_LOCATIONS: Dictionary = {
 	&"EA": Vector2(30,30),
 	&"6A": Vector2(352,222),
 	&"7A": Vector2(32,28),
@@ -42,6 +42,12 @@ var block_locations: Dictionary = {
 
 
 var is_credits_called = false
+var has_initial_entrance_scene_ran: bool = false
+var room_reset: bool = false
+var first_room_reset: bool = true
+var first_shrink: bool = true
+var first_grow: bool = true
+var has_won: bool = false
 
 var current_player_size: character_size = character_size.NORMAL
 
@@ -64,3 +70,5 @@ func on_dialogue_started(_resource: DialogueResource) -> void:
 
 func on_dialogue_ended(_resource: DialogueResource) -> void:
 	can_move = true
+	if has_won:
+		get_tree().change_scene_to_file("uid://d3a5nng4xkp3l")

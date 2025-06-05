@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://qacor0g6ov7w"]
+[gd_scene load_steps=18 format=4 uid="uid://qacor0g6ov7w"]
 
 [ext_resource type="TileSet" uid="uid://bj0uslx3ys56" path="res://Levels/MainTileset.tres" id="1_kb5ut"]
 [ext_resource type="Script" uid="uid://bepycm8nfwfit" path="res://Levels/LevelHandler.gd" id="1_uwj6k"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://d2ggq60bil7kj" path="res://Other Systems/Walls/BottomLevelCollision.tscn" id="8_w1sat"]
 [ext_resource type="PackedScene" uid="uid://bus6el37rgycc" path="res://Other Systems/Walls/SmallAreaNoWalk.tscn" id="9_nijbd"]
 [ext_resource type="PackedScene" uid="uid://btp6nimbftqcj" path="res://Other Systems/KillZone/KillZone.tscn" id="10_nijbd"]
+[ext_resource type="PackedScene" uid="uid://cpfxue7j4xo0m" path="res://Assets/Particles/DustParticle.tscn" id="11_cg4ff"]
+[ext_resource type="Texture2D" uid="uid://ckckw2wam8w0y" path="res://Assets/Particles/ParticleTextures/magic_pixel.png" id="12_rss6v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f6i8f"]
 size = Vector2(77, 46)
@@ -152,5 +154,23 @@ shape = SubResource("RectangleShape2D_nijbd")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="KillZone"]
 position = Vector2(320, 369.5)
 shape = SubResource("RectangleShape2D_cg4ff")
+
+[node name="GPUParticles2D" parent="." instance=ExtResource("11_cg4ff")]
+position = Vector2(31, 184)
+amount = 200
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(454, 350)
+scale = Vector2(12.32, 12.32)
+color = Color(0.368627, 0.494118, 0.545098, 1)
+shadow_enabled = true
+texture = ExtResource("12_rss6v")
+
+[node name="PointLight2D3" type="PointLight2D" parent="."]
+position = Vector2(64, 296)
+scale = Vector2(12.32, 12.32)
+color = Color(0.368627, 0.494118, 0.545098, 1)
+shadow_enabled = true
+texture = ExtResource("12_rss6v")
 
 [editable path="SmallAreaNoWalk"]

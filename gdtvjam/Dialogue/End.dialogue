@@ -1,8 +1,11 @@
 ~ Chest
-Narrator: An amulet was in the chest.
+???: An amulet was in the chest.
 => END
 
 ~ Amulet
 Narrator: Memories flooded back to the adventurer.
-Narrator: This amulet was given to the adventurer by a friend long ago.
-Narrator: What was lost is now found.
+???: I have been here before... A friend and I discoved this cave... 
+???: when we completed it we put something in this chest...
+???: But when we walked out... I was the only one to return... I instantly forgot everything...
+???: I need to find my friend!
+=> END

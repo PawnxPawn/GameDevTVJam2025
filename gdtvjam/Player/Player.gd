@@ -84,7 +84,7 @@ func check_normal_tiles() -> void:
 		if GameManager.first_shrink:
 			GameManager.first_shrink = false
 			DialogueManager.show_example_dialogue_balloon(feedback_dialogue, "Shrink")
-		animation_player.play("size_change")
+		animation_player.play("shrink_animation")
 		set_collision_mask_value(4, true) #Enables the small collision mask
 		movement_speed = 100;
 		GameManager.current_player_size = GameManager.character_size.SMALL
@@ -93,7 +93,7 @@ func check_normal_tiles() -> void:
 		if GameManager.first_grow:
 			GameManager.first_grow = false
 			DialogueManager.show_example_dialogue_balloon(feedback_dialogue, "Grow")
-		animation_player.play("size_change")
+		animation_player.play("grow_animation")
 		set_collision_mask_value(4, false)
 		movement_speed = default_movement_speed;
 		GameManager.current_player_size = GameManager.character_size.NORMAL
@@ -108,6 +108,8 @@ func _input(_event: InputEvent) -> void:
 		GameManager.is_zoomed = false
 
 func adjust_player() -> void:
+	if animation_player.is_playing():
+		return
 	if (GameManager.current_player_size == GameManager.character_size.SMALL && is_zoomed_out):
 		camera.zoom = Vector2(2, 2)
 	elif (GameManager.current_player_size == GameManager.character_size.SMALL):
@@ -122,4 +124,10 @@ func reset_level(death_type:GameManager.death_type = GameManager.death_type.NONE
 		pass
 	GameManager.room_reset = true
 	get_tree().call_deferred("reload_current_scene")
+
+func cant_move() -> void:
+	GameManager.can_move = false
+
+func can_move() -> void:
+	GameManager.can_move = true
 #endregion

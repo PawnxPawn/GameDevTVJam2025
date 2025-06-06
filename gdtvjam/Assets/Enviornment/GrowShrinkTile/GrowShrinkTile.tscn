@@ -98,7 +98,7 @@ animations = [{
 z_index = -1
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_ahgq6")
-animation = &"shrink_shine"
+animation = &"grow_shine"
 script = ExtResource("2_gk428")
 
 [node name="Timer" type="Timer" parent="."]

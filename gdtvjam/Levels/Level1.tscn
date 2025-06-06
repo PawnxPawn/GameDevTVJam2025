@@ -20,10 +20,11 @@ size = Vector2(84, 44)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dl8mf"]
 size = Vector2(1029, 51)
 
-[node name="Level1" type="Node" node_paths=PackedStringArray("north_start", "south_start", "current_player")]
+[node name="Level1" type="Node" node_paths=PackedStringArray("north_start", "south_start", "blocks", "current_player")]
 script = ExtResource("1_iotdp")
 north_start = NodePath("North")
 south_start = NodePath("South")
+blocks = [NodePath("Block")]
 current_player = NodePath("Player")
 
 [node name="Player" parent="." node_paths=PackedStringArray("normal_tiles", "shrunk_tiles") instance=ExtResource("2_nutv8")]
@@ -45,6 +46,7 @@ tile_set = ExtResource("3_05pb0")
 [node name="Block" parent="." node_paths=PackedStringArray("normal_tiles") instance=ExtResource("5_nutv8")]
 position = Vector2(31, 95)
 normal_tiles = NodePath("../NormalFloor")
+block_name = &"1A"
 
 [node name="Rocks" type="Node" parent="."]
 

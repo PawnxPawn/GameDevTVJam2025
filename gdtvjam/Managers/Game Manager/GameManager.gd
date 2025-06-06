@@ -26,6 +26,7 @@ enum directions
 
 const DEFAULT_BLOCK_LOCATIONS: Dictionary = {
 	&"EA": Vector2(30,30),
+	&"1A": Vector2(31,95),
 	&"6A": Vector2(352,222),
 	&"7A": Vector2(32,28),
 	&"9A": Vector2(165,-161),
@@ -34,6 +35,7 @@ const DEFAULT_BLOCK_LOCATIONS: Dictionary = {
 
 var block_locations: Dictionary = {
 	&"EA": Vector2(30,30),
+	&"1A": Vector2(31,95),
 	&"6A": Vector2(352,222),
 	&"7A": Vector2(32,28),
 	&"9A": Vector2(165,-161),

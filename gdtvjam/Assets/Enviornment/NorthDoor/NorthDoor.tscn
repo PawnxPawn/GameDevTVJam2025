@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bc6fxn8o55sbi"]
+
+[ext_resource type="Texture2D" uid="uid://b41phndfwqtbm" path="res://Assets/Enviornment/Door asset.png" id="1_7ma6q"]
+
+[node name="NorthDoor" type="Sprite2D"]
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("1_7ma6q")

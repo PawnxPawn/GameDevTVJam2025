@@ -1,12 +1,22 @@
 extends Node
 
 @export var current_player: player
+@export var minimum_pitch_normal: float = 0.8
+@export var maximum_pitch_normal: float = 1.2
+@export var minimum_pitch_small: float = 3.8
+@export var maximum_pitch_small: float = 4.2
+@export var footstep_delay: float = 0.45
 
 @onready var sprite: AnimatedSprite2D = %Sprite
+@onready var footstep_sfx: AudioStreamPlayer2D = $'../FootstepCave'
+@onready var footstep2_sfx: AudioStreamPlayer2D = $'../FootstepCave2'
+@onready var footstep3_sfx: AudioStreamPlayer2D = $'../FootstepCave3'
+@onready var footstep_dealy_timer: Timer = $'../FootstepDealyTimer'
 
 var current_direction: Vector2
 var last_direction: Vector2
-var push_direction: Vector2 = Vector2.ZERO
+var current_position: Vector2
+var old_position: Vector2
 
 var current_state: States
 
@@ -39,16 +49,15 @@ func _is_moving() -> bool:
 
 func _idle_state() -> void:
 	_idle_animation()
-	push_direction = Vector2.ZERO
 	if (_is_moving() && GameManager.can_move && !GameManager.is_zoomed):
 		current_state = States.Walk
 
 func _walk_state() -> void:
 	_walk_animation()
 	if (!_is_moving() || !GameManager.can_move || GameManager.is_zoomed):
-		AudioManager.walk_sfx.stop()
 		current_state = States.Idle
 		return
+
 	_move()
 #endregion
 
@@ -85,6 +94,45 @@ func _walk_animation() -> void:
 
 func _move() -> void:
 	current_player.velocity = current_direction * current_player.movement_speed
+	if player_has_moved():
+		_play_footsteps()
 	current_player.move_and_slide()
+#endregion
 
+#region Sounds
+func _play_footsteps() -> void:	
+	if footstep_dealy_timer.is_stopped() and not footstep_sfx.playing:
+		if GameManager.current_player_size == GameManager.character_size.NORMAL:
+			footstep_sfx.pitch_scale = randf_range(minimum_pitch_normal, maximum_pitch_normal)
+		else:
+			footstep_sfx.pitch_scale = randf_range(minimum_pitch_small, maximum_pitch_small)
+
+		footstep_dealy_timer.start(footstep_delay)
+		footstep_sfx.play()
+	elif footstep_dealy_timer.is_stopped() and not footstep2_sfx.playing:
+		if GameManager.current_player_size == GameManager.character_size.NORMAL:
+			footstep_sfx.pitch_scale = randf_range(minimum_pitch_normal, maximum_pitch_normal)
+		else:
+			footstep_sfx.pitch_scale = randf_range(minimum_pitch_small, maximum_pitch_small)
+
+		footstep_dealy_timer.start(footstep_delay)
+		footstep2_sfx.play()
+	elif footstep_dealy_timer.is_stopped():
+
+		if GameManager.current_player_size == GameManager.character_size.NORMAL:
+			footstep_sfx.pitch_scale = randf_range(minimum_pitch_normal, maximum_pitch_normal)
+		else:
+			footstep_sfx.pitch_scale = randf_range(minimum_pitch_small, maximum_pitch_small)
+
+		footstep_dealy_timer.start(footstep_delay)
+		footstep3_sfx.play()
+#endregion
+
+#region HelperFunctions
+func player_has_moved() -> bool:
+	current_position = current_player.global_position
+	if current_position != old_position:
+		old_position = current_position
+		return true
+	return false
 #endregion

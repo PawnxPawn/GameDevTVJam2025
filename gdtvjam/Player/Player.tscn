@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://1c4l1suixtb2"]
+[gd_scene load_steps=53 format=3 uid="uid://1c4l1suixtb2"]
 
 [ext_resource type="Script" uid="uid://deift58sa4doh" path="res://Player/Player.gd" id="1_ddoul"]
 [ext_resource type="Resource" uid="uid://bimk76ra4fd50" path="res://Dialogue/Feedback.dialogue" id="2_8g4oa"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://b5vc2kcyt7tu0" path="res://Player/StateMachine.gd" id="4_8g4oa"]
 [ext_resource type="Script" uid="uid://cdq44q7fpdo01" path="res://Player/InteractableDetector.gd" id="5_8g4oa"]
 [ext_resource type="FontFile" uid="uid://c6ur18f7svqw1" path="res://Assets/Fonts/Kubasta/Kubasta.ttf" id="6_6ysni"]
+[ext_resource type="AudioStream" uid="uid://ciygtkxx14paa" path="res://Assets/Sounds/SFX/CaveFootStep.ogg" id="7_vlldt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8g4oa"]
 atlas = ExtResource("2_ddoul")
@@ -537,6 +538,24 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true
+
+[node name="FootstepCave" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_vlldt")
+volume_db = -10.0
+pitch_scale = 7.0
+
+[node name="FootstepCave2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_vlldt")
+
+[node name="FootstepCave3" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_vlldt")
+
+[node name="FootstepDealyTimer" type="Timer" parent="."]
+wait_time = 0.45
+one_shot = true
 
 [connection signal="area_entered" from="InteractableDetector" to="InteractableDetector" method="_on_area_entered"]
 [connection signal="body_exited" from="InteractableDetector" to="InteractableDetector" method="_on_body_exited"]

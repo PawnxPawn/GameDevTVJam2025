@@ -1,9 +1,11 @@
 extends RigidBody2D
 
+@onready var interactable : Interactable
+@onready var push_sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D
+
 @export var normal_tiles: TileMapLayer
 @export var block_name: StringName
 
-@onready var interactable : Interactable
 
 func _physics_process(_delta: float) -> void:
 	if normal_tiles:
@@ -14,4 +16,9 @@ func _physics_process(_delta: float) -> void:
 			if (destroy_block):
 				visible = false
 				$CollisionShape2D.disabled = true
-
+	
+	if linear_velocity.length() > 0.1 and not push_sfx.playing:
+		push_sfx.play()
+	
+	if linear_velocity.length() < 0.1 and push_sfx.playing:
+		push_sfx.stop()

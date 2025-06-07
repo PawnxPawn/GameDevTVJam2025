@@ -8,11 +8,6 @@ var bus_index: int
 func _ready() -> void:
 	bus_index = AudioServer.get_bus_index(bus_name)
 	volume_slider.value = db_to_linear(AudioServer.get_bus_volume_db(bus_index))
-	if GameManager.initial_game_run:
-		bus_index = AudioServer.get_bus_index(&"Master")
-		if volume_slider.name == &"MasterSlider" or volume_slider.name == &"MusicSlider":
-			volume_slider.value = 0.25
-			AudioServer.set_bus_volume_db(bus_index, linear_to_db(0.25))
 		
 
 

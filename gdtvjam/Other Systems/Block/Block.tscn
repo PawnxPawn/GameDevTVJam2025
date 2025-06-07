@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cx7vvccxxamc3"]
+[gd_scene load_steps=6 format=3 uid="uid://cx7vvccxxamc3"]
 
 [ext_resource type="Script" uid="uid://r8burv33i12n" path="res://Other Systems/Block/Block.gd" id="1_j3tc1"]
 [ext_resource type="Texture2D" uid="uid://cteia7ktewpao" path="res://Assets/Enviornment/Objects.png" id="2_r70ec"]
+[ext_resource type="AudioStream" uid="uid://dybatssk1ethh" path="res://Assets/Sounds/SFX/BlockPush.ogg" id="3_r70ec"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r70ec"]
 atlas = ExtResource("2_r70ec")
@@ -12,7 +13,7 @@ size = Vector2(64, 56)
 
 [node name="Block" type="RigidBody2D" groups=["block"]]
 collision_layer = 32
-collision_mask = 111
+collision_mask = 103
 gravity_scale = 0.0
 lock_rotation = true
 linear_damp = 30.0
@@ -23,3 +24,11 @@ texture = SubResource("AtlasTexture_r70ec")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_j3tc1")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_r70ec")
+volume_db = -10.0
+max_distance = 574.0
+bus = &"SFX"
+playback_type = 1
+parameters/looping = true

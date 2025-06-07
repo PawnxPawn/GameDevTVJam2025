@@ -13,12 +13,12 @@ bus = &"SFX"
 
 [node name="MainMenuMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_b5pxe")
-volume_db = -10.0
+volume_db = -40.0
 bus = &"Music"
 parameters/looping = true
 
 [node name="LevelMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_iv5il")
-volume_db = -10.0
+volume_db = -40.0
 bus = &"Music"
 parameters/looping = true

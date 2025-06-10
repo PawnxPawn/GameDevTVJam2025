@@ -17,6 +17,7 @@ scale_max = 0.5
 color = Color(1, 1, 1, 0.454902)
 
 [node name="GPUParticles2D" type="GPUParticles2D"]
+z_index = 5
 amount = 100
 amount_ratio = 0.177
 texture = ExtResource("1_wqswo")

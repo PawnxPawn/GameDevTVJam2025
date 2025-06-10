@@ -23,6 +23,7 @@ func _ready() -> void:
 	GameManager.first_shrink = true
 	GameManager.first_grow = true
 	GameManager.has_won = false
+	get_tree().paused = false
 
 
 	for block in GameManager.block_locations:
@@ -44,4 +45,5 @@ func remove_dialogue() -> void:
 
 
 func ChangeScenes() -> void:
+	animation_player.stop()
 	get_tree().change_scene_to_file(next_level)

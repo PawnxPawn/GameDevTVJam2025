@@ -12,6 +12,8 @@ class_name player
 @export var animation_player: AnimationPlayer
 
 @onready var camera: Camera2D = %Camera
+@onready var shrink_sfx: AudioStreamPlayer2D = $ShrinkSFX
+@onready var grow_sfx: AudioStreamPlayer2D = $GrowSFX
 
 var block_is_child: bool = false
 
@@ -84,6 +86,8 @@ func check_normal_tiles() -> void:
 		if GameManager.first_shrink:
 			GameManager.first_shrink = false
 			DialogueManager.show_example_dialogue_balloon(feedback_dialogue, "Shrink")
+		shrink_sfx.play()
+		turn_on_shader()
 		animation_player.play("shrink_animation")
 		set_collision_mask_value(4, true) #Enables the small collision mask
 		movement_speed = 100;
@@ -93,6 +97,7 @@ func check_normal_tiles() -> void:
 		if GameManager.first_grow:
 			GameManager.first_grow = false
 			DialogueManager.show_example_dialogue_balloon(feedback_dialogue, "Grow")
+		grow_sfx.play()
 		animation_player.play("grow_animation")
 		set_collision_mask_value(4, false)
 		movement_speed = default_movement_speed;
@@ -122,6 +127,7 @@ func adjust_player() -> void:
 func reset_level(death_type:GameManager.death_type = GameManager.death_type.NONE) -> void:
 	if (death_type != GameManager.death_type.NONE):
 		pass
+	AudioManager.rewind_sfx.play()
 	GameManager.room_reset = true
 	get_tree().call_deferred("reload_current_scene")
 
@@ -130,4 +136,10 @@ func cant_move() -> void:
 
 func can_move() -> void:
 	GameManager.can_move = true
+
+func turn_on_shader() -> void:
+	$Sprite.material.set_shader_parameter("distortion_strength",0.018)
+
+func turn_off_shader() -> void:
+	$Sprite.material.set_shader_parameter("distortion_strength",0.0)
 #endregion

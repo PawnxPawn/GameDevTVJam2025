@@ -5,13 +5,12 @@ extends Control
 signal return_control
 
 func _on_return_button_pressed() -> void:
-# 	for key in volume_sliders:
-# 		ConfigFileHandler.save_audio_settings("audio", key, volume_sliders[key].value)	
+	AudioManager.accept_sfx.play()
 	return_control.emit()
 
 
-func _on_mouse_exited() -> void:
-	pass
+func _on_mouse_entered() -> void:
+	AudioManager.option_hover_sfx.play()
 
 func _on_godot_license_pressed() -> void:
 	OS.shell_open("")

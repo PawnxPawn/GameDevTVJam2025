@@ -13,6 +13,7 @@ var play_is_pressed: bool = false
 
 
 func _ready() -> void:
+	get_tree().paused = false
 	AudioManager.level_music.stop()
 	main_menu_player.play("MainMenuFadeIn")
 	AudioManager.main_menu_music.play()
@@ -25,6 +26,7 @@ func _animation_fade_out() -> void:
 
 func _on_play_game_button_pressed() -> void:
 	if not play_is_pressed:
+		AudioManager.accept_sfx.play()
 		play_is_pressed = true
 		#sound_manager.play_button(sound_manager.play_game_sound)
 		await _animation_fade_out()
@@ -45,16 +47,20 @@ func show_hide() -> void:
 
 
 func _on_settings_button_pressed() -> void:
-	#sound_manager.play_button(sound_manager.enter_settings_sound)
+	AudioManager.accept_sfx.play()
 	show_hide()
 
 
 func _on_settings_menu_return_control() -> void:
-	#sound_manager.play_button(sound_manager.exit_settings_sound)
+	AudioManager.accept_sfx.play()
 	show_hide()
 
 
 func _on_credits_button_pressed() -> void:
+	AudioManager.accept_sfx.play()
 	GameManager.is_credits_called = true
 	await _animation_fade_out()
 	get_tree().change_scene_to_file(credits)
+
+func _on_button_hovered() -> void:
+	AudioManager.option_hover_sfx.play()

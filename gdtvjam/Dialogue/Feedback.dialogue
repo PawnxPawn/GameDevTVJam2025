@@ -1,15 +1,19 @@
 ~ LevelReset
 ???: It looks like if I step in the wrong place...\nI'll reset to where I last was.
+do AudioManager.accept_sfx.play()
 => END
 
 ~ NotWalkable
 Narrator: You cannot walk on that tile, and have fallen to your death.
+do AudioManager.accept_sfx.play()
 => END
 
 ~ Shrink
 ???: I have shrunk! Now what?!\n(Press Z to Zoom Out)
+do AudioManager.accept_sfx.play()
 => END
 
 ~ Grow
 ???: Now I have grown! This is really cool! 
+do AudioManager.accept_sfx.play()
 => END

@@ -81,7 +81,7 @@ theme_override_constants/margin_top = 30
 
 [node name="Pawn" type="Label" parent="CreditsPanel/VBoxContainer"]
 layout_mode = 2
-text = "Patrick \"Pawn\" Heil - Developer"
+text = "Patrick \"Pawn\" Heil - Developer/SFX/VFX"
 label_settings = SubResource("LabelSettings_lw8m3")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -130,6 +130,7 @@ layout_mode = 2
 theme_override_colors/font_hover_color = Color(0.196502, 0.196502, 0.196502, 1)
 theme_override_fonts/font = ExtResource("2_il7mn")
 text = "Godot Engine License"
+uri = "https://godotengine.org/license/"
 
 [node name="CenterContainer2" type="CenterContainer" parent="CreditsPanel/VBoxContainer"]
 layout_mode = 2

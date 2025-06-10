@@ -9,7 +9,8 @@ font_size = 32
 
 [sub_resource type="Animation" id="Animation_nmei5"]
 resource_name = "Opening"
-length = 30.0
+length = 17.0
+loop_mode = 1
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -17,7 +18,7 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 5.63333, 11.6333, 17.0333),
+"times": PackedFloat32Array(0, 5.63333, 11.6333, 17),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "values": [{
 "args": [0],
@@ -82,7 +83,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lk35a"]
@@ -98,6 +99,7 @@ next_level = &"uid://omucjap1o10s"
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

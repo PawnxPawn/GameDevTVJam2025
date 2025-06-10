@@ -1,11 +1,17 @@
 ~ Chest
 ???: An amulet was in the chest.
+do AudioManager.accept_sfx.play()
 => END
 
 ~ Amulet
 Narrator: Memories flooded back to the adventurer.
+do AudioManager.accept_sfx.play()
 ???: I have been here before... A friend and I discoved this cave... 
+do AudioManager.accept_sfx.play()
 ???: when we completed it we put something in this chest...
+do AudioManager.accept_sfx.play()
 ???: But when we walked out... I was the only one to return... I instantly forgot everything...
+do AudioManager.accept_sfx.play()
 ???: I need to find my friend!
+do AudioManager.accept_sfx.play()
 => END

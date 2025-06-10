@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://jav7rcmbsdd0"]
+[gd_scene load_steps=11 format=3 uid="uid://jav7rcmbsdd0"]
 
 [ext_resource type="Texture2D" uid="uid://cteia7ktewpao" path="res://Assets/Enviornment/Objects.png" id="1_ab6s5"]
 [ext_resource type="Script" uid="uid://bkppkhouxuqpv" path="res://Other Systems/WinChest/WinChest.gd" id="1_pjjar"]
 [ext_resource type="Resource" uid="uid://c5ptl60pe4uyn" path="res://Dialogue/End.dialogue" id="2_5pq1u"]
 [ext_resource type="Script" uid="uid://cvgr2kqp82tia" path="res://Other Systems/Block/Interactable.gd" id="2_pjjar"]
+[ext_resource type="AudioStream" uid="uid://b207jrqwbowln" path="res://Assets/Sounds/SFX/ChestOpen.ogg" id="5_4eryf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5pq1u"]
 atlas = ExtResource("1_ab6s5")
@@ -68,3 +69,7 @@ position = Vector2(0, 37.5)
 shape = SubResource("RectangleShape2D_ab6s5")
 disabled = true
 debug_color = Color(0.912091, 0.187844, 0.568201, 0.42)
+
+[node name="ChestOpenSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_4eryf")
+volume_db = 5.0

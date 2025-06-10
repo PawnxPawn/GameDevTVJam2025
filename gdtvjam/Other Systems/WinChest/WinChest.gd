@@ -13,6 +13,8 @@ extends StaticBody2D
 @onready var amulet_interactable: Interactable = %AmuletInteractable
 @onready var amulet_interact: CollisionShape2D = %AmuletInteract
 
+@onready var open_sfx: AudioStreamPlayer2D = $ChestOpenSFX
+
 
 func _ready() -> void:
     chest_interactable.interact = _chest_interact
@@ -20,6 +22,7 @@ func _ready() -> void:
 
 func _chest_interact() -> void:
     DialogueManager.show_example_dialogue_balloon(win_dialouge, "Chest")
+    open_sfx.play()
     chest_sprite.visible = false
     amulet_sprite.visible = true
     chest_interact.disabled = true

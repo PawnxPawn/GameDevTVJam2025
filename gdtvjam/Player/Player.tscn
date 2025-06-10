@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://1c4l1suixtb2"]
+[gd_scene load_steps=62 format=3 uid="uid://1c4l1suixtb2"]
 
 [ext_resource type="Script" uid="uid://deift58sa4doh" path="res://Player/Player.gd" id="1_ddoul"]
 [ext_resource type="Resource" uid="uid://bimk76ra4fd50" path="res://Dialogue/Feedback.dialogue" id="2_8g4oa"]
@@ -7,6 +7,53 @@
 [ext_resource type="Script" uid="uid://cdq44q7fpdo01" path="res://Player/InteractableDetector.gd" id="5_8g4oa"]
 [ext_resource type="FontFile" uid="uid://c6ur18f7svqw1" path="res://Assets/Fonts/Kubasta/Kubasta.ttf" id="6_6ysni"]
 [ext_resource type="AudioStream" uid="uid://ciygtkxx14paa" path="res://Assets/Sounds/SFX/CaveFootStep.ogg" id="7_vlldt"]
+[ext_resource type="AudioStream" uid="uid://djl6d3y5h63o3" path="res://Assets/Sounds/SFX/ShrinkMagic.ogg" id="8_s1rgi"]
+[ext_resource type="AudioStream" uid="uid://xh3f7bbsqct4" path="res://Assets/Sounds/SFX/GrowMagic.ogg" id="9_j23h2"]
+[ext_resource type="Texture2D" uid="uid://ckckw2wam8w0y" path="res://Assets/Particles/ParticleTextures/magic_pixel.png" id="10_0j2ni"]
+
+[sub_resource type="Shader" id="Shader_j23h2"]
+code = "shader_type canvas_item;
+
+uniform sampler2D noise_tex1:repeat_enable;
+uniform sampler2D noise_tex2:repeat_enable;
+
+uniform vec2 offset1 = vec2(0.1);
+uniform vec2 offset2 = vec2(0.2);
+
+uniform float distortion_strength: hint_range(-1.0, 1.0) = 0.1;
+
+uniform vec4 color: source_color = vec4(1,1,1,1);
+
+void fragment()
+{
+	vec4 noise_color1 = texture(noise_tex1, UV + offset1 * TIME);
+	vec4 noise_color2 = texture(noise_tex2, UV + offset2 * TIME);
+
+	float final_noise = noise_color1.r * noise_color2.r;
+
+	vec4 final_color = texture(TEXTURE, UV + final_noise*distortion_strength);
+
+	COLOR = final_color * color;
+}"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0j2ni"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0j2ni"]
+noise = SubResource("FastNoiseLite_0j2ni")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_v0k0e"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_v0k0e"]
+noise = SubResource("FastNoiseLite_v0k0e")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0j2ni"]
+shader = SubResource("Shader_j23h2")
+shader_parameter/noise_tex1 = SubResource("NoiseTexture2D_0j2ni")
+shader_parameter/noise_tex2 = SubResource("NoiseTexture2D_v0k0e")
+shader_parameter/offset1 = Vector2(0.1, 0.1)
+shader_parameter/offset2 = Vector2(0.2, 0.2)
+shader_parameter/distortion_strength = 4.75e-08
+shader_parameter/color = Color(1, 1, 1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8g4oa"]
 atlas = ExtResource("2_ddoul")
@@ -352,6 +399,30 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite:material:shader_parameter/distortion_strength")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [4.75e-08]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite:material:shader_parameter/color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_6ysni"]
 resource_name = "grow_animation"
@@ -405,6 +476,30 @@ tracks/3/path = NodePath(".:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.509804, 0.32549, 0.215686, 1), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite:material:shader_parameter/distortion_strength")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.018, 4.75e-08]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite:material:shader_parameter/color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0, 0.5, 1.1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
@@ -468,6 +563,30 @@ tracks/3/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(0.141176, 0.321569, 0.45098, 1), Color(1, 1, 1, 1)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite:material:shader_parameter/distortion_strength")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.025, 4.75e-08]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite:material:shader_parameter/color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.141176, 0.321569, 0.45098, 1), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6ysni"]
 _data = {
@@ -486,12 +605,14 @@ animation_player = NodePath("AnimationPlayer")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_0j2ni")
 sprite_frames = SubResource("SpriteFrames_qrhfk")
 animation = &"idle_down"
 autoplay = "idle_down"
 frame_progress = 0.87224
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CapsuleShape2D_ddoul")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("current_player")]
@@ -502,6 +623,7 @@ current_player = NodePath("..")
 unique_name_in_owner = true
 
 [node name="InteractableDetector" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("5_8g4oa")
@@ -529,16 +651,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_6ysni")
 }
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-modulate = Color(0.301961, 0.301961, 0.301961, 0.105882)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 current = true
 
@@ -546,16 +658,25 @@ current = true
 stream = ExtResource("7_vlldt")
 volume_db = -10.0
 pitch_scale = 7.0
-
-[node name="FootstepCave2" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("7_vlldt")
-
-[node name="FootstepCave3" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("7_vlldt")
+max_polyphony = 4
 
 [node name="FootstepDealyTimer" type="Timer" parent="."]
 wait_time = 0.45
 one_shot = true
+
+[node name="ShrinkSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_s1rgi")
+volume_db = -10.0
+
+[node name="GrowSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_j23h2")
+volume_db = -10.0
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(15, 15)
+color = Color(0.368627, 0.494118, 0.545098, 1)
+shadow_enabled = true
+texture = ExtResource("10_0j2ni")
 
 [connection signal="area_entered" from="InteractableDetector" to="InteractableDetector" method="_on_area_entered"]
 [connection signal="body_exited" from="InteractableDetector" to="InteractableDetector" method="_on_body_exited"]

@@ -9,8 +9,6 @@ extends Node
 
 @onready var sprite: AnimatedSprite2D = %Sprite
 @onready var footstep_sfx: AudioStreamPlayer2D = $'../FootstepCave'
-@onready var footstep2_sfx: AudioStreamPlayer2D = $'../FootstepCave2'
-@onready var footstep3_sfx: AudioStreamPlayer2D = $'../FootstepCave3'
 @onready var footstep_dealy_timer: Timer = $'../FootstepDealyTimer'
 
 var current_direction: Vector2
@@ -101,7 +99,7 @@ func _move() -> void:
 
 #region Sounds
 func _play_footsteps() -> void:	
-	if footstep_dealy_timer.is_stopped() and not footstep_sfx.playing:
+	if footstep_dealy_timer.is_stopped():
 		if GameManager.current_player_size == GameManager.character_size.NORMAL:
 			footstep_sfx.pitch_scale = randf_range(minimum_pitch_normal, maximum_pitch_normal)
 		else:
@@ -109,23 +107,6 @@ func _play_footsteps() -> void:
 
 		footstep_dealy_timer.start(footstep_delay)
 		footstep_sfx.play()
-	elif footstep_dealy_timer.is_stopped() and not footstep2_sfx.playing:
-		if GameManager.current_player_size == GameManager.character_size.NORMAL:
-			footstep_sfx.pitch_scale = randf_range(minimum_pitch_normal, maximum_pitch_normal)
-		else:
-			footstep_sfx.pitch_scale = randf_range(minimum_pitch_small, maximum_pitch_small)
-
-		footstep_dealy_timer.start(footstep_delay)
-		footstep2_sfx.play()
-	elif footstep_dealy_timer.is_stopped():
-
-		if GameManager.current_player_size == GameManager.character_size.NORMAL:
-			footstep_sfx.pitch_scale = randf_range(minimum_pitch_normal, maximum_pitch_normal)
-		else:
-			footstep_sfx.pitch_scale = randf_range(minimum_pitch_small, maximum_pitch_small)
-
-		footstep_dealy_timer.start(footstep_delay)
-		footstep3_sfx.play()
 #endregion
 
 #region HelperFunctions

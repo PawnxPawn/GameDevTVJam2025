@@ -177,5 +177,8 @@ color = Color(0.368627, 0.494118, 0.545098, 1)
 shadow_enabled = true
 texture = ExtResource("12_o4d3g")
 
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.599604, 0.599604, 0.599604, 1)
+
 [editable path="SmallAreaNoWalk"]
 [editable path="PuzzleWall"]

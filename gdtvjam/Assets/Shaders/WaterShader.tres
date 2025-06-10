@@ -1,0 +1,24 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://c487qehdyrldt"]
+
+[ext_resource type="Shader" uid="uid://bbxfjwb45n78g" path="res://Assets/Shaders/transition.gdshader" id="1_jvsev"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_tweqo"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mbwna"]
+seamless = true
+noise = SubResource("FastNoiseLite_tweqo")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_v023s"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_biamp"]
+seamless = true
+noise = SubResource("FastNoiseLite_v023s")
+
+[resource]
+shader = ExtResource("1_jvsev")
+shader_parameter/noise_tex1 = SubResource("NoiseTexture2D_mbwna")
+shader_parameter/noise_tex2 = SubResource("NoiseTexture2D_biamp")
+shader_parameter/offset1 = Vector2(0.1, 0.1)
+shader_parameter/offset2 = Vector2(0.2, 0.2)
+shader_parameter/distortion_strength = 0.00200005
+shader_parameter/color = Color(0.5846, 0.7141, 0.74, 1)

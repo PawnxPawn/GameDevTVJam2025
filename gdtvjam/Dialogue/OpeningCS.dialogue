@@ -1,4 +1,6 @@
 ~ OpeningCS
 ???: This place feels so familiar...
+do AudioManager.accept_sfx.play()
 ???: It looks like I might be able to move that block.
+do AudioManager.accept_sfx.play()
 => END

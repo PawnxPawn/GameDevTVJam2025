@@ -1,15 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://d16v0woy3yj72"]
+[gd_scene load_steps=9 format=3 uid="uid://d16v0woy3yj72"]
 
 [ext_resource type="Script" uid="uid://boiq1daqo1iev" path="res://Managers/AudioManager.gd" id="1_xxcej"]
 [ext_resource type="AudioStream" uid="uid://bc07slb5uqyb4" path="res://Assets/Sounds/MainMenuCave_v0.mp3" id="3_b5pxe"]
 [ext_resource type="AudioStream" uid="uid://duuwlgvqnhtkl" path="res://Assets/Sounds/CaveMusic1_v0.2.mp3" id="4_iv5il"]
+[ext_resource type="AudioStream" uid="uid://b3toxe0kglw5t" path="res://Assets/Sounds/SFX/OptionSelect.ogg" id="4_nkfkc"]
+[ext_resource type="AudioStream" uid="uid://d3gkhqjc4krts" path="res://Assets/Sounds/SFX/Pause.ogg" id="5_b5pxe"]
+[ext_resource type="AudioStream" uid="uid://jahk23emclwf" path="res://Assets/Sounds/SFX/Resume.ogg" id="6_iv5il"]
+[ext_resource type="AudioStream" uid="uid://d07563q8yqqg4" path="res://Assets/Sounds/SFX/Accept.ogg" id="7_twxh5"]
+[ext_resource type="AudioStream" uid="uid://ba7jtu66x26lr" path="res://Assets/Sounds/SFX/Rewind.ogg" id="8_ni3yd"]
 
 [node name="AudioManager" type="Node"]
+process_mode = 3
 script = ExtResource("1_xxcej")
-
-[node name="WalkSFX" type="AudioStreamPlayer" parent="."]
-volume_db = 10.0
-bus = &"SFX"
 
 [node name="MainMenuMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_b5pxe")
@@ -22,3 +24,24 @@ stream = ExtResource("4_iv5il")
 volume_db = -40.0
 bus = &"Music"
 parameters/looping = true
+
+[node name="OptionHoverSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_nkfkc")
+
+[node name="PauseSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_b5pxe")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="ResumeSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_iv5il")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="AcceptSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_twxh5")
+volume_db = -10.0
+
+[node name="RewindSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_ni3yd")
+volume_db = -10.0

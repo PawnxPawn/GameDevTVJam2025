@@ -4,4 +4,4 @@ extends Area2D
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is player:
-		body.reset_level(death_type)
+		body.call_deferred("reset_level", death_type)
